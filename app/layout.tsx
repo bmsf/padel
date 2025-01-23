@@ -1,20 +1,22 @@
 import type { Metadata } from 'next';
-import localFont from 'next/font/local';
+import { Poppins, Inter } from 'next/font/google';
 import './globals.css';
 import { ClerkProvider } from '@clerk/nextjs';
-import Header from './components/Header';
+import Header from './components/layout/Header';
 import { Button } from '@/components/ui/button';
 import { SignInButton, SignUpButton } from '@clerk/nextjs';
+import Footer from './components/layout/Footer';
 
-const geistSans = localFont({
-	src: './fonts/GeistVF.woff',
-	variable: '--font-geist-sans',
-	weight: '100 900',
+const poppins = Poppins({
+	subsets: ['latin'],
+	weight: ['400', '600'], // Angi vekter du vil bruke
+	variable: '--font-poppins', // Legg til en CSS-variabel (valgfritt)
 });
-const geistMono = localFont({
-	src: './fonts/GeistMonoVF.woff',
-	variable: '--font-geist-mono',
-	weight: '100 900',
+
+const inter = Inter({
+	subsets: ['latin'],
+	weight: ['400', '700'], // Angi vekter du vil bruke
+	variable: '--font-inter', // Legg til en CSS-variabel (valgfritt)
 });
 
 export const metadata: Metadata = {
@@ -31,21 +33,14 @@ export default function RootLayout({
 		<ClerkProvider>
 			<html lang='en'>
 				<body
-					className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background`}
+					className={`${poppins.variable} ${inter.variable} antialiased flex flex-col min-h-screen`}
 				>
-					<header className='flex w-full justify-between items-center mx-auto container mt-6'>
+					<header className='fixed top-0 left-0 w-full flex justify-between items-center mx-auto container py-6 z-50'>
 						<p>Logo Bærum Padel</p>
 						<Header />
-						<div className='flex gap-2'>
-							<Button asChild>
-								<SignInButton>Logg inn</SignInButton>
-							</Button>
-							<Button asChild variant='outline'>
-								<SignUpButton>Registrer deg</SignUpButton>
-							</Button>
-						</div>
 					</header>
-					<>{children}</>
+					<div className='pt-[96px]'>{children}</div>
+					<Footer />
 				</body>
 			</html>
 		</ClerkProvider>
