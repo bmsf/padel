@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu';
 import { cva } from 'class-variance-authority';
 import { ChevronDown } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 
 import { cn } from '@/lib/utils';
 
@@ -40,26 +41,33 @@ NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName;
 
 const NavigationMenuItem = NavigationMenuPrimitive.Item;
 
-const navigationMenuTriggerStyle = cva(
-	'group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-lg text-white font-medium transition-colors bg-transparent focus-visible:ring-0 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-transparent data-[state=open]:bg-transparent'
-);
-
 const NavigationMenuTrigger = React.forwardRef<
 	React.ElementRef<typeof NavigationMenuPrimitive.Trigger>,
 	React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Trigger>
->(({ className, children, ...props }, ref) => (
-	<NavigationMenuPrimitive.Trigger
-		ref={ref}
-		className={cn(navigationMenuTriggerStyle(), 'group', className)}
-		{...props}
-	>
-		{children}{' '}
-		<ChevronDown
-			className='relative top-[1px] ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180'
-			aria-hidden='true'
-		/>
-	</NavigationMenuPrimitive.Trigger>
-));
+>(({ className, children, ...props }, ref) => {
+	const pathname = usePathname(); // Move usePathname inside the component
+
+	const textColor = pathname === '/' ? 'text-white' : 'text-foreground';
+
+	const triggerStyle = cva(
+		`group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-lg font-medium transition-colors bg-transparent focus-visible:ring-0 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-transparent data-[state=open]:bg-transparent ${textColor}`
+	);
+
+	return (
+		<NavigationMenuPrimitive.Trigger
+			ref={ref}
+			className={cn(triggerStyle(), 'group', className)}
+			{...props}
+		>
+			{children}{' '}
+			<ChevronDown
+				className='relative top-[1px] ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180'
+				aria-hidden='true'
+			/>
+		</NavigationMenuPrimitive.Trigger>
+	);
+});
+
 NavigationMenuTrigger.displayName = NavigationMenuPrimitive.Trigger.displayName;
 
 const NavigationMenuContent = React.forwardRef<
@@ -116,7 +124,6 @@ NavigationMenuIndicator.displayName =
 	NavigationMenuPrimitive.Indicator.displayName;
 
 export {
-	navigationMenuTriggerStyle,
 	NavigationMenu,
 	NavigationMenuList,
 	NavigationMenuItem,

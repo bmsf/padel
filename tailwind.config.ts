@@ -10,8 +10,8 @@ const config: Config = {
 	theme: {
 		extend: {
 			fontFamily: {
-				header: ['var(--font-poppins)', 'sans-serif'], // Overskrifter
-				body: ['var(--font-inter)', 'sans-serif'], // Brødtekst},
+				header: ['var(--font-IBM)', 'sans-serif'], // Overskrifter
+				body: ['var(--font-IBM)', 'sans-serif'], // Brødtekst},
 			},
 			colors: {
 				background: 'hsl(var(--background))',

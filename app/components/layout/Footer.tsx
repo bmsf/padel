@@ -1,10 +1,10 @@
 export default function Footer() {
 	return (
-		<footer className='py-6 mt-12'>
+		<footer className='py-6 bg-background'>
 			<div className='container mx-auto px-4'>
 				<div className='flex justify-between items-center'>
 					<div>
-						<h1 className='text-2xl font-bold'>Bærum Padel</h1>
+						<h1 className='text-2xl font-bold'>Padel Co Grini</h1>
 						<p>Din destinasjon for padelglede og kvalitetstid</p>
 					</div>
 				</div>
