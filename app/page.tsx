@@ -1,4 +1,3 @@
-import { auth } from '@clerk/nextjs/server';
 import { redirect } from 'next/navigation';
 import Hero from './components/layout/Hero';
 import FacilitiesSection from './components/layout/FacilitiesSection';
