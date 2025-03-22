@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation';
 import Hero from './components/layout/Hero';
 import FacilitiesSection from './components/layout/FacilitiesSection';
 import PartnersAnimation from './components/ui/PartnersAnimation';
+import InstagramFeed from './components/layout/InstagramFeed';
 
 export default function Home() {
 	return (
@@ -17,6 +18,7 @@ export default function Home() {
 					<div className='py-20'>
 						<PartnersAnimation />
 					</div>
+					<InstagramFeed />
 				</div>
 			</main>
 		</div>
