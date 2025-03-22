@@ -14,8 +14,8 @@
 		--background: 60, 11%, 82%;
 		--foreground: 197, 54%, 5%;
 		/* --foreground: 42, 89%, 53%; */
-		--card: 0 0% 100%;
-		--card-foreground: 240 10% 3.9%;
+		--card: 60, 11%, 92%; /* #EDEDE8 */
+		--card-foreground: 204, 95%, 4%; /* #061014 */
 		--popover: 0 0% 100%;
 		--popover-foreground: 240 10% 3.9%;
 		/* --primary: 150 54.5% 12.9%; */
@@ -51,8 +51,8 @@
 	.dark {
 		--background: 240, 2%, 12%;
 		--foreground: 0 0% 95%;
-		--card: 24 9.8% 10%;
-		--card-foreground: 0 0% 95%;
+		--card: 204, 95%, 4%; /* Inverted for dark mode */
+		--card-foreground: 60, 11%, 92%; /* Inverted for dark mode */
 		--popover: 0 0% 9%;
 		--popover-foreground: 0 0% 95%;
 		--primary: 142.1 70.6% 45.3%;

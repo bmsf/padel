@@ -1,6 +1,40 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { Card } from '@/components/ui/card';
+
+interface FacilityCard {
+	title: string;
+	description: string;
+	icon: string;
+}
+
+const facilities: FacilityCard[] = [
+	{
+		title: 'Innendørs Baner',
+		description:
+			'Klimakontrollerte baner for optimal spillopplevelse året rundt',
+		icon: '🏸',
+	},
+	{
+		title: 'Utendørs Baner',
+		description: 'Profesjonelle baner med perfekt underlag for utendørsspill',
+		icon: '🌞',
+	},
+	{
+		title: 'Pro Shop',
+		description: 'Alt av utstyr og tilbehør for din padel-opplevelse',
+		icon: '🛍️',
+	},
+	{
+		title: 'Garderober',
+		description: 'Moderne fasiliteter med dusj og oppbevaring',
+		icon: '🚿',
+	},
+];
 
 interface FacilitiesSectionProps {
 	imageUrl?: string;
@@ -25,7 +59,13 @@ const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
 			</div>
 
 			{/* Content container */}
-			<div className='relative py-32 px-4 max-w-7xl mx-auto'>
+			<motion.div
+				initial={{ opacity: 0, y: 20 }}
+				whileInView={{ opacity: 1, y: 0 }}
+				viewport={{ once: true }}
+				transition={{ duration: 0.6 }}
+				className='relative py-32 px-4 max-w-7xl mx-auto'
+			>
 				<div className='flex flex-col items-center justify-center text-center'>
 					<h2 className='text-4xl font-bold text-white mb-6'>
 						Våre fasiliteter
@@ -43,7 +83,7 @@ const FacilitiesSection: React.FC<FacilitiesSectionProps> = ({
 						Utforsk våre fasiliteter
 					</Link>
 				</div>
-			</div>
+			</motion.div>
 		</section>
 	);
 };

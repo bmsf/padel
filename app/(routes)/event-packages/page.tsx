@@ -27,8 +27,19 @@ import {
 } from '@/components/ui/dialog';
 import { Separator } from '@/components/ui/separator';
 
+interface EventPackage {
+	id: number;
+	title: string;
+	description: string;
+	imageUrl: string;
+	features: string[];
+	price: string;
+	duration: string;
+	category: string;
+}
+
 // Sample event package data
-const eventPackages = [
+const eventPackages: EventPackage[] = [
 	{
 		id: 1,
 		title: 'Bedriftsevent',
@@ -73,7 +84,7 @@ const eventPackages = [
 		description:
 			'Organiser din egen padelturnering for venner, kolleger eller klubbmedlemmer med profesjonelt oppsett.',
 		imageUrl:
-			'https://images.unsplash.com/photo-1511067007398-7e4b9499e3c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+			'https://images.unsplash.com/photo-1519766304817-4f37bda74a26?q=80&w=3540&auto=format&fit=crop',
 		features: [
 			'Turneringsoppsett og planlegging',
 			'Profesjonell turneringsledelse',
@@ -160,7 +171,9 @@ const faqs = [
 ];
 
 export default function EventPackages() {
-	const [selectedPackage, setSelectedPackage] = useState(null);
+	const [selectedPackage, setSelectedPackage] = useState<EventPackage | null>(
+		null
+	);
 	const [activeTab, setActiveTab] = useState('alle');
 
 	// Filter packages based on active tab
@@ -405,7 +418,7 @@ export default function EventPackages() {
 				</div>
 
 				{/* Testimonials */}
-				<div className='py-16 bg-secondary/50 rounded-lg'>
+				<div className='py-16'>
 					<h2 className='text-3xl font-bold text-center mb-12'>
 						Hva våre kunder sier
 					</h2>
