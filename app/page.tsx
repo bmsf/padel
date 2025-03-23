@@ -1,4 +1,3 @@
-import { redirect } from 'next/navigation';
 import Hero from './components/layout/Hero';
 import FacilitiesSection from './components/layout/FacilitiesSection';
 import PartnersAnimation from './components/ui/PartnersAnimation';

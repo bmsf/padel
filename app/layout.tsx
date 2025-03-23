@@ -1,4 +1,3 @@
-import type { Metadata } from 'next';
 import { IBM_Plex_Sans } from 'next/font/google';
 import './globals.css';
 import Header from './components/layout/Header';

@@ -4,11 +4,9 @@ import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import {
 	NavigationMenu,
-	NavigationMenuContent,
 	NavigationMenuItem,
 	NavigationMenuLink,
 	NavigationMenuList,
-	NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu';
 import { Menu, X } from 'lucide-react';
 import Link from 'next/link';

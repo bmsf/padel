@@ -2,7 +2,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import logo1 from '@/lib/padel.avif';
 
 // Array of company logo objects
 const companyLogos = [

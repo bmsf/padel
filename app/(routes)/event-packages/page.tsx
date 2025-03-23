@@ -23,7 +23,6 @@ import {
 	DialogHeader,
 	DialogTitle,
 	DialogTrigger,
-	DialogClose,
 } from '@/components/ui/dialog';
 import { Separator } from '@/components/ui/separator';
 
@@ -171,9 +170,6 @@ const faqs = [
 ];
 
 export default function EventPackages() {
-	const [selectedPackage, setSelectedPackage] = useState<EventPackage | null>(
-		null
-	);
 	const [activeTab, setActiveTab] = useState('alle');
 
 	// Filter packages based on active tab
@@ -281,12 +277,7 @@ export default function EventPackages() {
 								<CardFooter>
 									<Dialog>
 										<DialogTrigger asChild>
-											<Button
-												className='w-full'
-												onClick={() => setSelectedPackage(pkg)}
-											>
-												Se detaljer
-											</Button>
+											<Button className='w-full'>Se detaljer</Button>
 										</DialogTrigger>
 										<DialogContent className='max-w-4xl max-h-[90vh] overflow-y-auto'>
 											<DialogHeader>

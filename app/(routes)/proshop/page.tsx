@@ -1,5 +1,4 @@
 // Server Component
-import Image from 'next/image';
 import BrandsSection from './components/BrandsSection';
 import InfoSection from './components/InfoSection';
 import CategoriesSection from './components/CategoriesSection';
