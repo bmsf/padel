@@ -16,7 +16,7 @@ interface BrandsSectionProps {
 
 export default function BrandsSection({ brands }: BrandsSectionProps) {
 	return (
-		<section className='py-20 bg-card/30'>
+		<section className='py-20 w-full'>
 			<div className='container mx-auto px-4'>
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
@@ -36,14 +36,14 @@ export default function BrandsSection({ brands }: BrandsSectionProps) {
 								whileInView={{ opacity: 1, y: 0 }}
 								viewport={{ once: true }}
 								transition={{ duration: 0.5, delay: index * 0.1 }}
-								className='aspect-[4/3] bg-card hover:bg-card/90 rounded-2xl p-8 flex items-center justify-center group transition-all duration-500 ease-out border-2 border-foreground/10'
+								className='aspect-[4/3] bg-white/5 rounded-2xl p-6 flex items-center justify-center group transition-all duration-300 ease-out border border-foreground/10 hover:shadow-md hover:border-foreground/20'
 							>
 								<Image
 									src={brand.logo}
 									alt={brand.name}
-									width={200}
-									height={50}
-									className='object-contain transition-all duration-500 filter grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100'
+									width={brand.width}
+									height={brand.height}
+									className='object-contain transition-transform duration-300 group-hover:scale-105'
 								/>
 							</motion.div>
 						))}
