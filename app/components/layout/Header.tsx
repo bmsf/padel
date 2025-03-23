@@ -25,23 +25,6 @@ export default function Header() {
 	const pathname = usePathname();
 	const isLandingPage = pathname === '/';
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
-	const [isMobile, setIsMobile] = useState(false);
-
-	// Check if screen is mobile size
-	useEffect(() => {
-		const checkScreenSize = () => {
-			setIsMobile(window.innerWidth < 768);
-		};
-
-		// Initial check
-		checkScreenSize();
-
-		// Add event listener
-		window.addEventListener('resize', checkScreenSize);
-
-		// Clean up
-		return () => window.removeEventListener('resize', checkScreenSize);
-	}, []);
 
 	// Close menu when path changes
 	useEffect(() => {

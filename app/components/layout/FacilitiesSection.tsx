@@ -11,30 +11,6 @@ interface FacilityCard {
 	icon: string;
 }
 
-const facilities: FacilityCard[] = [
-	{
-		title: 'Innendørs Baner',
-		description:
-			'Klimakontrollerte baner for optimal spillopplevelse året rundt',
-		icon: '🏸',
-	},
-	{
-		title: 'Utendørs Baner',
-		description: 'Profesjonelle baner med perfekt underlag for utendørsspill',
-		icon: '🌞',
-	},
-	{
-		title: 'Pro Shop',
-		description: 'Alt av utstyr og tilbehør for din padel-opplevelse',
-		icon: '🛍️',
-	},
-	{
-		title: 'Garderober',
-		description: 'Moderne fasiliteter med dusj og oppbevaring',
-		icon: '🚿',
-	},
-];
-
 interface FacilitiesSectionProps {
 	imageUrl?: string;
 }

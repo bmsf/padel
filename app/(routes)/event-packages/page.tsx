@@ -438,7 +438,7 @@ export default function EventPackages() {
 								</CardHeader>
 								<CardContent>
 									<p className='italic text-muted-foreground'>
-										"{testimonial.quote}"
+										&quot;{testimonial.quote}&quot;
 									</p>
 								</CardContent>
 							</Card>
