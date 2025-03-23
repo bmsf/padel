@@ -5,11 +5,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
-interface FacilityCard {
-	title: string;
-	description: string;
-	icon: string;
-}
+// interface FacilityCard {
+// 	title: string;
+// 	description: string;
+// 	icon: string;
+// }
 
 interface FacilitiesSectionProps {
 	imageUrl?: string;
