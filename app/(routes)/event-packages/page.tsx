@@ -414,24 +414,20 @@ export default function EventPackages() {
 						Hva våre kunder sier
 					</h2>
 
-					<div className='grid grid-cols-1 md:grid-cols-3 gap-8 px-4'>
+					<div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
 						{testimonials.map((testimonial) => (
-							<Card key={testimonial.id} className='bg-card'>
-								<CardHeader className='pb-2'>
-									<div className='flex items-center'>
-										<div className='h-12 w-12 rounded-full overflow-hidden mr-4'>
-											<Image
-												src={testimonial.avatar}
-												alt={testimonial.name}
-												width={48}
-												height={48}
-												className='h-full w-full object-cover'
-											/>
-										</div>
+							<Card key={testimonial.id}>
+								<CardHeader>
+									<div className='flex items-center space-x-4'>
+										<Image
+											src={testimonial.avatar}
+											alt={testimonial.name}
+											width={50}
+											height={50}
+											className='rounded-full'
+										/>
 										<div>
-											<CardTitle className='text-base'>
-												{testimonial.name}
-											</CardTitle>
+											<CardTitle>{testimonial.name}</CardTitle>
 											<CardDescription>{testimonial.company}</CardDescription>
 										</div>
 									</div>

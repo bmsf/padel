@@ -1,16 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { categories } from '../data/categories';
-
-interface CategoryProps {
-	title: string;
-	description: string;
-}
-
-interface CategoriesSectionProps {
-	categories: CategoryProps[];
-}
 
 export default function CategoriesSection() {
 	return (
