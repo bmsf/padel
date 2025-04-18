@@ -8,7 +8,6 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import {
 	Card,
-	CardContent,
 	CardDescription,
 	CardFooter,
 	CardHeader,
@@ -255,10 +254,7 @@ export default function EventPackages() {
 									<CardHeader>
 										<div className='flex justify-between items-center mb-2'>
 											<CardTitle className='text-xl'>{pkg.title}</CardTitle>
-											<Badge
-												variant='outline'
-												className='font-medium'
-											>
+											<Badge variant='outline' className='font-medium'>
 												{pkg.price}
 											</Badge>
 										</div>
@@ -286,10 +282,7 @@ export default function EventPackages() {
 									<CardFooter className='mt-auto pt-0'>
 										<Dialog>
 											<DialogTrigger asChild>
-												<Button
-													variant='outline'
-													className='w-full'
-												>
+												<Button variant='outline' className='w-full'>
 													Se detaljer
 												</Button>
 											</DialogTrigger>
