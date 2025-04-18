@@ -23,7 +23,7 @@ export default function HeroSection() {
 					transition={{ delay: 0.5, duration: 0.8 }}
 					className='inline-flex items-center gap-2 bg-card/50 backdrop-blur-sm text-card-foreground py-3 px-6 rounded-full border-2 border-foreground/10 mt-8'
 				>
-					<span className='text-lg'>Åpner i mai 2024</span>
+					<span className='text-lg'>Åpner i mai 2025</span>
 				</motion.div>
 			</motion.div>
 		</div>
