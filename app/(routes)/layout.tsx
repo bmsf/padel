@@ -1,4 +1,4 @@
-import Header from '@/app/components/ui/Header';
+import Header from '@/app/components/layout/Header';
 
 export default function RoutesLayout({
 	children,

@@ -18,7 +18,7 @@
 		--card-foreground: 204, 95%, 4%; /* #061014 */
 		--popover: 0 0% 100%;
 		--popover-foreground: 240 10% 3.9%;
-		--primary: 150, 54%, 13%; /* #0E3220 */
+		--primary: 60, 11%, 82%; /* Samme som --background */
 		--primary-foreground: 355.7 100% 97.3%;
 		--secondary: 240 4.8% 95.9%;
 		--secondary-foreground: 240 5.9% 10%;
@@ -54,8 +54,8 @@
 		--card-foreground: 48, 52%, 89%; /* #F4F1D2 */
 		--popover: 204, 35%, 8%; /* #0D1E26 */
 		--popover-foreground: 48, 52%, 89%; /* #F4F1D2 */
-		--primary: 150, 54%, 20%;
-		--primary-foreground: 48, 52%, 89%; /* #F4F1D2 */
+		--primary: 48, 52%, 89%; /* #F4F1D2 */
+		--primary-foreground: 204, 35%, 8%; /* #0D1E26 */
 		--secondary: 204, 35%, 12%; /* Litt lysere variant av #0D1E26 */
 		--secondary-foreground: 48, 52%, 89%; /* #F4F1D2 */
 		--muted: 204, 35%, 15%;
@@ -99,7 +99,19 @@
 
 	.nav-link::after {
 		content: '';
-		@apply absolute w-0 h-0.5 bg-white bottom-0 left-0 transition-all duration-300;
+		@apply absolute w-0 h-0.5 bottom-0 left-0 transition-all duration-300;
+	}
+
+	.nav-link.light::after {
+		@apply bg-foreground;
+	}
+
+	.nav-link.dark::after {
+		@apply bg-white;
+	}
+
+	.dark .nav-link.light::after {
+		@apply bg-foreground;
 	}
 
 	.nav-link:hover::after {

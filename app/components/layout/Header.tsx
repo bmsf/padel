@@ -119,11 +119,13 @@ export default function Header() {
 									<NavigationMenuItem key={link.href}>
 										<Link href={link.href} legacyBehavior passHref>
 											<NavigationMenuLink
-												className={`block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors ${
+												className={`block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors nav-link ${
 													isLandingPage
-														? 'text-white nav-link'
-														: 'text-foreground hover:bg-accent hover:text-accent-foreground'
-												}`}
+														? 'text-white dark'
+														: `text-foreground ${
+																theme === 'dark' ? 'dark' : 'light'
+														  }`
+												} ${pathname === link.href ? 'font-medium' : ''}`}
 											>
 												{link.label}
 											</NavigationMenuLink>

@@ -12,7 +12,7 @@ export default function HeroSection() {
 				className='max-w-3xl mx-auto text-center space-y-6'
 			>
 				<h1 className='text-4xl md:text-6xl font-bold tracking-tight'>
-					ProShop
+					Pro Shop
 				</h1>
 				<p className='text-lg md:text-2xl text-muted-foreground leading-relaxed'>
 					Alt du trenger for å spille padel - rett ved banene

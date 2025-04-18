@@ -2,6 +2,12 @@ import Hero from './components/layout/Hero';
 import FacilitiesSection from './components/layout/FacilitiesSection';
 import PartnersAnimation from './components/ui/PartnersAnimation';
 import InstagramFeed from './components/layout/InstagramFeed';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+	title: 'Hjem | Padel Co',
+	description: 'Din destinasjon for padel i Norge',
+};
 
 export default function Home() {
 	return (

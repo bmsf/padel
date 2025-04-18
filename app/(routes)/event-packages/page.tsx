@@ -179,277 +179,301 @@ export default function EventPackages() {
 			: eventPackages.filter((pkg) => pkg.category === activeTab);
 
 	return (
-		<div className='bg-background text-foreground'>
-			{/* Hero Section */}
-			<div className='relative h-96 w-full overflow-hidden'>
-				<Image
-					src='https://images.unsplash.com/photo-1526888935184-a82d2a4b7e67?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-					alt='Padel center events'
-					fill
-					className='object-cover'
-					priority
-				/>
-				<div className='absolute inset-0 bg-primary/40' />
-				<div className='absolute inset-0 flex flex-col items-center justify-center text-center px-4'>
-					<h1 className='text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6'>
-						Arranger ditt neste event hos oss
-					</h1>
-					<p className='text-xl text-white max-w-3xl mb-8'>
+		<div className='bg-background text-foreground min-h-screen'>
+			{/* Header - Cleaner, more minimalist version without background image */}
+			<div className='w-full bg-background border-b border-border pt-20 pb-12'>
+				<div className='max-w-3xl mx-auto px-4 text-center'>
+					<h1 className='text-4xl font-bold mb-6'>Event Pakker</h1>
+					<p className='text-xl text-muted-foreground max-w-2xl mx-auto'>
 						Uforglemmelige opplevelser for bedrifter, bursdager, turneringer og
-						private arrangementer
+						private arrangementer.
 					</p>
-					<Button
-						onClick={() =>
-							document
-								.getElementById('packages')
-								?.scrollIntoView({ behavior: 'smooth' })
-						}
-						size='lg'
-						className='bg-primary hover:bg-primary/90'
-					>
-						Utforsk våre pakker
-					</Button>
 				</div>
 			</div>
 
 			{/* Main Content */}
-			<div className='max-w-7xl mx-auto px-4 py-16'>
+			<div className='max-w-5xl mx-auto px-4 py-12'>
+				{/* Introduction */}
+				<div className='mb-16 max-w-3xl mx-auto'>
+					<h2 className='text-3xl font-bold mb-6'>
+						Arranger ditt neste event hos oss
+					</h2>
+					<p className='text-muted-foreground mb-6 leading-relaxed'>
+						Våre skreddersydde eventpakker gir deg muligheten til å skape
+						minnerike opplevelser for enhver anledning. Enten du planlegger et
+						bedriftsarrangement, en bursdagsfeiring, en turnering eller et
+						VIP-event, har vi pakken som passer for deg.
+					</p>
+					<p className='text-muted-foreground leading-relaxed'>
+						Alle våre pakker kan tilpasses etter dine spesifikke behov og
+						ønsker, og vårt dedikerte team vil hjelpe deg gjennom hele
+						prosessen.
+					</p>
+				</div>
+
 				{/* Package Filtering with Shadcn Tabs */}
 				<div id='packages' className='mb-12'>
-					<h2 className='text-3xl font-bold text-center mb-10'>
-						Våre Event Pakker
-					</h2>
+					<h2 className='text-2xl font-bold mb-8'>Våre Event Pakker</h2>
 
 					<Tabs
 						defaultValue='alle'
-						className='w-full max-w-3xl mx-auto'
 						onValueChange={setActiveTab}
+						className='w-full'
 					>
-						<TabsList className='grid w-full grid-cols-4'>
+						<TabsList className='mb-8 grid w-full grid-cols-4'>
 							<TabsTrigger value='alle'>Alle pakker</TabsTrigger>
 							<TabsTrigger value='bedrift'>Bedriftsevent</TabsTrigger>
 							<TabsTrigger value='bursdag'>Bursdager</TabsTrigger>
 							<TabsTrigger value='turnering'>Turneringer</TabsTrigger>
 						</TabsList>
 
+						{/* Content will be rendered outside TabsContent for cleaner layout */}
 						<TabsContent value='alle' className='mt-0'></TabsContent>
 						<TabsContent value='bedrift' className='mt-0'></TabsContent>
 						<TabsContent value='bursdag' className='mt-0'></TabsContent>
 						<TabsContent value='turnering' className='mt-0'></TabsContent>
 					</Tabs>
-				</div>
 
-				{/* Package Cards using Shadcn Card */}
-				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16'>
-					{filteredPackages.map((pkg) => (
-						<motion.div
-							key={pkg.id}
-							initial={{ opacity: 0, y: 20 }}
-							animate={{ opacity: 1, y: 0 }}
-							transition={{ duration: 0.3 }}
-						>
-							<Card className='h-full flex flex-col'>
-								<div className='h-48 relative'>
-									<Image
-										src={pkg.imageUrl}
-										alt={pkg.title}
-										fill
-										className='object-cover rounded-t-lg'
-									/>
-								</div>
-								<CardHeader>
-									<CardTitle>{pkg.title}</CardTitle>
-									<CardDescription>{pkg.description}</CardDescription>
-								</CardHeader>
-								<CardContent className='flex-grow'>
-									<div className='flex justify-between items-center mb-4'>
-										<Badge
-											variant='outline'
-											className='font-semibold text-primary'
-										>
-											{pkg.price}
-										</Badge>
-										<span className='text-muted-foreground'>
-											{pkg.duration}
-										</span>
+					{/* Package Cards using Shadcn Card - Redesigned for cleaner look */}
+					<div className='grid grid-cols-1 md:grid-cols-2 gap-8 mb-16'>
+						{filteredPackages.map((pkg) => (
+							<motion.div
+								key={pkg.id}
+								initial={{ opacity: 0, y: 20 }}
+								animate={{ opacity: 1, y: 0 }}
+								transition={{ duration: 0.3 }}
+							>
+								<Card className='h-full flex flex-col overflow-hidden border-none shadow-sm hover:shadow-md transition-shadow'>
+									<div className='h-48 relative'>
+										<Image
+											src={pkg.imageUrl}
+											alt={pkg.title}
+											fill
+											className='object-cover'
+										/>
 									</div>
-								</CardContent>
-								<CardFooter>
-									<Dialog>
-										<DialogTrigger asChild>
-											<Button className='w-full'>Se detaljer</Button>
-										</DialogTrigger>
-										<DialogContent className='max-w-4xl max-h-[90vh] overflow-y-auto'>
-											<DialogHeader>
-												<DialogTitle className='text-2xl'>
-													{pkg.title}
-												</DialogTitle>
-												<DialogDescription>{pkg.description}</DialogDescription>
-											</DialogHeader>
+									<CardHeader>
+										<div className='flex justify-between items-center mb-2'>
+											<CardTitle className='text-xl'>{pkg.title}</CardTitle>
+											<Badge
+												variant='outline'
+												className='font-medium'
+											>
+												{pkg.price}
+											</Badge>
+										</div>
+										<div className='flex items-center text-sm text-muted-foreground mb-2'>
+											<svg
+												className='w-4 h-4 mr-1'
+												fill='none'
+												stroke='currentColor'
+												viewBox='0 0 24 24'
+												xmlns='http://www.w3.org/2000/svg'
+											>
+												<path
+													strokeLinecap='round'
+													strokeLinejoin='round'
+													strokeWidth='2'
+													d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'
+												></path>
+											</svg>
+											{pkg.duration}
+										</div>
+										<CardDescription className='mt-2'>
+											{pkg.description}
+										</CardDescription>
+									</CardHeader>
+									<CardFooter className='mt-auto pt-0'>
+										<Dialog>
+											<DialogTrigger asChild>
+												<Button
+													variant='outline'
+													className='w-full'
+												>
+													Se detaljer
+												</Button>
+											</DialogTrigger>
+											<DialogContent className='max-w-3xl max-h-[90vh] overflow-y-auto'>
+												<DialogHeader>
+													<DialogTitle className='text-2xl'>
+														{pkg.title}
+													</DialogTitle>
+													<DialogDescription className='text-base'>
+														{pkg.description}
+													</DialogDescription>
+												</DialogHeader>
 
-											<div className='relative h-60 my-4'>
-												<Image
-													src={pkg.imageUrl}
-													alt={pkg.title}
-													fill
-													className='object-cover rounded-md'
-												/>
-											</div>
-
-											<div className='space-y-4'>
-												<h3 className='text-xl font-semibold'>
-													Dette er inkludert:
-												</h3>
-												<ul className='space-y-2'>
-													{pkg.features.map((feature, index) => (
-														<li key={index} className='flex items-start'>
-															<svg
-																className='h-5 w-5 text-primary mr-2 mt-1 flex-shrink-0'
-																fill='none'
-																viewBox='0 0 24 24'
-																stroke='currentColor'
-															>
-																<path
-																	strokeLinecap='round'
-																	strokeLinejoin='round'
-																	strokeWidth={2}
-																	d='M5 13l4 4L19 7'
-																/>
-															</svg>
-															<span>{feature}</span>
-														</li>
-													))}
-												</ul>
-
-												<div className='flex flex-col sm:flex-row justify-between items-center gap-4 py-4'>
-													<div>
-														<p className='text-muted-foreground'>Pris:</p>
-														<p className='text-2xl font-bold text-primary'>
-															{pkg.price}
-														</p>
-													</div>
-													<div>
-														<p className='text-muted-foreground'>Varighet:</p>
-														<p className='text-xl font-semibold'>
-															{pkg.duration}
-														</p>
-													</div>
-													<Link href='/contact'>
-														<Button>Bestill nå</Button>
-													</Link>
+												<div className='relative h-60 my-6'>
+													<Image
+														src={pkg.imageUrl}
+														alt={pkg.title}
+														fill
+														className='object-cover rounded-md'
+													/>
 												</div>
 
-												<Separator />
+												<div className='space-y-6'>
+													<div>
+														<h3 className='text-lg font-medium mb-4'>
+															Dette er inkludert:
+														</h3>
+														<ul className='space-y-3 pl-1'>
+															{pkg.features.map((feature, index) => (
+																<li key={index} className='flex items-start'>
+																	<svg
+																		className='h-5 w-5 text-primary mr-3 mt-0.5 flex-shrink-0'
+																		fill='none'
+																		viewBox='0 0 24 24'
+																		stroke='currentColor'
+																	>
+																		<path
+																			strokeLinecap='round'
+																			strokeLinejoin='round'
+																			strokeWidth={2}
+																			d='M5 13l4 4L19 7'
+																		/>
+																	</svg>
+																	<span className='text-muted-foreground'>
+																		{feature}
+																	</span>
+																</li>
+															))}
+														</ul>
+													</div>
 
-												<p className='text-muted-foreground pt-2'>
-													Alle pakker kan tilpasses etter dine behov. Kontakt
-													oss for en skreddersydd løsning.
-												</p>
-											</div>
-										</DialogContent>
-									</Dialog>
-								</CardFooter>
-							</Card>
-						</motion.div>
-					))}
-				</div>
+													<Separator />
 
-				{/* Process Section */}
-				<div className='py-16'>
-					<h2 className='text-3xl font-bold text-center mb-12'>
-						Slik fungerer det
-					</h2>
+													<div className='flex flex-col sm:flex-row justify-between items-center gap-6 py-2'>
+														<div>
+															<p className='text-sm text-muted-foreground mb-1'>
+																Pris:
+															</p>
+															<p className='text-2xl font-bold text-primary'>
+																{pkg.price}
+															</p>
+														</div>
+														<div>
+															<p className='text-sm text-muted-foreground mb-1'>
+																Varighet:
+															</p>
+															<p className='text-xl font-medium'>
+																{pkg.duration}
+															</p>
+														</div>
+														<Link href='/contact'>
+															<Button>Bestill nå</Button>
+														</Link>
+													</div>
 
-					<div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
-						<Card className='text-center'>
-							<CardHeader>
-								<div className='mx-auto inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary text-2xl font-bold mb-4'>
-									1
-								</div>
-								<CardTitle>Kontakt oss</CardTitle>
-							</CardHeader>
-							<CardContent>
-								<p className='text-muted-foreground'>
-									Fortell oss om ditt arrangement, antall deltakere og ønsket
-									dato. Vi hjelper deg med å finne den beste løsningen.
-								</p>
-							</CardContent>
-						</Card>
-
-						<Card className='text-center'>
-							<CardHeader>
-								<div className='mx-auto inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary text-2xl font-bold mb-4'>
-									2
-								</div>
-								<CardTitle>Tilpass pakken</CardTitle>
-							</CardHeader>
-							<CardContent>
-								<p className='text-muted-foreground'>
-									Vi tilpasser opplevelsen etter dine behov og ønsker, enten det
-									er mat, instruktører eller spesielle aktiviteter.
-								</p>
-							</CardContent>
-						</Card>
-
-						<Card className='text-center'>
-							<CardHeader>
-								<div className='mx-auto inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary text-2xl font-bold mb-4'>
-									3
-								</div>
-								<CardTitle>Nyt arrangementet</CardTitle>
-							</CardHeader>
-							<CardContent>
-								<p className='text-muted-foreground'>
-									Vi tar oss av alt det praktiske, slik at du og dine gjester
-									kan fokusere på å ha det gøy og nyte opplevelsen.
-								</p>
-							</CardContent>
-						</Card>
-					</div>
-				</div>
-
-				{/* Testimonials */}
-				<div className='py-16'>
-					<h2 className='text-3xl font-bold text-center mb-12'>
-						Hva våre kunder sier
-					</h2>
-
-					<div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
-						{testimonials.map((testimonial) => (
-							<Card key={testimonial.id}>
-								<CardHeader>
-									<div className='flex items-center space-x-4'>
-										<Image
-											src={testimonial.avatar}
-											alt={testimonial.name}
-											width={50}
-											height={50}
-											className='rounded-full'
-										/>
-										<div>
-											<CardTitle>{testimonial.name}</CardTitle>
-											<CardDescription>{testimonial.company}</CardDescription>
-										</div>
-									</div>
-								</CardHeader>
-								<CardContent>
-									<p className='italic text-muted-foreground'>
-										&quot;{testimonial.quote}&quot;
-									</p>
-								</CardContent>
-							</Card>
+													<p className='text-sm text-muted-foreground'>
+														Alle pakker kan tilpasses etter dine behov. Kontakt
+														oss for en skreddersydd løsning.
+													</p>
+												</div>
+											</DialogContent>
+										</Dialog>
+									</CardFooter>
+								</Card>
+							</motion.div>
 						))}
 					</div>
 				</div>
 
-				{/* CTA Section */}
-				<div className='py-16 text-center'>
-					<h2 className='text-3xl font-bold mb-6'>
+				{/* Process Section - More clean layout */}
+				<div className='mb-20'>
+					<h2 className='text-2xl font-bold mb-8'>Slik fungerer det</h2>
+
+					<div className='grid grid-cols-1 md:grid-cols-3 gap-12'>
+						<div>
+							<div className='inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary text-xl font-bold mb-4'>
+								1
+							</div>
+							<h3 className='text-xl font-medium mb-3'>Kontakt oss</h3>
+							<p className='text-muted-foreground'>
+								Fortell oss om ditt arrangement, antall deltakere og ønsket
+								dato. Vi hjelper deg med å finne den beste løsningen.
+							</p>
+						</div>
+
+						<div>
+							<div className='inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary text-xl font-bold mb-4'>
+								2
+							</div>
+							<h3 className='text-xl font-medium mb-3'>Tilpass pakken</h3>
+							<p className='text-muted-foreground'>
+								Vi tilpasser opplevelsen etter dine behov og ønsker, enten det
+								er mat, instruktører eller spesielle aktiviteter.
+							</p>
+						</div>
+
+						<div>
+							<div className='inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary text-xl font-bold mb-4'>
+								3
+							</div>
+							<h3 className='text-xl font-medium mb-3'>Nyt arrangementet</h3>
+							<p className='text-muted-foreground'>
+								Vi tar oss av alt det praktiske, slik at du og dine gjester kan
+								fokusere på å ha det gøy og nyte opplevelsen.
+							</p>
+						</div>
+					</div>
+				</div>
+
+				{/* Testimonials - Cleaner design */}
+				<div className='mb-20'>
+					<h2 className='text-2xl font-bold mb-8'>Hva våre kunder sier</h2>
+
+					<div className='grid grid-cols-1 gap-6'>
+						{testimonials.map((testimonial) => (
+							<div
+								key={testimonial.id}
+								className='border-l-4 border-primary/20 pl-6 py-2'
+							>
+								<p className='italic text-muted-foreground mb-4'>
+									&quot;{testimonial.quote}&quot;
+								</p>
+								<div className='flex items-center space-x-3'>
+									<Image
+										src={testimonial.avatar}
+										alt={testimonial.name}
+										width={40}
+										height={40}
+										className='rounded-full'
+									/>
+									<div>
+										<p className='font-medium'>{testimonial.name}</p>
+										<p className='text-sm text-muted-foreground'>
+											{testimonial.company}
+										</p>
+									</div>
+								</div>
+							</div>
+						))}
+					</div>
+				</div>
+
+				{/* FAQ Section - Improved spacing and readability */}
+				<div className='mb-20'>
+					<h2 className='text-2xl font-bold mb-8'>Ofte stilte spørsmål</h2>
+
+					<div className='space-y-6'>
+						{faqs.map((faq, index) => (
+							<div key={index} className='border-b border-border pb-6'>
+								<h3 className='text-lg font-medium mb-3'>{faq.question}</h3>
+								<p className='text-muted-foreground'>{faq.answer}</p>
+							</div>
+						))}
+					</div>
+				</div>
+
+				{/* CTA Section - More minimal */}
+				<div className='border-t border-border pt-12 pb-8 text-center'>
+					<h2 className='text-2xl font-bold mb-4'>
 						Klar til å planlegge ditt arrangement?
 					</h2>
-					<p className='text-muted-foreground max-w-2xl mx-auto mb-8'>
+					<p className='text-muted-foreground max-w-xl mx-auto mb-8'>
 						Kontakt oss i dag for å diskutere dine behov og reservere din
-						foretrukne dato for et uforglemmelig event.
+						foretrukne dato.
 					</p>
 					<div className='flex flex-col sm:flex-row gap-4 justify-center'>
 						<Link href='/contact'>
@@ -460,26 +484,6 @@ export default function EventPackages() {
 								Se våre fasiliteter
 							</Button>
 						</Link>
-					</div>
-				</div>
-
-				{/* FAQ Section */}
-				<div className='py-16'>
-					<h2 className='text-3xl font-bold text-center mb-12'>
-						Ofte stilte spørsmål
-					</h2>
-
-					<div className='max-w-3xl mx-auto space-y-6'>
-						{faqs.map((faq, index) => (
-							<Card key={index}>
-								<CardHeader>
-									<CardTitle className='text-xl'>{faq.question}</CardTitle>
-								</CardHeader>
-								<CardContent>
-									<p className='text-muted-foreground'>{faq.answer}</p>
-								</CardContent>
-							</Card>
-						))}
 					</div>
 				</div>
 			</div>

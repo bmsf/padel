@@ -3,12 +3,18 @@ import './globals.css';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import { ThemeProvider } from '@/components/theme-provider';
+import type { Metadata } from 'next';
 
 const ibm_plex_sans = IBM_Plex_Sans({
 	subsets: ['latin'],
 	weight: ['400', '600'], // Angi vekter du vil bruke
 	variable: '--font-IBM', // Legg til en CSS-variabel (valgfritt)
 });
+
+export const metadata: Metadata = {
+	title: 'Padel Co',
+	description: 'Din destinasjon for padel i Norge',
+};
 
 export default function RootLayout({
 	children,
