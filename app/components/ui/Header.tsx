@@ -25,16 +25,17 @@ const navLinks = [
 
 export default function Header() {
 	const pathname = usePathname();
+	const isLandingPage = pathname === '/';
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const menuRef = useRef<HTMLDivElement>(null);
 	const { theme, setTheme } = useTheme();
-	const isLandingPage = pathname === '/';
 
 	// Close menu when path changes
 	useEffect(() => {
 		setIsMenuOpen(false);
 	}, [pathname]);
 
+	// Close menu when clicking outside
 	useEffect(() => {
 		const handleClickOutside = (event: MouseEvent) => {
 			if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
@@ -62,7 +63,9 @@ export default function Header() {
 				<div className='flex items-center gap-4'>
 					{/* Logo section with link to homepage */}
 					<Link href='/' className='flex items-center'>
+						{/* This div will be for the future logo image */}
 						<div className='mr-2'>
+							{/* Uncomment and add your logo when you have it */}
 							{/* <Image src="/path-to-logo.png" alt="Bærum Padel Logo" width={40} height={40} /> */}
 						</div>
 						<p
@@ -96,12 +99,19 @@ export default function Header() {
 									<Link
 										key={link.href}
 										href={link.href}
-										className={`block px-6 py-3 text-center text-foreground hover:bg-accent hover:text-accent-foreground uppercase ${
-											pathname === link.href ? 'font-medium text-primary' : ''
+										className={`block px-6 py-3 text-center hover:bg-accent hover:text-accent-foreground uppercase ${
+											pathname === link.href
+												? 'font-medium text-primary dark:text-[#F4F1D2] relative'
+												: 'text-foreground'
 										}`}
 										onClick={() => setIsMenuOpen(false)}
 									>
-										{link.label}
+										<span className='relative inline-block'>
+											{link.label}
+											{pathname === link.href && (
+												<span className='absolute bottom-[-8px] left-[-10%] w-[120%] h-[2px] bg-primary dark:bg-[#F4F1D2]'></span>
+											)}
+										</span>
 									</Link>
 								))}
 							</div>
@@ -134,7 +144,7 @@ export default function Header() {
 						</NavigationMenu>
 					</div>
 
-					{/* Theme Toggle Button */}
+					{/* Theme Toggle Button for Desktop */}
 					<Button
 						variant='ghost'
 						size='icon'

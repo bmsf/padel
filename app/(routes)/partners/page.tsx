@@ -7,17 +7,17 @@ export default function Partners() {
 	return (
 		<div className='min-h-screen bg-background'>
 			{/* Hero Section */}
-			<div className='container mx-auto px-4 py-24'>
+			<div className='container mx-auto px-4 py-16 md:py-24'>
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.8 }}
 					className='max-w-3xl mx-auto text-center space-y-6'
 				>
-					<h1 className='text-6xl font-bold tracking-tight'>
+					<h1 className='text-4xl md:text-6xl font-bold tracking-tight'>
 						Våre Samarbeidspartnere
 					</h1>
-					<p className='text-2xl text-muted-foreground leading-relaxed'>
+					<p className='text-lg md:text-2xl text-muted-foreground leading-relaxed'>
 						Vi er stolte av å samarbeide med noen av verdens ledende merkevarer
 						innen sport og livsstil. Sammen skaper vi bedre opplevelser for våre
 						medlemmer.

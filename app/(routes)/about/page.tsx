@@ -6,15 +6,17 @@ export default function About() {
 	return (
 		<div className='min-h-screen bg-background'>
 			{/* Hero Section */}
-			<div className='container mx-auto px-4 py-24'>
+			<div className='container mx-auto px-4 py-16 md:py-24'>
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.8 }}
 					className='max-w-3xl mx-auto text-center space-y-6'
 				>
-					<h1 className='text-6xl font-bold tracking-tight'>Om Padel Co</h1>
-					<p className='text-2xl text-muted-foreground leading-relaxed'>
+					<h1 className='text-4xl md:text-6xl font-bold tracking-tight'>
+						Om Padel Co
+					</h1>
+					<p className='text-lg md:text-2xl text-muted-foreground leading-relaxed'>
 						En nystartet satsning på en sport i sterk vekst
 					</p>
 				</motion.div>
