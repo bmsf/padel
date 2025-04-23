@@ -11,14 +11,14 @@
 @layer base {
 	:root {
 		/* --background: 54 17.9% 89%; */
-		--background: 60, 11%, 82%;
+		--background: 139, 13%, 20%; /* #2D3B32 */
 		--foreground: 200, 52%, 4%;
 		/* --foreground: 42, 89%, 53%; */
-		--card: 60, 11%, 92%; /* #EDEDE8 */
+		--card: 139, 13%, 25%; /* Litt lysere variant av #2D3B32 */
 		--card-foreground: 204, 95%, 4%; /* #061014 */
 		--popover: 0 0% 100%;
 		--popover-foreground: 240 10% 3.9%;
-		--primary: 60, 11%, 82%; /* Samme som --background */
+		--primary: 139, 13%, 20%; /* Samme som --background */
 		--primary-foreground: 355.7 100% 97.3%;
 		--secondary: 240 4.8% 95.9%;
 		--secondary-foreground: 240 5.9% 10%;
@@ -37,7 +37,7 @@
 		--chart-3: 197 37% 24%;
 		--chart-4: 43 74% 66%;
 		--chart-5: 27 87% 67%;
-		--sidebar-background: 0 0% 98%;
+		--sidebar-background: 139, 13%, 20%; /* #2D3B32 */
 		--sidebar-foreground: 240 5.3% 26.1%;
 		--sidebar-primary: 240 5.9% 10%;
 		--sidebar-primary-foreground: 0 0% 98%;
@@ -49,13 +49,13 @@
 
 	.dark {
 		/* --background: 204, 35%, 8%; /* #0D1E26 */
-		--background: 150, 56%, 13%; /* #0E3220 */
+		--background: 139, 13%, 20%; /* #2D3B32 */
 		--foreground: 48, 52%, 89%; /* #F4F1D2 */
 		/* --card: 204, 35%, 10%; /* Mørkere variant av #0D1E26 */
-		--card: 150, 56%, 15%; /* Mørkere variant av #0E3220 */
+		--card: 139, 13%, 15%; /* Mørkere variant av #2D3B32 */
 		--card-foreground: 48, 52%, 89%; /* #F4F1D2 */
 		/* --popover: 204, 35%, 8%; /* #0D1E26 */
-		--popover: 150, 56%, 13%; /* #0E3220 */
+		--popover: 139, 13%, 20%; /* #2D3B32 */
 		--popover-foreground: 48, 52%, 89%; /* #F4F1D2 */
 		--primary: 48, 52%, 89%; /* #F4F1D2 */
 		/* --primary-foreground: 204, 35%, 8%; /* #0D1E26 */
@@ -82,7 +82,7 @@
 		--chart-4: 280 65% 60%;
 		--chart-5: 340 75% 55%;
 		/* --sidebar-background: 204, 35%, 8%; /* #0D1E26 */
-		--sidebar-background: 150, 56%, 13%; /* #0E3220 */
+		--sidebar-background: 139, 13%, 20%; /* #2D3B32 */
 		--sidebar-foreground: 48, 52%, 89%; /* #F4F1D2 */
 		--sidebar-primary: 224.3 76.3% 48%;
 		--sidebar-primary-foreground: 48, 52%, 89%; /* #F4F1D2 */
