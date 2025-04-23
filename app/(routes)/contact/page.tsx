@@ -20,7 +20,7 @@ export default function Contact() {
 	};
 
 	return (
-		<div className='min-h-screen bg-background'>
+		<div className='min-h-screen bg-background overflow-x-hidden'>
 			{/* Hero Section */}
 			<div className='container mx-auto px-4 py-16 md:py-24'>
 				<motion.div

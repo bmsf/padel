@@ -24,7 +24,7 @@ export default function RootLayout({
 	return (
 		<html lang='en' suppressHydrationWarning>
 			<body
-				className={`${ibm_plex_sans.variable} font-body antialiased flex flex-col min-h-screen`}
+				className={`${ibm_plex_sans.variable} font-body antialiased flex flex-col min-h-screen overflow-x-hidden`}
 			>
 				<ThemeProvider
 					attribute='class'

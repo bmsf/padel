@@ -178,7 +178,7 @@ export default function EventPackages() {
 			: eventPackages.filter((pkg) => pkg.category === activeTab);
 
 	return (
-		<div className='bg-background text-foreground min-h-screen'>
+		<div className='bg-background text-foreground min-h-screen overflow-x-hidden'>
 			{/* Header - Cleaner, more minimalist version without background image */}
 			<div className='w-full bg-background border-b border-border pt-20 pb-12'>
 				<div className='max-w-3xl mx-auto px-4 text-center'>

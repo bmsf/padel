@@ -52,8 +52,7 @@ export default function Header() {
 	}, [isMenuOpen]);
 
 	// Determine the background style based on the current path
-	const headerBgClass =
-		isHomePage && !isMenuOpen ? 'bg-transparent' : 'bg-background';
+	const headerBgClass = isHomePage ? 'bg-transparent' : 'bg-background';
 
 	return (
 		<nav
@@ -102,12 +101,20 @@ export default function Header() {
 									<Link
 										key={link.href}
 										href={link.href}
-										className={`block px-6 py-3 text-center text-foreground hover:bg-accent hover:text-accent-foreground uppercase ${
-											pathname === link.href ? 'font-medium text-primary' : ''
-										}`}
+										className='block px-6 py-3 text-center text-foreground uppercase'
 										onClick={() => setIsMenuOpen(false)}
 									>
-										{link.label}
+										<span
+											className={`relative inline-block
+										after:content-[""] after:absolute after:bottom-[-4px] after:left-[-10%] after:w-[120%] after:h-0.5 after:bg-current after:transition-all after:duration-300 after:origin-left
+										${
+											pathname === link.href
+												? 'font-medium after:scale-x-100'
+												: 'after:scale-x-0 hover:after:scale-x-100'
+										}`}
+										>
+											{link.label}
+										</span>
 									</Link>
 								))}
 							</div>

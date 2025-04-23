@@ -8,7 +8,7 @@ import { brands } from './data/brands';
 
 export default function ProShop() {
 	return (
-		<div className='flex flex-col min-h-screen items-center justify-between gap-16'>
+		<div className='flex flex-col min-h-screen items-center justify-between gap-16 overflow-x-hidden'>
 			<main className='flex flex-col gap-8 flex-1 items-center w-full max-w-7xl px-4 md:px-6'>
 				<HeroSection />
 				<BrandsSection brands={brands} />
