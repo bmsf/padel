@@ -28,7 +28,7 @@ export default function Header() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const menuRef = useRef<HTMLDivElement>(null);
 	const { theme, setTheme } = useTheme();
-	const isLandingPage = pathname === '/';
+	const isHomePage = pathname === '/';
 
 	// Close menu when path changes
 	useEffect(() => {
@@ -51,11 +51,13 @@ export default function Header() {
 		};
 	}, [isMenuOpen]);
 
+	// Determine the background style based on the current path
+	const headerBgClass =
+		isHomePage && !isMenuOpen ? 'bg-transparent' : 'bg-background';
+
 	return (
 		<nav
-			className={`absolute top-0 left-0 w-full z-50 ${
-				isLandingPage ? 'bg-transparent' : 'bg-background'
-			} ${isMenuOpen ? 'bg-background' : ''}`}
+			className={`fixed top-0 left-0 w-full z-50 ${headerBgClass} transition-colors duration-300`}
 		>
 			<div className='container mx-auto flex justify-between items-center py-6 px-6 md:px-0'>
 				{/* Logo and mobile menu button section */}
@@ -67,7 +69,7 @@ export default function Header() {
 						</div>
 						<p
 							className={`font-bold text-lg ${
-								isLandingPage && !isMenuOpen ? 'text-white' : 'text-foreground'
+								isHomePage ? 'text-white' : 'text-foreground'
 							}`}
 						>
 							Logo
@@ -77,7 +79,11 @@ export default function Header() {
 					{/* Mobile Menu Button and Dropdown */}
 					<div className='md:hidden relative' ref={menuRef}>
 						<button
-							className='flex items-center gap-2 bg-card text-card-foreground px-6 py-3 rounded-xl'
+							className={`flex items-center gap-2 ${
+								isHomePage && !isMenuOpen
+									? 'bg-white/20 text-white'
+									: 'bg-card text-card-foreground'
+							} px-6 py-3 rounded-xl`}
 							onClick={() => setIsMenuOpen(!isMenuOpen)}
 							aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
 						>
@@ -120,12 +126,12 @@ export default function Header() {
 										<Link href={link.href} legacyBehavior passHref>
 											<NavigationMenuLink
 												className={`block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors nav-link ${
-													isLandingPage
-														? 'text-white dark'
-														: `text-foreground ${
-																theme === 'dark' ? 'dark' : 'light'
-														  }`
-												} ${pathname === link.href ? 'font-medium' : ''}`}
+													isHomePage
+														? 'text-white hover:text-white/80'
+														: 'text-foreground'
+												} ${theme === 'dark' ? 'dark' : 'light'} ${
+													pathname === link.href ? 'font-medium' : ''
+												}`}
 											>
 												{link.label}
 											</NavigationMenuLink>
@@ -142,7 +148,7 @@ export default function Header() {
 						size='icon'
 						onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
 						className={`rounded-full ${
-							isLandingPage && !isMenuOpen ? 'text-white' : 'text-foreground'
+							isHomePage ? 'text-white' : 'text-foreground'
 						}`}
 					>
 						<Sun className='h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0' />

@@ -9,51 +9,53 @@ const companyLogos = [
 		id: 1,
 		src: 'https://www.tennis-point.se/on/demandware.static/-/Library-Sites-TennisPoint/default/dw818bdcc0/brands/babolat.png',
 		alt: 'Babolat',
-		width: 200,
-		height: 50,
+		width: 180,
+		height: 40,
 	},
 	{
 		id: 2,
 		src: 'https://cdn.freebiesupply.com/logos/large/2x/adidas-logo.png',
 		alt: 'Adidas',
-		width: 200,
-		height: 50,
+		width: 180,
+		height: 40,
 	},
 	{
 		id: 3,
 		src: 'https://brandslogos.com/wp-content/uploads/images/large/wilson-logo-black-and-white.png',
 		alt: 'Wilson',
-		width: 200,
-		height: 50,
+		width: 180,
+		height: 40,
 	},
 	{
 		id: 4,
 		src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Logo_NIKE.svg/1200px-Logo_NIKE.svg.png',
 		alt: 'Nike',
-		width: 200,
-		height: 50,
+		width: 180,
+		height: 40,
 	},
 	{
 		id: 5,
 		src: 'https://cdn.freebiesupply.com/logos/large/2x/rolex-logo-black-and-white.png',
 		alt: 'Rolex',
-		width: 200,
-		height: 50,
+		width: 180,
+		height: 40,
 	},
 	{
 		id: 6,
 		src: 'https://www.carlogos.org/car-logos/audi-logo-2016-download.png',
 		alt: 'Audi',
-		width: 200,
-		height: 50,
+		width: 180,
+		height: 40,
 	},
 	// Add more company logos as needed
 ];
 
 export default function PartnersAnimation() {
 	return (
-		<div className='py-12'>
-			<h2 className='text-3xl font-bold text-center mb-10'>Våre Partnere</h2>
+		<div className='pb-2'>
+			<div className='text-sm text-center mb-2 font-light text-muted-foreground'>
+				Våre Samarbeidspartnere
+			</div>
 			<div
 				className='flex relative overflow-hidden 
         before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-20 
@@ -63,7 +65,7 @@ export default function PartnersAnimation() {
 			>
 				<motion.div
 					transition={{
-						duration: 15, // Reduced from 30 to 15 for faster animation
+						duration: 30,
 						ease: 'linear',
 						repeat: Infinity,
 					}}
@@ -77,14 +79,14 @@ export default function PartnersAnimation() {
 							{companyLogos.map((logo) => (
 								<div
 									key={`${dupeIndex}-${logo.id}`}
-									className='flex items-center justify-center min-w-40 h-20'
+									className='flex items-center justify-center min-w-40 h-12'
 								>
 									<Image
 										src={logo.src}
 										alt={logo.alt}
 										width={logo.width}
 										height={logo.height}
-										className='object-contain max-h-full grayscale hover:grayscale-0 transition-all duration-300'
+										className='object-contain max-h-full grayscale opacity-70 hover:opacity-100 transition-all duration-300'
 									/>
 								</div>
 							))}
