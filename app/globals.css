@@ -11,14 +11,17 @@
 @layer base {
 	:root {
 		/* --background: 54 17.9% 89%; */
-		--background: 139, 13%, 20%; /* #2D3B32 */
+		--background: 60, 11%, 82%;
+		/* --background: 139, 13%, 20%; #2D3B32 */
 		--foreground: 200, 52%, 4%;
 		/* --foreground: 42, 89%, 53%; */
-		--card: 139, 13%, 25%; /* Litt lysere variant av #2D3B32 */
+		--card: 60, 11%, 92%; /* #EDEDE8 */
+		/* --card: 139, 13%, 25%; Litt lysere variant av #2D3B32 */
 		--card-foreground: 204, 95%, 4%; /* #061014 */
 		--popover: 0 0% 100%;
 		--popover-foreground: 240 10% 3.9%;
-		--primary: 139, 13%, 20%; /* Samme som --background */
+		--primary: 60, 11%, 82%;
+		/* --primary: 139, 13%, 20%; Samme som --background */
 		--primary-foreground: 355.7 100% 97.3%;
 		--secondary: 240 4.8% 95.9%;
 		--secondary-foreground: 240 5.9% 10%;
@@ -37,7 +40,8 @@
 		--chart-3: 197 37% 24%;
 		--chart-4: 43 74% 66%;
 		--chart-5: 27 87% 67%;
-		--sidebar-background: 139, 13%, 20%; /* #2D3B32 */
+		/* --sidebar-background: 139, 13%, 20%; #2D3B32 */
+		--sidebar-background: 0 0% 98%;
 		--sidebar-foreground: 240 5.3% 26.1%;
 		--sidebar-primary: 240 5.9% 10%;
 		--sidebar-primary-foreground: 0 0% 98%;
