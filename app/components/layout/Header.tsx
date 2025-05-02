@@ -13,6 +13,7 @@ import Link from 'next/link';
 import '@/app/globals.css';
 import { useTheme } from 'next-themes';
 import { Button } from '@/components/ui/button';
+import Image from 'next/image';
 
 // Navigation links data to reduce repetition
 const navLinks = [
@@ -63,16 +64,21 @@ export default function Header() {
 				<div className='flex items-center gap-4'>
 					{/* Logo section with link to homepage */}
 					<Link href='/' className='flex items-center'>
-						<div className='mr-2'>
-							{/* <Image src="/path-to-logo.png" alt="Bærum Padel Logo" width={40} height={40} /> */}
+						<div className='relative w-32 h-12'>
+							<Image
+								src={
+									isHomePage
+										? '/Padel_Co_logo_refined_green.png'
+										: theme === 'dark'
+										? '/Padel_Co_logo_refined_green.png'
+										: '/Padel_Co_logo_refined_white.png'
+								}
+								alt='Padel Co Logo'
+								fill
+								style={{ objectFit: 'contain' }}
+								priority
+							/>
 						</div>
-						<p
-							className={`font-bold text-lg ${
-								isHomePage ? 'text-white' : 'text-foreground'
-							}`}
-						>
-							Logo
-						</p>
 					</Link>
 
 					{/* Mobile Menu Button and Dropdown */}
