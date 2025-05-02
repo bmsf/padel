@@ -25,12 +25,76 @@ const navLinks = [
 	{ href: '/contact', label: 'Kontakt oss' },
 ];
 
+// Wrapper component for conditional animation
+const AnimatedWrapper = ({
+	children,
+	index = 0,
+	isHomePage,
+	hasAnimated,
+}: {
+	children: React.ReactNode;
+	index?: number;
+	isHomePage: boolean;
+	hasAnimated: boolean;
+}) => {
+	if (!isHomePage || !hasAnimated) return <>{children}</>;
+
+	return (
+		<motion.div
+			initial={{ opacity: 0, x: -20 }}
+			animate={{ opacity: 1, x: 0 }}
+			transition={{
+				duration: 0.5,
+				delay: 2.8 + index * 0.1,
+				ease: [0.22, 1, 0.36, 1],
+			}}
+		>
+			{children}
+		</motion.div>
+	);
+};
+
+// Logo wrapper with conditional animation
+const LogoWrapper = ({
+	children,
+	isHomePage,
+	hasAnimated,
+}: {
+	children: React.ReactNode;
+	isHomePage: boolean;
+	hasAnimated: boolean;
+}) => {
+	if (!isHomePage || !hasAnimated) return <>{children}</>;
+
+	return (
+		<motion.div
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			transition={{
+				duration: 0.8,
+				delay: 2.5,
+				ease: [0.22, 1, 0.36, 1],
+			}}
+		>
+			{children}
+		</motion.div>
+	);
+};
+
 export default function Header() {
 	const pathname = usePathname();
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const menuRef = useRef<HTMLDivElement>(null);
 	const { theme, setTheme } = useTheme();
 	const isHomePage = pathname === '/';
+	const hasAnimatedRef = useRef(false);
+
+	// Set hasAnimated to true when component mounts on homepage
+	useEffect(() => {
+		if (isHomePage && !hasAnimatedRef.current) {
+			hasAnimatedRef.current = true;
+		}
+	}, [isHomePage]);
 
 	// Close menu when path changes
 	useEffect(() => {
@@ -56,50 +120,6 @@ export default function Header() {
 	// Determine the background style based on the current path
 	const headerBgClass = isHomePage ? 'bg-transparent' : 'bg-background';
 
-	// Wrapper component for conditional animation
-	const AnimatedWrapper = ({
-		children,
-		index = 0,
-	}: {
-		children: React.ReactNode;
-		index?: number;
-	}) => {
-		if (!isHomePage) return <>{children}</>;
-
-		return (
-			<motion.div
-				initial={{ opacity: 0, x: -20 }}
-				animate={{ opacity: 1, x: 0 }}
-				transition={{
-					duration: 0.5,
-					delay: 2.8 + index * 0.1,
-					ease: [0.22, 1, 0.36, 1],
-				}}
-			>
-				{children}
-			</motion.div>
-		);
-	};
-
-	// Logo wrapper with conditional animation
-	const LogoWrapper = ({ children }: { children: React.ReactNode }) => {
-		if (!isHomePage) return <>{children}</>;
-
-		return (
-			<motion.div
-				initial={{ opacity: 0 }}
-				animate={{ opacity: 1 }}
-				transition={{
-					duration: 0.8,
-					delay: 2.5,
-					ease: [0.22, 1, 0.36, 1],
-				}}
-			>
-				{children}
-			</motion.div>
-		);
-	};
-
 	return (
 		<nav
 			className={`fixed top-0 left-0 w-full z-50 ${headerBgClass} transition-colors duration-300`}
@@ -108,7 +128,10 @@ export default function Header() {
 				{/* Logo and mobile menu button section */}
 				<div className='flex items-center gap-4'>
 					{/* Logo section with link to homepage */}
-					<LogoWrapper>
+					<LogoWrapper
+						isHomePage={isHomePage}
+						hasAnimated={hasAnimatedRef.current}
+					>
 						<Link href='/' className='flex items-center'>
 							<div className='relative w-32 h-12'>
 								<Image
@@ -130,7 +153,11 @@ export default function Header() {
 
 					{/* Mobile Menu Button and Dropdown */}
 					<div className='md:hidden relative' ref={menuRef}>
-						<AnimatedWrapper index={0}>
+						<AnimatedWrapper
+							index={0}
+							isHomePage={isHomePage}
+							hasAnimated={hasAnimatedRef.current}
+						>
 							<button
 								className={`flex items-center gap-2 ${
 									isHomePage && !isMenuOpen
@@ -190,7 +217,11 @@ export default function Header() {
 							<NavigationMenuList>
 								{navLinks.map((link, index) => (
 									<NavigationMenuItem key={link.href}>
-										<AnimatedWrapper index={index}>
+										<AnimatedWrapper
+											index={index}
+											isHomePage={isHomePage}
+											hasAnimated={hasAnimatedRef.current}
+										>
 											<Link href={link.href} legacyBehavior passHref>
 												<NavigationMenuLink
 													className={`block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors nav-link ${
@@ -212,7 +243,11 @@ export default function Header() {
 					</div>
 
 					{/* Theme Toggle Button */}
-					<AnimatedWrapper index={5}>
+					<AnimatedWrapper
+						index={5}
+						isHomePage={isHomePage}
+						hasAnimated={hasAnimatedRef.current}
+					>
 						<Button
 							variant='ghost'
 							size='icon'
