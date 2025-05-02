@@ -48,6 +48,7 @@ const AnimatedWrapper = ({
 				delay: 2.8 + index * 0.1,
 				ease: [0.22, 1, 0.36, 1],
 			}}
+			className='will-change-transform'
 		>
 			{children}
 		</motion.div>
@@ -75,6 +76,7 @@ const LogoWrapper = ({
 				delay: 2.5,
 				ease: [0.22, 1, 0.36, 1],
 			}}
+			className='will-change-transform'
 		>
 			{children}
 		</motion.div>
@@ -224,10 +226,11 @@ export default function Header() {
 										>
 											<Link href={link.href} legacyBehavior passHref>
 												<NavigationMenuLink
-													className={`block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors nav-link ${
+													className={`block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors nav-link relative
+													${
 														isHomePage
-															? 'text-white hover:text-white/80'
-															: 'text-foreground'
+															? 'text-white hover:text-white/80 after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-white after:transition-all after:duration-300 after:origin-left after:scale-x-0 hover:after:scale-x-100'
+															: 'text-foreground after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-current after:transition-all after:duration-300 after:origin-left after:scale-x-0 hover:after:scale-x-100'
 													} ${theme === 'dark' ? 'dark' : 'light'} ${
 														pathname === link.href ? 'font-medium' : ''
 													}`}

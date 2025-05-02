@@ -57,15 +57,14 @@ export default function Hero({ videoUrl = '/videos/video.mp4' }: HeroProps) {
 
 						<div className='flex flex-col sm:flex-row gap-4 items-center'>
 							<Button
-								className='bg-[#E0E2D3] hover:bg-[#bec0b3] text-black px-8 py-6 text-lg font-medium transition-all hover:scale-105 rounded-full'
+								className='bg-[#E0E2D3] hover:bg-[#bec0b3] text-black px-8 py-6 text-lg font-medium transition-all hover:scale-105 rounded-full dark:bg-[#E0E2D3] dark:hover:bg-[#bec0b3] dark:text-black'
 								size='lg'
 								asChild
 							>
 								<Link href='/booking'>Book forhåndsregistrering</Link>
 							</Button>
 							<Button
-								variant='outline'
-								className='border-white text-white hover:bg-white hover:text-black px-8 py-6 text-lg font-medium transition-all hover:scale-105 rounded-full'
+								className='bg-transparent border-2 border-white text-white hover:bg-white hover:text-black px-8 py-6 text-lg font-medium transition-all hover:scale-105 rounded-full dark:bg-transparent dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-black'
 								size='lg'
 								asChild
 							>

@@ -14,6 +14,9 @@ const ibm_plex_sans = IBM_Plex_Sans({
 export const metadata: Metadata = {
 	title: 'Padel Co',
 	description: 'Din destinasjon for padel i Norge',
+	icons: {
+		icon: '/favicon padelco.png',
+	},
 };
 
 export default function RootLayout({
