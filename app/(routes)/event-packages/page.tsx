@@ -1,8 +1,9 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { Skeleton } from '@/components/ui/skeleton';
 
 // Import Shadcn UI components
 import { Button } from '@/components/ui/button';
@@ -170,6 +171,16 @@ const faqs = [
 
 export default function EventPackages() {
 	const [activeTab, setActiveTab] = useState('alle');
+	const [isLoading, setIsLoading] = useState(true);
+
+	useEffect(() => {
+		// Simulerer en kort loading tid for å demonstrere skeleton
+		const timer = setTimeout(() => {
+			setIsLoading(false);
+		}, 1000);
+
+		return () => clearTimeout(timer);
+	}, []);
 
 	// Filter packages based on active tab
 	const filteredPackages =
@@ -179,14 +190,23 @@ export default function EventPackages() {
 
 	return (
 		<div className='bg-background text-foreground min-h-screen overflow-x-hidden'>
-			{/* Header - Cleaner, more minimalist version without background image */}
+			{/* Header */}
 			<div className='w-full bg-background border-b border-border pt-20 pb-12'>
 				<div className='max-w-3xl mx-auto px-4 text-center'>
-					<h1 className='text-4xl font-bold mb-6'>Event Pakker</h1>
-					<p className='text-xl text-muted-foreground max-w-2xl mx-auto'>
-						Uforglemmelige opplevelser for bedrifter, bursdager, turneringer og
-						private arrangementer.
-					</p>
+					{isLoading ? (
+						<>
+							<Skeleton className='h-12 w-64 mx-auto mb-6' />
+							<Skeleton className='h-6 w-full max-w-2xl mx-auto' />
+						</>
+					) : (
+						<>
+							<h1 className='text-4xl font-bold mb-6'>Event Pakker</h1>
+							<p className='text-xl text-muted-foreground max-w-2xl mx-auto'>
+								Uforglemmelige opplevelser for bedrifter, bursdager, turneringer
+								og private arrangementer.
+							</p>
+						</>
+					)}
 				</div>
 			</div>
 
@@ -194,25 +214,40 @@ export default function EventPackages() {
 			<div className='max-w-5xl mx-auto px-4 py-12'>
 				{/* Introduction */}
 				<div className='mb-16 max-w-3xl mx-auto'>
-					<h2 className='text-3xl font-bold mb-6'>
-						Arranger ditt neste event hos oss
-					</h2>
-					<p className='text-muted-foreground mb-6 leading-relaxed'>
-						Våre skreddersydde eventpakker gir deg muligheten til å skape
-						minnerike opplevelser for enhver anledning. Enten du planlegger et
-						bedriftsarrangement, en bursdagsfeiring, en turnering eller et
-						VIP-event, har vi pakken som passer for deg.
-					</p>
-					<p className='text-muted-foreground leading-relaxed'>
-						Alle våre pakker kan tilpasses etter dine spesifikke behov og
-						ønsker, og vårt dedikerte team vil hjelpe deg gjennom hele
-						prosessen.
-					</p>
+					{isLoading ? (
+						<>
+							<Skeleton className='h-10 w-96 mb-6' />
+							<Skeleton className='h-4 w-full mb-4' />
+							<Skeleton className='h-4 w-5/6 mb-4' />
+							<Skeleton className='h-4 w-4/6' />
+						</>
+					) : (
+						<>
+							<h2 className='text-3xl font-bold mb-6'>
+								Arranger ditt neste event hos oss
+							</h2>
+							<p className='text-muted-foreground mb-6 leading-relaxed'>
+								Våre skreddersydde eventpakker gir deg muligheten til å skape
+								minnerike opplevelser for enhver anledning. Enten du planlegger
+								et bedriftsarrangement, en bursdagsfeiring, en turnering eller
+								et VIP-event, har vi pakken som passer for deg.
+							</p>
+							<p className='text-muted-foreground leading-relaxed'>
+								Alle våre pakker kan tilpasses etter dine spesifikke behov og
+								ønsker, og vårt dedikerte team vil hjelpe deg gjennom hele
+								prosessen.
+							</p>
+						</>
+					)}
 				</div>
 
 				{/* Package Filtering with Shadcn Tabs */}
 				<div id='packages' className='mb-12'>
-					<h2 className='text-2xl font-bold mb-8'>Våre Event Pakker</h2>
+					{isLoading ? (
+						<Skeleton className='h-8 w-48 mb-8' />
+					) : (
+						<h2 className='text-2xl font-bold mb-8'>Våre Event Pakker</h2>
+					)}
 
 					<Tabs
 						defaultValue='alle'
@@ -235,140 +270,162 @@ export default function EventPackages() {
 
 					{/* Package Cards using Shadcn Card - Redesigned for cleaner look */}
 					<div className='grid grid-cols-1 md:grid-cols-2 gap-8 mb-16'>
-						{filteredPackages.map((pkg) => (
-							<motion.div
-								key={pkg.id}
-								initial={{ opacity: 0, y: 20 }}
-								animate={{ opacity: 1, y: 0 }}
-								transition={{ duration: 0.3 }}
-							>
-								<Card className='h-full flex flex-col overflow-hidden border-none shadow-sm hover:shadow-md transition-shadow'>
-									<div className='h-48 relative'>
-										<Image
-											src={pkg.imageUrl}
-											alt={pkg.title}
-											fill
-											className='object-cover'
-										/>
+						{isLoading ? (
+							<>
+								{[...Array(4)].map((_, index) => (
+									<div key={index} className='h-full'>
+										<Card className='h-full flex flex-col overflow-hidden border-none shadow-sm'>
+											<Skeleton className='h-48 w-full' />
+											<div className='p-6'>
+												<Skeleton className='h-8 w-3/4 mb-4' />
+												<Skeleton className='h-4 w-full mb-2' />
+												<Skeleton className='h-4 w-5/6 mb-4' />
+												<div className='space-y-2'>
+													{[...Array(4)].map((_, i) => (
+														<Skeleton key={i} className='h-4 w-full' />
+													))}
+												</div>
+											</div>
+										</Card>
 									</div>
-									<CardHeader>
-										<div className='flex justify-between items-center mb-2'>
-											<CardTitle className='text-xl'>{pkg.title}</CardTitle>
-											<Badge variant='outline' className='font-medium'>
-												{pkg.price}
-											</Badge>
+								))}
+							</>
+						) : (
+							filteredPackages.map((pkg) => (
+								<motion.div
+									key={pkg.id}
+									initial={{ opacity: 0, y: 20 }}
+									animate={{ opacity: 1, y: 0 }}
+									transition={{ duration: 0.3 }}
+								>
+									<Card className='h-full flex flex-col overflow-hidden border-none shadow-sm hover:shadow-md transition-shadow'>
+										<div className='h-48 relative'>
+											<Image
+												src={pkg.imageUrl}
+												alt={pkg.title}
+												fill
+												className='object-cover'
+											/>
 										</div>
-										<div className='flex items-center text-sm text-muted-foreground mb-2'>
-											<svg
-												className='w-4 h-4 mr-1'
-												fill='none'
-												stroke='currentColor'
-												viewBox='0 0 24 24'
-												xmlns='http://www.w3.org/2000/svg'
-											>
-												<path
-													strokeLinecap='round'
-													strokeLinejoin='round'
-													strokeWidth='2'
-													d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'
-												></path>
-											</svg>
-											{pkg.duration}
-										</div>
-										<CardDescription className='mt-2'>
-											{pkg.description}
-										</CardDescription>
-									</CardHeader>
-									<CardFooter className='mt-auto pt-0'>
-										<Dialog>
-											<DialogTrigger asChild>
-												<Button variant='outline' className='w-full'>
-													Se detaljer
-												</Button>
-											</DialogTrigger>
-											<DialogContent className='max-w-3xl max-h-[90vh] overflow-y-auto'>
-												<DialogHeader>
-													<DialogTitle className='text-2xl'>
-														{pkg.title}
-													</DialogTitle>
-													<DialogDescription className='text-base'>
-														{pkg.description}
-													</DialogDescription>
-												</DialogHeader>
+										<CardHeader>
+											<div className='flex justify-between items-center mb-2'>
+												<CardTitle className='text-xl'>{pkg.title}</CardTitle>
+												<Badge variant='outline' className='font-medium'>
+													{pkg.price}
+												</Badge>
+											</div>
+											<div className='flex items-center text-sm text-muted-foreground mb-2'>
+												<svg
+													className='w-4 h-4 mr-1'
+													fill='none'
+													stroke='currentColor'
+													viewBox='0 0 24 24'
+													xmlns='http://www.w3.org/2000/svg'
+												>
+													<path
+														strokeLinecap='round'
+														strokeLinejoin='round'
+														strokeWidth='2'
+														d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'
+													></path>
+												</svg>
+												{pkg.duration}
+											</div>
+											<CardDescription className='mt-2'>
+												{pkg.description}
+											</CardDescription>
+										</CardHeader>
+										<CardFooter className='mt-auto pt-0'>
+											<Dialog>
+												<DialogTrigger asChild>
+													<Button variant='outline' className='w-full'>
+														Se detaljer
+													</Button>
+												</DialogTrigger>
+												<DialogContent className='max-w-3xl max-h-[90vh] overflow-y-auto'>
+													<DialogHeader>
+														<DialogTitle className='text-2xl'>
+															{pkg.title}
+														</DialogTitle>
+														<DialogDescription className='text-base'>
+															{pkg.description}
+														</DialogDescription>
+													</DialogHeader>
 
-												<div className='relative h-60 my-6'>
-													<Image
-														src={pkg.imageUrl}
-														alt={pkg.title}
-														fill
-														className='object-cover rounded-md'
-													/>
-												</div>
-
-												<div className='space-y-6'>
-													<div>
-														<h3 className='text-lg font-medium mb-4'>
-															Dette er inkludert:
-														</h3>
-														<ul className='space-y-3 pl-1'>
-															{pkg.features.map((feature, index) => (
-																<li key={index} className='flex items-start'>
-																	<svg
-																		className='h-5 w-5 text-primary mr-3 mt-0.5 flex-shrink-0'
-																		fill='none'
-																		viewBox='0 0 24 24'
-																		stroke='currentColor'
-																	>
-																		<path
-																			strokeLinecap='round'
-																			strokeLinejoin='round'
-																			strokeWidth={2}
-																			d='M5 13l4 4L19 7'
-																		/>
-																	</svg>
-																	<span className='text-muted-foreground'>
-																		{feature}
-																	</span>
-																</li>
-															))}
-														</ul>
+													<div className='relative h-60 my-6'>
+														<Image
+															src={pkg.imageUrl}
+															alt={pkg.title}
+															fill
+															className='object-cover rounded-md'
+														/>
 													</div>
 
-													<Separator />
+													<div className='space-y-6'>
+														<div>
+															<h3 className='text-lg font-medium mb-4'>
+																Dette er inkludert:
+															</h3>
+															<ul className='space-y-3 pl-1'>
+																{pkg.features.map((feature, index) => (
+																	<li key={index} className='flex items-start'>
+																		<svg
+																			className='h-5 w-5 text-primary mr-3 mt-0.5 flex-shrink-0'
+																			fill='none'
+																			viewBox='0 0 24 24'
+																			stroke='currentColor'
+																		>
+																			<path
+																				strokeLinecap='round'
+																				strokeLinejoin='round'
+																				strokeWidth={2}
+																				d='M5 13l4 4L19 7'
+																			/>
+																		</svg>
+																		<span className='text-muted-foreground'>
+																			{feature}
+																		</span>
+																	</li>
+																))}
+															</ul>
+														</div>
 
-													<div className='flex flex-col sm:flex-row justify-between items-center gap-6 py-2'>
-														<div>
-															<p className='text-sm text-muted-foreground mb-1'>
-																Pris:
-															</p>
-															<p className='text-2xl font-bold text-primary'>
-																{pkg.price}
-															</p>
+														<Separator />
+
+														<div className='flex flex-col sm:flex-row justify-between items-center gap-6 py-2'>
+															<div>
+																<p className='text-sm text-muted-foreground mb-1'>
+																	Pris:
+																</p>
+																<p className='text-2xl font-bold text-primary'>
+																	{pkg.price}
+																</p>
+															</div>
+															<div>
+																<p className='text-sm text-muted-foreground mb-1'>
+																	Varighet:
+																</p>
+																<p className='text-xl font-medium'>
+																	{pkg.duration}
+																</p>
+															</div>
+															<Link href='/contact'>
+																<Button>Bestill nå</Button>
+															</Link>
 														</div>
-														<div>
-															<p className='text-sm text-muted-foreground mb-1'>
-																Varighet:
-															</p>
-															<p className='text-xl font-medium'>
-																{pkg.duration}
-															</p>
-														</div>
-														<Link href='/contact'>
-															<Button>Bestill nå</Button>
-														</Link>
+
+														<p className='text-sm text-muted-foreground'>
+															Alle pakker kan tilpasses etter dine behov.
+															Kontakt oss for en skreddersydd løsning.
+														</p>
 													</div>
-
-													<p className='text-sm text-muted-foreground'>
-														Alle pakker kan tilpasses etter dine behov. Kontakt
-														oss for en skreddersydd løsning.
-													</p>
-												</div>
-											</DialogContent>
-										</Dialog>
-									</CardFooter>
-								</Card>
-							</motion.div>
-						))}
+												</DialogContent>
+											</Dialog>
+										</CardFooter>
+									</Card>
+								</motion.div>
+							))
+						)}
 					</div>
 				</div>
 
@@ -414,49 +471,91 @@ export default function EventPackages() {
 
 				{/* Testimonials - Cleaner design */}
 				<div className='mb-20'>
-					<h2 className='text-2xl font-bold mb-8'>Hva våre kunder sier</h2>
-
-					<div className='grid grid-cols-1 gap-6'>
-						{testimonials.map((testimonial) => (
-							<div
-								key={testimonial.id}
-								className='border-l-4 border-primary/20 pl-6 py-2'
-							>
-								<p className='italic text-muted-foreground mb-4'>
-									&quot;{testimonial.quote}&quot;
-								</p>
-								<div className='flex items-center space-x-3'>
-									<Image
-										src={testimonial.avatar}
-										alt={testimonial.name}
-										width={40}
-										height={40}
-										className='rounded-full'
-									/>
-									<div>
-										<p className='font-medium'>{testimonial.name}</p>
-										<p className='text-sm text-muted-foreground'>
-											{testimonial.company}
-										</p>
+					{isLoading ? (
+						<>
+							<Skeleton className='h-8 w-48 mb-8' />
+							<div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
+								{[...Array(3)].map((_, index) => (
+									<div key={index} className='bg-card p-6 rounded-lg'>
+										<Skeleton className='h-12 w-12 rounded-full mb-4' />
+										<Skeleton className='h-6 w-32 mb-2' />
+										<Skeleton className='h-4 w-24 mb-4' />
+										<Skeleton className='h-4 w-full mb-2' />
+										<Skeleton className='h-4 w-5/6' />
 									</div>
-								</div>
+								))}
 							</div>
-						))}
-					</div>
+						</>
+					) : (
+						<>
+							<h2 className='text-2xl font-bold mb-8'>Hva våre kunder sier</h2>
+							<div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
+								{testimonials.map((testimonial) => (
+									<motion.div
+										key={testimonial.id}
+										initial={{ opacity: 0, y: 20 }}
+										whileInView={{ opacity: 1, y: 0 }}
+										viewport={{ once: true }}
+										transition={{ duration: 0.3 }}
+										className='bg-card p-6 rounded-lg'
+									>
+										<div className='flex items-center mb-4'>
+											<Image
+												src={testimonial.avatar}
+												alt={testimonial.name}
+												width={48}
+												height={48}
+												className='rounded-full'
+											/>
+											<div className='ml-4'>
+												<h3 className='font-semibold'>{testimonial.name}</h3>
+												<p className='text-sm text-muted-foreground'>
+													{testimonial.company}
+												</p>
+											</div>
+										</div>
+										<p className='text-muted-foreground'>{testimonial.quote}</p>
+									</motion.div>
+								))}
+							</div>
+						</>
+					)}
 				</div>
 
 				{/* FAQ Section - Improved spacing and readability */}
 				<div className='mb-20'>
-					<h2 className='text-2xl font-bold mb-8'>Ofte stilte spørsmål</h2>
-
-					<div className='space-y-6'>
-						{faqs.map((faq, index) => (
-							<div key={index} className='border-b border-border pb-6'>
-								<h3 className='text-lg font-medium mb-3'>{faq.question}</h3>
-								<p className='text-muted-foreground'>{faq.answer}</p>
+					{isLoading ? (
+						<>
+							<Skeleton className='h-8 w-48 mb-8' />
+							<div className='space-y-4'>
+								{[...Array(4)].map((_, index) => (
+									<div key={index} className='bg-card p-6 rounded-lg'>
+										<Skeleton className='h-6 w-3/4 mb-4' />
+										<Skeleton className='h-4 w-full' />
+									</div>
+								))}
 							</div>
-						))}
-					</div>
+						</>
+					) : (
+						<>
+							<h2 className='text-2xl font-bold mb-8'>Ofte stilte spørsmål</h2>
+							<div className='space-y-4'>
+								{faqs.map((faq, index) => (
+									<motion.div
+										key={index}
+										initial={{ opacity: 0, y: 20 }}
+										whileInView={{ opacity: 1, y: 0 }}
+										viewport={{ once: true }}
+										transition={{ duration: 0.3 }}
+										className='bg-card p-6 rounded-lg'
+									>
+										<h3 className='font-semibold mb-2'>{faq.question}</h3>
+										<p className='text-muted-foreground'>{faq.answer}</p>
+									</motion.div>
+								))}
+							</div>
+						</>
+					)}
 				</div>
 
 				{/* CTA Section - More minimal */}

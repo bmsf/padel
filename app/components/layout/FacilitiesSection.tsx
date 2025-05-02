@@ -1,8 +1,9 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, Users, MapPin, Trophy } from 'lucide-react';
+import { Skeleton } from '@/components/ui/skeleton';
 
 interface FacilityCard {
 	title: string;
@@ -38,6 +39,17 @@ const facilityCards: FacilityCard[] = [
 ];
 
 const FacilitiesSection: React.FC = () => {
+	const [isLoading, setIsLoading] = useState(true);
+
+	useEffect(() => {
+		// Simulerer en kort loading tid for å demonstrere skeleton
+		const timer = setTimeout(() => {
+			setIsLoading(false);
+		}, 1000);
+
+		return () => clearTimeout(timer);
+	}, []);
+
 	return (
 		<section className='w-full relative my-8'>
 			{/* Content container */}
@@ -55,22 +67,38 @@ const FacilitiesSection: React.FC = () => {
 
 				{/* Facility cards */}
 				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
-					{facilityCards.map((card, index) => (
-						<motion.div
-							key={card.title}
-							initial={{ opacity: 0, y: 20 }}
-							whileInView={{ opacity: 1, y: 0 }}
-							viewport={{ once: true }}
-							transition={{ duration: 0.5, delay: index * 0.1 }}
-							className='bg-card p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300'
-						>
-							<div className='flex flex-col items-center text-center'>
-								<div className='text-primary mb-4'>{card.icon}</div>
-								<h3 className='text-xl font-semibold mb-2'>{card.title}</h3>
-								<p className='text-muted-foreground'>{card.description}</p>
-							</div>
-						</motion.div>
-					))}
+					{isLoading ? (
+						// Skeleton loading state
+						<>
+							{[...Array(4)].map((_, index) => (
+								<div key={index} className='bg-card p-8 rounded-xl shadow-md'>
+									<div className='flex flex-col items-center text-center'>
+										<Skeleton className='w-8 h-8 rounded-full mb-4' />
+										<Skeleton className='h-6 w-3/4 mb-2' />
+										<Skeleton className='h-4 w-full' />
+									</div>
+								</div>
+							))}
+						</>
+					) : (
+						// Actual content
+						facilityCards.map((card, index) => (
+							<motion.div
+								key={card.title}
+								initial={{ opacity: 0, y: 20 }}
+								whileInView={{ opacity: 1, y: 0 }}
+								viewport={{ once: true }}
+								transition={{ duration: 0.5, delay: index * 0.1 }}
+								className='bg-card p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300'
+							>
+								<div className='flex flex-col items-center text-center'>
+									<div className='text-primary mb-4'>{card.icon}</div>
+									<h3 className='text-xl font-semibold mb-2'>{card.title}</h3>
+									<p className='text-muted-foreground'>{card.description}</p>
+								</div>
+							</motion.div>
+						))
+					)}
 				</div>
 			</motion.div>
 		</section>

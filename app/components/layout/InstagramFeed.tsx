@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { Skeleton } from '@/components/ui/skeleton';
 
 // Definerer typen for Instagram media-elementer
 type InstagramMedia = {
@@ -51,8 +52,12 @@ const InstagramFeed = () => {
 				<h2 className='text-3xl font-semibold mb-8'>Følg oss på Instagram</h2>
 
 				{loading && (
-					<div className='flex justify-center items-center h-64'>
-						<div className='animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-gray-900'></div>
+					<div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
+						{[...Array(8)].map((_, index) => (
+							<div key={index} className='aspect-square'>
+								<Skeleton className='w-full h-full rounded-lg' />
+							</div>
+						))}
 					</div>
 				)}
 
