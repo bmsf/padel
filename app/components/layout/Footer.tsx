@@ -1,7 +1,5 @@
 'use client';
 
-import { useTheme } from 'next-themes';
-
 export default function Footer() {
 	return (
 		<footer className='py-12 bg-background/95 text-foreground'>
