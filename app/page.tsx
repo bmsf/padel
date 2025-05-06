@@ -1,6 +1,5 @@
 import Hero from './components/layout/Hero';
 import FacilitiesSection from './components/layout/FacilitiesSection';
-import PartnersAnimation from './components/ui/PartnersAnimation';
 import InstagramFeed from './components/layout/InstagramFeed';
 import type { Metadata } from 'next';
 

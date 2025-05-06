@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
 import { Calendar, Users, MapPin, Trophy } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
 import AnimatedSection from '@/app/components/ui/AnimatedSection';

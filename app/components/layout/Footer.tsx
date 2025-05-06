@@ -1,11 +1,8 @@
 'use client';
 
-import Image from 'next/image';
 import { useTheme } from 'next-themes';
 
 export default function Footer() {
-	const { theme } = useTheme();
-
 	return (
 		<footer className='py-12 bg-background/95 text-foreground'>
 			<div className='container mx-auto px-4'>
