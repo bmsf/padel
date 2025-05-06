@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useTheme } from 'next-themes';
-import Countdown from '../ui/Countdown';
+import Countdown from '@/app/components/ui/Countdown';
 
 interface HeroProps {
 	videoUrl?: string;

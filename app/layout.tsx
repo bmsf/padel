@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 	title: 'Padel Co',
 	description: 'Din destinasjon for padel i Norge',
 	icons: {
-		icon: '/favicon padelco.png',
+		icon: '/favicon-padelco.png',
 	},
 };
 
