@@ -11,51 +11,40 @@ export default function Footer() {
 			<div className='container mx-auto px-4'>
 				<div className='grid grid-cols-1 md:grid-cols-3 gap-8 mb-8'>
 					<div>
-						<div className='relative w-32 h-12 mb-4'>
-							<Image
-								src={
-									theme === 'dark'
-										? '/Padel_Co_logo_refined_green.png'
-										: '/Padel_Co_logo_refined_white.png'
-								}
-								alt='Padel Co Logo'
-								fill
-								style={{ objectFit: 'contain' }}
-							/>
-						</div>
 						<p className='mb-4'>
 							Din destinasjon for padelglede og kvalitetstid
 						</p>
-						<p className='text-sm text-muted-foreground'>Grini Næringspark 1</p>
+						<p className='text-sm text-muted-foreground'>Grini Næringspark 6</p>
 						<p className='text-sm text-muted-foreground'>1361 Østerås</p>
 					</div>
 					<div>
 						<h3 className='text-lg font-semibold mb-4'>Åpningstider</h3>
 						<p className='text-sm text-muted-foreground mb-2'>
-							Mandag - Fredag: 07:00 - 23:00
-						</p>
-						<p className='text-sm text-muted-foreground mb-2'>
-							Lørdag - Søndag: 08:00 - 22:00
+							Alle dager: 00:00 - 24:00
 						</p>
 					</div>
 					<div>
 						<h3 className='text-lg font-semibold mb-4'>Kontakt</h3>
 						<p className='text-sm text-muted-foreground mb-2'>
-							Telefon: +47 123 45 678
+							Telefon: +47 48189107
 						</p>
 						<p className='text-sm text-muted-foreground mb-2'>
-							E-post: kontakt@padelcogrini.no
+							E-post: post@padelco.no
 						</p>
 						<div className='flex space-x-4 mt-4'>
 							<a
-								href='#'
+								href='https://www.facebook.com/padelco.no'
 								className='text-muted-foreground hover:text-foreground transition-colors'
+								target='_blank'
+								rel='noopener noreferrer'
 							>
 								Facebook
 							</a>
 							<a
-								href='#'
+								href='https://www.instagram.com/padel_co/'
 								className='text-muted-foreground hover:text-foreground transition-colors'
+								target='_blank'
+								rel='noopener noreferrer'
 							>
 								Instagram
 							</a>

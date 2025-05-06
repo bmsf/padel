@@ -135,21 +135,20 @@ export default function Header() {
 						hasAnimated={hasAnimatedRef.current}
 					>
 						<Link href='/' className='flex items-center'>
-							<div className='relative w-32 h-12'>
-								<Image
-									src={
-										isHomePage
-											? '/Padel_Co_logo_refined_green.png'
-											: theme === 'dark'
-											? '/Padel_Co_logo_refined_green.png'
-											: '/Padel_Co_logo_refined_white.png'
-									}
-									alt='Padel Co Logo'
-									fill
-									style={{ objectFit: 'contain' }}
-									priority
-								/>
-							</div>
+							<Image
+								src={
+									isHomePage
+										? '/Padel_Co_logo_refined_green.png'
+										: theme === 'dark'
+										? '/Padel_Co_logo_refined_green.png'
+										: '/Padel_Co_logo_refined_white.png'
+								}
+								alt='Padel Co Logo'
+								width={100} // Mindre bredde for mobil
+								height={20} // Mindre høyde for mobil
+								className='object-contain m-0 p-0 md:w-[192px] md:h-[80px]'
+								priority
+							/>
 						</Link>
 					</LogoWrapper>
 

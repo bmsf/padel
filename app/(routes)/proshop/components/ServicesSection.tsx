@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import AnimatedSection from '@/app/components/ui/AnimatedSection';
 
 const services = [
 	{
@@ -23,34 +23,26 @@ export default function ServicesSection() {
 	return (
 		<section className='py-20'>
 			<div className='container mx-auto px-4'>
-				<motion.div
-					initial={{ opacity: 0, y: 20 }}
-					whileInView={{ opacity: 1, y: 0 }}
-					viewport={{ once: true }}
-					transition={{ duration: 0.6 }}
-					className='max-w-4xl mx-auto'
-				>
+				<AnimatedSection className='max-w-4xl mx-auto'>
 					<h2 className='text-3xl font-semibold mb-12 text-center'>
 						Våre tjenester
 					</h2>
 					<div className='space-y-8'>
 						{services.map((service, index) => (
-							<motion.div
+							<AnimatedSection
 								key={service.title}
-								initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-								whileInView={{ opacity: 1, x: 0 }}
-								viewport={{ once: true }}
-								transition={{ duration: 0.5, delay: index * 0.1 }}
+								delay={index * 0.1}
+								direction={index % 2 === 0 ? 'left' : 'right'}
 								className='bg-card/50 backdrop-blur-sm p-10 rounded-2xl border-2 border-foreground/10 group hover:bg-card/70 transition-all duration-500'
 							>
 								<h3 className='text-2xl font-medium mb-4'>{service.title}</h3>
 								<p className='text-lg text-card-foreground/80 group-hover:text-card-foreground'>
 									{service.description}
 								</p>
-							</motion.div>
+							</AnimatedSection>
 						))}
 					</div>
-				</motion.div>
+				</AnimatedSection>
 			</div>
 		</section>
 	);

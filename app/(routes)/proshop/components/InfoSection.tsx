@@ -1,18 +1,12 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import AnimatedSection from '@/app/components/ui/AnimatedSection';
 
 export default function InfoSection() {
 	return (
 		<section className='py-20'>
 			<div className='container mx-auto px-4'>
-				<motion.div
-					initial={{ opacity: 0, y: 20 }}
-					whileInView={{ opacity: 1, y: 0 }}
-					viewport={{ once: true }}
-					transition={{ duration: 0.6 }}
-					className='max-w-3xl mx-auto'
-				>
+				<AnimatedSection className='max-w-3xl mx-auto'>
 					<div className='bg-card/50 backdrop-blur-sm p-12 rounded-2xl border-2 border-foreground/10'>
 						<h3 className='text-2xl font-semibold mb-8'>Besøk oss</h3>
 						<div className='space-y-4 text-lg text-card-foreground/80'>
@@ -30,7 +24,7 @@ export default function InfoSection() {
 							</p>
 						</div>
 					</div>
-				</motion.div>
+				</AnimatedSection>
 			</div>
 		</section>
 	);

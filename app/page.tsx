@@ -18,9 +18,9 @@ export default function Home() {
 					<FacilitiesSection />
 
 					<InstagramFeed />
-					<div className='py-16'>
+					{/* <div className='py-16'>
 						<PartnersAnimation />
-					</div>
+					</div> */}
 				</div>
 			</main>
 		</div>

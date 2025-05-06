@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, Users, MapPin, Trophy } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
+import AnimatedSection from '@/app/components/ui/AnimatedSection';
 
 interface FacilityCard {
 	title: string;
@@ -52,23 +53,15 @@ const FacilitiesSection: React.FC = () => {
 
 	return (
 		<section className='w-full relative my-8'>
-			{/* Content container */}
-			<motion.div
-				initial={{ opacity: 0, y: 20 }}
-				whileInView={{ opacity: 1, y: 0 }}
-				viewport={{ once: true }}
-				transition={{ duration: 0.6 }}
-			>
+			<AnimatedSection>
 				<div className='flex flex-col items-center justify-center text-center mb-16'>
 					<h2 className='text-4xl font-bold mb-6'>
 						Padelcenter med førsteklasses fasiliteter
 					</h2>
 				</div>
 
-				{/* Facility cards */}
 				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
 					{isLoading ? (
-						// Skeleton loading state
 						<>
 							{[...Array(4)].map((_, index) => (
 								<div key={index} className='bg-card p-8 rounded-xl shadow-md'>
@@ -81,14 +74,10 @@ const FacilitiesSection: React.FC = () => {
 							))}
 						</>
 					) : (
-						// Actual content
 						facilityCards.map((card, index) => (
-							<motion.div
+							<AnimatedSection
 								key={card.title}
-								initial={{ opacity: 0, y: 20 }}
-								whileInView={{ opacity: 1, y: 0 }}
-								viewport={{ once: true }}
-								transition={{ duration: 0.5, delay: index * 0.1 }}
+								delay={index * 0.1}
 								className='bg-card p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300'
 							>
 								<div className='flex flex-col items-center text-center'>
@@ -96,11 +85,11 @@ const FacilitiesSection: React.FC = () => {
 									<h3 className='text-xl font-semibold mb-2'>{card.title}</h3>
 									<p className='text-muted-foreground'>{card.description}</p>
 								</div>
-							</motion.div>
+							</AnimatedSection>
 						))
 					)}
 				</div>
-			</motion.div>
+			</AnimatedSection>
 		</section>
 	);
 };
