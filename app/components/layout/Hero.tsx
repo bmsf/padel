@@ -64,9 +64,11 @@ export default function Hero({ videoUrl = '/videos/video.mp4' }: HeroProps) {
 							</h1>
 
 							<p className='text-foreground/90 max-w-xl text-base md:text-lg mb-4 md:mb-8 font-light'>
-								Norges nyeste padelsenter med 6 moderne baner, profesjonell
-								atmosfære og et inkluderende miljø for alle padel-entusiaster.
-								Innendørs og utendørs baner.
+								Et av Norges mest komplette padelanlegg – med seks
+								innendørsbaner, tre utendørsbaner, treningsrom, lounge og
+								splitter ny pro shop. Vi kombinerer kvalitet, stemning og
+								tilgjengelighet i et senter som ønsker alle velkommen – uansett
+								nivå.
 							</p>
 
 							<div>

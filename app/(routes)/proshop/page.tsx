@@ -14,7 +14,7 @@ export default function ProShop() {
 				<BrandsSection brands={brands} />
 				<CategoriesSection />
 				<ServicesSection />
-				<InfoSection />
+				{/* <InfoSection /> */}
 			</main>
 		</div>
 	);
