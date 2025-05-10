@@ -1,6 +1,5 @@
 // Server Component
 import BrandsSection from './components/BrandsSection';
-import InfoSection from './components/InfoSection';
 import CategoriesSection from './components/CategoriesSection';
 import ServicesSection from './components/ServicesSection';
 import HeroSection from './components/HeroSection';
