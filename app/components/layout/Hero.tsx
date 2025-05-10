@@ -12,7 +12,6 @@ interface HeroProps {
 }
 
 export default function Hero({ videoUrl = '/videos/video.mp4' }: HeroProps) {
-	const { theme } = useTheme();
 	const videoRef = useRef<HTMLVideoElement>(null);
 
 	useEffect(() => {
