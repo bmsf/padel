@@ -28,7 +28,7 @@ export default function Header() {
 	const pathname = usePathname();
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const menuRef = useRef<HTMLDivElement>(null);
-	const { theme, setTheme, resolvedTheme } = useTheme();
+	const { setTheme, resolvedTheme } = useTheme();
 	const [mounted, setMounted] = useState(false);
 
 	// Når komponenten er montert, sett mounted til true
