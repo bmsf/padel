@@ -338,9 +338,7 @@ export default function EventPackages() {
 										<CardFooter className='mt-auto pt-0'>
 											<Dialog>
 												<DialogTrigger asChild>
-													<Button variant='outline' className='w-full'>
-														Se detaljer
-													</Button>
+													<Button variant='outline'>Se detaljer</Button>
 												</DialogTrigger>
 												<DialogContent className='max-w-3xl max-h-[90vh] overflow-y-auto'>
 													<DialogHeader>

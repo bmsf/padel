@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useTheme } from 'next-themes';
 import Countdown from '@/app/components/ui/Countdown';
+import { useEffect, useRef } from 'react';
 
 interface HeroProps {
 	videoUrl?: string;
@@ -12,76 +13,82 @@ interface HeroProps {
 
 export default function Hero({ videoUrl = '/videos/video.mp4' }: HeroProps) {
 	const { theme } = useTheme();
+	const videoRef = useRef<HTMLVideoElement>(null);
+
+	useEffect(() => {
+		// Sikre at videoen laster og spiller av
+		if (videoRef.current) {
+			videoRef.current.load();
+			videoRef.current.play().catch((error) => {
+				console.error('Video avspillingsfeil:', error);
+			});
+		}
+	}, [videoUrl]);
 
 	return (
-		<div className='relative w-full overflow-hidden flex flex-col'>
-			{/* Hero Section with video background */}
-			<div className='relative h-screen w-full'>
-				{/* Video Background */}
-				<motion.div
-					className='absolute inset-0'
-					initial={{ opacity: 0 }}
-					animate={{ opacity: 1 }}
-					transition={{ duration: 1.2, ease: 'easeInOut' }}
-				>
-					<video
-						src={videoUrl}
-						className={`absolute inset-0 object-cover w-full h-full transition-all duration-300 ${
-							theme === 'dark' ? 'brightness-[0.7] contrast-[1.1]' : ''
-						}`}
-						autoPlay
-						loop
-						muted
-						playsInline
-					/>
-					<div className='absolute inset-0 bg-black bg-opacity-50'></div>
-					{/* Dark mode overlay */}
-					<div
-						className={`absolute inset-0 bg-black transition-opacity duration-300 ${
-							theme === 'dark' ? 'opacity-30' : 'opacity-0'
-						}`}
-					></div>
-				</motion.div>
-
-				{/* Content */}
-				<div className='relative z-10 flex flex-col items-center justify-center h-full px-4 max-w-6xl mx-auto'>
-					{/* Main content with fade-in animation */}
+		<div className='relative w-full overflow-hidden py-8 md:py-12 mt-16 md:mt-20'>
+			{/* Hero Section med responsiv layout */}
+			<div className='w-full px-6 container mx-auto'>
+				<div className='flex flex-col md:flex-row h-auto md:h-[400px] lg:h-[450px]'>
+					{/* Video (øverst på mobil, høyre side på desktop) */}
 					<motion.div
-						initial={{ opacity: 0 }}
-						animate={{ opacity: 1 }}
-						transition={{
-							duration: 1,
-							delay: 1.5,
-							ease: [0.22, 1, 0.36, 1],
-						}}
-						className='flex flex-col items-center'
+						className='w-full md:w-1/2 relative h-[250px] md:h-full flex justify-center md:justify-end order-first md:order-last'
+						initial={{ opacity: 0, x: 20 }}
+						animate={{ opacity: 1, x: 0 }}
+						transition={{ duration: 1, delay: 0.5, ease: 'easeOut' }}
 					>
-						<h1 className='text-white text-5xl md:text-7xl mb-6 font-bold tracking-tight text-center leading-tight'>
-							Padel Co Grini <br className='hidden sm:block' />
-							<span className=''>åpner mai 2025</span>
-						</h1>
+						<div className='w-full md:w-[85%] h-full relative rounded-lg overflow-hidden'>
+							<video
+								ref={videoRef}
+								src={videoUrl}
+								className='absolute inset-0 object-cover w-full h-full'
+								autoPlay
+								loop
+								muted
+								playsInline
+								controls={false}
+							/>
+							<div className='absolute inset-0 bg-black bg-opacity-10'></div>
+						</div>
+					</motion.div>
 
-						{/* <p className='text-white/90 max-w-xl text-lg md:text-xl mb-8 text-center font-light'>
-							Norges nyeste padelsenter med 6 moderne baner, profesjonell
-							atmosfære og et inkluderende miljø for alle padel-entusiaster.
-							Innendørs og utendørs baner.
-						</p> */}
+					{/* Innhold (nederst på mobil, venstre side på desktop) */}
+					<motion.div
+						className='w-full md:w-1/2 z-10 flex flex-col justify-between md:pr-8 lg:pr-16 py-6 mt-6 md:mt-0'
+						initial={{ opacity: 0, x: -20 }}
+						animate={{ opacity: 1, x: 0 }}
+						transition={{ duration: 1, ease: 'easeOut' }}
+					>
+						<div className='space-y-4 md:space-y-6 pt-0 md:pt-8'>
+							<h1 className='text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight leading-tight'>
+								Padel Co Grini <br />
+								<span className=''></span>
+							</h1>
 
-						<Countdown />
+							<p className='text-foreground/90 max-w-xl text-base md:text-lg mb-4 md:mb-8 font-light'>
+								Norges nyeste padelsenter med 6 moderne baner, profesjonell
+								atmosfære og et inkluderende miljø for alle padel-entusiaster.
+								Innendørs og utendørs baner.
+							</p>
 
-						<div className='flex items-center'>
-							<Button
-								className='bg-[#E0E2D3] hover:bg-[#bec0b3] text-black px-8 py-6 text-lg font-medium transition-all hover:scale-105 rounded-full dark:bg-[#E0E2D3] dark:hover:bg-[#bec0b3] dark:text-black'
-								size='lg'
-								asChild
-							>
-								<Link
-									href='https://www.matchi.se/facilities/padelcogrini'
-									target='_blank'
+							<div>
+								<Button
+									size='lg'
+									className='px-8 min-w-[180px] font-bold bg-foreground text-background hover:bg-foreground/90'
+									asChild
 								>
-									Booking
-								</Link>
-							</Button>
+									<Link
+										href='https://www.matchi.se/facilities/padelcogrini'
+										target='_blank'
+									>
+										Booking
+									</Link>
+								</Button>
+							</div>
+						</div>
+
+						<div className='pb-4 max-w-sm mt-8 md:mt-0'>
+							<Countdown />
 						</div>
 					</motion.div>
 				</div>

@@ -43,13 +43,11 @@ export default function Countdown() {
 	}, []);
 
 	return (
-		<div className='flex flex-col items-center mb-8'>
-			{/* <p className='text-white text-lg mb-3'>
-				Nedtelling til åpning 24. mai 2025
-			</p> */}
-			<div className='bg-transparent border-2 border-white text-white rounded-lg px-4 py-3'>
+		<div className='flex flex-col mb-8'>
+			<p className='text-lg mt-3'>Nedtelling til åpning</p>
+			<div className='bg-transparent rounded-lg py-3'>
 				<div className='flex items-center'>
-					<TimeUnit value={timeLeft.days} label='Dager' />
+					<TimeUnit value={timeLeft.days} label='Dager' isFirst={true} />
 					<Divider />
 					<TimeUnit value={timeLeft.hours} label='Timer' />
 					<Divider />
@@ -62,18 +60,30 @@ export default function Countdown() {
 	);
 }
 
-function TimeUnit({ value, label }: { value: number; label: string }) {
+function TimeUnit({
+	value,
+	label,
+	isFirst = false,
+}: {
+	value: number;
+	label: string;
+	isFirst?: boolean;
+}) {
 	// Ensure two digits for display
 	const displayValue = value < 10 ? `0${value}` : value;
 
 	return (
-		<div className='flex flex-col items-center px-2 md:px-3'>
+		<div
+			className={`flex flex-col items-center ${
+				isFirst ? 'pl-0 pr-2 md:pr-3' : 'px-2 md:px-3'
+			}`}
+		>
 			<span className='text-xl md:text-2xl font-bold'>{displayValue}</span>
-			<span className='text-white text-xs mt-1'>{label}</span>
+			<span className=' text-xs mt-1'>{label}</span>
 		</div>
 	);
 }
 
 function Divider() {
-	return <div className='h-8 w-px bg-white mx-1 md:mx-2'></div>;
+	return <div className='h-8 w-px  mx-1 md:mx-2'></div>;
 }
