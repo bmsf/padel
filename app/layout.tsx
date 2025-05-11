@@ -1,14 +1,12 @@
 import { IBM_Plex_Sans } from 'next/font/google';
 import './globals.css';
-import Header from './components/layout/Header';
-import Footer from './components/layout/Footer';
-import { ThemeProvider } from '@/components/theme-provider';
+import RootLayoutClient from './RootLayoutClient';
 import type { Metadata } from 'next';
 
 const ibm_plex_sans = IBM_Plex_Sans({
 	subsets: ['latin'],
-	weight: ['400', '600'], // Angi vekter du vil bruke
-	variable: '--font-IBM', // Legg til en CSS-variabel (valgfritt)
+	weight: ['400', '600'],
+	variable: '--font-IBM',
 });
 
 export const metadata: Metadata = {
@@ -29,16 +27,7 @@ export default function RootLayout({
 			<body
 				className={`${ibm_plex_sans.variable} font-body antialiased flex flex-col min-h-screen overflow-x-hidden`}
 			>
-				<ThemeProvider
-					attribute='class'
-					defaultTheme='system'
-					enableSystem
-					disableTransitionOnChange
-				>
-					<Header />
-					<main className='flex-grow'>{children}</main>
-					<Footer />
-				</ThemeProvider>
+				<RootLayoutClient>{children}</RootLayoutClient>
 			</body>
 		</html>
 	);

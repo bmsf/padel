@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useEffect, useRef } from 'react';
+import BackgroundElements from './BackgroundElements';
 
 interface HeroProps {
 	videoUrl?: string;
@@ -24,6 +25,7 @@ export default function Hero({ videoUrl = '/videos/video.mp4' }: HeroProps) {
 
 	return (
 		<>
+			<BackgroundElements />
 			{/* Hero Section */}
 			<div className='relative w-full pt-32 md:pt-40'>
 				<div className='container mx-auto px-6'>
