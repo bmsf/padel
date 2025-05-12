@@ -6,7 +6,7 @@ export default function About() {
 	return (
 		<div className='min-h-screen bg-background overflow-x-hidden'>
 			{/* Hero Section */}
-			<div className='container mx-auto px-4 py-16 md:py-24'>
+			<div className='container mx-auto px-4 py-12 md:py-16'>
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
@@ -23,14 +23,13 @@ export default function About() {
 			</div>
 
 			{/* Hovedinnhold */}
-			<section className='py-20'>
+			<section className='py-12'>
 				<div className='container mx-auto px-4'>
 					<motion.div
 						initial={{ opacity: 0, y: 20 }}
 						whileInView={{ opacity: 1, y: 0 }}
 						viewport={{ once: true }}
 						transition={{ duration: 0.8 }}
-						
 						className='max-w-4xl mx-auto'
 					>
 						<div className='bg-card/50 backdrop-blur-sm p-12 rounded-2xl border-2 border-foreground/10'>

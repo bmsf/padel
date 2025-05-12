@@ -180,7 +180,7 @@ export default function EventPackages() {
 	return (
 		<div className='min-h-screen bg-background overflow-x-hidden'>
 			{/* Hero Section */}
-			<div className='container mx-auto px-4 py-16 md:py-24'>
+			<div className='container mx-auto px-4 py-12 md:py-16'>
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}

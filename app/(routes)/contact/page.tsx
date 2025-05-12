@@ -14,7 +14,7 @@ export default function Contact() {
 	return (
 		<div className='min-h-screen bg-background overflow-x-hidden'>
 			{/* Hero Section */}
-			<div className='container mx-auto px-4 py-16 md:py-24'>
+			<div className='container mx-auto px-4 py-12 md:py-16'>
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
@@ -31,7 +31,7 @@ export default function Contact() {
 				</motion.div>
 			</div>
 
-			<div className='py-20'>
+			<div className='py-12'>
 				<div className='container mx-auto px-4'>
 					<motion.div
 						initial={{ opacity: 0, y: 20 }}
@@ -40,10 +40,7 @@ export default function Contact() {
 						className='max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8'
 					>
 						{/* Kontaktinformasjon */}
-						<div
-							
-							className='bg-card/50 backdrop-blur-sm p-12 rounded-2xl border-2 border-foreground/10 group hover:bg-card/70 transition-all duration-500'
-						>
+						<div className='bg-card/50 backdrop-blur-sm p-12 rounded-2xl border-2 border-foreground/10 group hover:bg-card/70 transition-all duration-500'>
 							<h2 className='text-2xl font-semibold mb-8'>
 								Kontaktinformasjon
 							</h2>
