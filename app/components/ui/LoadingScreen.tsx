@@ -68,11 +68,11 @@ export default function LoadingScreen({
 						exit='exit'
 						className='relative w-screen px-4'
 					>
-						<div className='flex items-center justify-center max-w-full'>
+						<div className='flex items-center justify-center'>
 							{letters.map((letter, index) => (
 								<div key={index} className='relative inline-block'>
 									<svg
-										className='w-[32px] sm:w-[40px] h-[64px] sm:h-[80px]'
+										className='w-[25px] sm:w-[40px] h-[64px] sm:h-[80px]'
 										viewBox='0 0 40 80'
 										preserveAspectRatio='xMidYMid meet'
 									>

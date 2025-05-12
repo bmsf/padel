@@ -360,7 +360,7 @@ export default function EventPackages() {
 															<p className='text-sm text-muted-foreground mb-1'>
 																Pris:
 															</p>
-															<p className='text-2xl font-bold text-primary'>
+															<p className='text-2xl font-bold text-foreground'>
 																{pkg.price}
 															</p>
 														</div>

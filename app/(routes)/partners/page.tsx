@@ -50,7 +50,7 @@ export default function Partners() {
 						transition={{ duration: 0.6 }}
 						className='max-w-4xl mx-auto'
 					>
-						<div className='bg-card/50 backdrop-blur-sm p-12 rounded-2xl border-2 border-foreground/10'>
+						<div className='p-12 rounded-2xl border-2 border-foreground'>
 							<h2 className='text-3xl font-semibold mb-8'>
 								Hvorfor Samarbeide med Oss?
 							</h2>

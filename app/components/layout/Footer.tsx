@@ -46,7 +46,7 @@ export default function Footer() {
 						</div>
 					</div>
 				</div>
-				<hr className='border-border my-8' />
+				<hr className='border my-8' />
 				<div className='flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0'>
 					<p className='text-sm text-muted-foreground'>
 						&copy; {new Date().getFullYear()} BMSF. All rights reserved.

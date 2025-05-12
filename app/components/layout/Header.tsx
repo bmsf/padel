@@ -66,7 +66,7 @@ export default function Header() {
 		<nav
 			className={`fixed top-0 left-0 w-full z-50 ${headerBgClass} transition-colors duration-300`}
 		>
-			<div className='container mx-auto flex justify-between items-center py-6 px-6 md:px-0'>
+			<div className='container mx-auto flex justify-between items-center py-2 md:px-0'>
 				{/* Logo and mobile menu button section */}
 				<div className='flex items-center gap-4'>
 					{/* Logo section with link to homepage */}
@@ -79,18 +79,18 @@ export default function Header() {
 										: '/Padel_Co_logo_refined_white.png'
 								}
 								alt='Padel Co Logo'
-								width={100} // Mindre bredde for mobil
-								height={20} // Mindre høyde for mobil
-								className='object-contain m-0 p-0 md:w-[192px] md:h-[80px]'
+								width={130} // Mindre bredde for mobil
+								height={5} // Mindre høyde for mobil
+								className='object-contain m-0 p-0'
 								priority
 							/>
 						) : (
-							<div className='w-[100px] h-[20px] md:w-[192px] md:h-[80px]' />
+							<div className='' />
 						)}
 					</Link>
 
 					{/* Mobile Menu Button and Dropdown */}
-					<div className='md:hidden relative' ref={menuRef}>
+					<div className='lg:hidden relative' ref={menuRef}>
 						<button
 							className='flex items-center gap-2 bg-card text-card-foreground px-6 py-3 rounded-xl'
 							onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -135,7 +135,7 @@ export default function Header() {
 				{/* Desktop Navigation and Theme Toggle */}
 				<div className='flex items-center gap-4'>
 					{/* Desktop Navigation */}
-					<div className='hidden md:block'>
+					<div className='hidden lg:block'>
 						<NavigationMenu>
 							<NavigationMenuList>
 								{navLinks.map((link) => (
