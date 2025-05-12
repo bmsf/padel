@@ -66,13 +66,13 @@ export default function LoadingScreen({
 						initial='initial'
 						animate='animate'
 						exit='exit'
-						className='relative'
+						className='relative w-screen px-4'
 					>
-						<div className='flex items-center justify-center'>
+						<div className='flex items-center justify-center max-w-full'>
 							{letters.map((letter, index) => (
 								<div key={index} className='relative inline-block'>
 									<svg
-										className='w-[40px] h-[80px]'
+										className='w-[32px] sm:w-[40px] h-[64px] sm:h-[80px]'
 										viewBox='0 0 40 80'
 										preserveAspectRatio='xMidYMid meet'
 									>
@@ -116,7 +116,7 @@ export default function LoadingScreen({
 											y='50%'
 											textAnchor='middle'
 											dominantBaseline='middle'
-											className='text-5xl font-bold tracking-tighter fill-none stroke-foreground/20'
+											className='text-4xl sm:text-5xl font-bold tracking-tighter fill-none stroke-foreground/20'
 											strokeWidth='1'
 											style={{
 												fontFamily: 'var(--font-IBM)',
@@ -131,7 +131,7 @@ export default function LoadingScreen({
 											y='50%'
 											textAnchor='middle'
 											dominantBaseline='middle'
-											className='text-5xl font-bold tracking-tighter'
+											className='text-4xl sm:text-5xl font-bold tracking-tighter'
 											style={{
 												fontFamily: 'var(--font-IBM)',
 												fill: `url(#fillGradient-${index})`,
