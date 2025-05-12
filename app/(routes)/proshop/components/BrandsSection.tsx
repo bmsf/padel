@@ -35,7 +35,7 @@ export default function BrandsSection({ brands }: BrandsSectionProps) {
 					initial={{ opacity: 0, y: 20 }}
 					whileInView={{ opacity: 1, y: 0 }}
 					viewport={{ once: true }}
-					transition={{ duration: 0.6 }}
+					transition={{ duration: 0.8 }}
 					className='mx-auto'
 				>
 					<h2 className='text-3xl font-semibold mb-12 text-center'>
@@ -56,13 +56,13 @@ export default function BrandsSection({ brands }: BrandsSectionProps) {
 							</>
 						) : (
 							// Actual content
-							brands.map((brand, index) => (
+							brands.map((brand) => (
 								<motion.div
 									key={brand.name}
 									initial={{ opacity: 0, y: 20 }}
 									whileInView={{ opacity: 1, y: 0 }}
 									viewport={{ once: true }}
-									transition={{ duration: 0.5, delay: index * 0.1 }}
+									transition={{ duration: 0.8 }}
 									className='aspect-[4/3] bg-white/5 rounded-2xl p-4 sm:p-6 flex items-center justify-center group transition-all duration-300 ease-out border border-foreground/10 hover:shadow-md hover:border-foreground/20'
 								>
 									<Image

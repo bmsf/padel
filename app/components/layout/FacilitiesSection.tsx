@@ -73,10 +73,9 @@ const FacilitiesSection: React.FC = () => {
 							))}
 						</>
 					) : (
-						facilityCards.map((card, index) => (
+						facilityCards.map((card) => (
 							<AnimatedSection
 								key={card.title}
-								delay={index * 0.1}
 								className='bg-card p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300'
 							>
 								<div className='flex flex-col items-center text-center'>

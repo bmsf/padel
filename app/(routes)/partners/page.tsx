@@ -32,7 +32,7 @@ export default function Partners() {
 						initial={{ opacity: 0, y: 20 }}
 						whileInView={{ opacity: 1, y: 0 }}
 						viewport={{ once: true }}
-						transition={{ duration: 0.6 }}
+						transition={{ duration: 0.8 }}
 						className='max-w-7xl mx-auto'
 					>
 						<PartnersAnimation />
@@ -47,7 +47,7 @@ export default function Partners() {
 						initial={{ opacity: 0, y: 20 }}
 						whileInView={{ opacity: 1, y: 0 }}
 						viewport={{ once: true }}
-						transition={{ duration: 0.6 }}
+						transition={{ duration: 0.8 }}
 						className='max-w-4xl mx-auto'
 					>
 						<div className='p-12 rounded-2xl border-2 border-foreground'>
@@ -74,14 +74,14 @@ export default function Partners() {
 						initial={{ opacity: 0, y: 20 }}
 						whileInView={{ opacity: 1, y: 0 }}
 						viewport={{ once: true }}
-						transition={{ duration: 0.6 }}
+						transition={{ duration: 0.8 }}
 						className='max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8'
 					>
 						<motion.div
-							initial={{ opacity: 0, x: -20 }}
-							whileInView={{ opacity: 1, x: 0 }}
+							initial={{ opacity: 0, y: 20 }}
+							whileInView={{ opacity: 1, y: 0 }}
 							viewport={{ once: true }}
-							transition={{ duration: 0.5 }}
+							transition={{ duration: 0.8 }}
 							className='bg-card/50 backdrop-blur-sm p-10 rounded-2xl border-2 border-foreground/10 group hover:bg-card/70 transition-all duration-500'
 						>
 							<h3 className='text-2xl font-medium mb-4'>
@@ -95,10 +95,10 @@ export default function Partners() {
 						</motion.div>
 
 						<motion.div
-							initial={{ opacity: 0, x: 20 }}
-							whileInView={{ opacity: 1, x: 0 }}
+							initial={{ opacity: 0, y: 20 }}
+							whileInView={{ opacity: 1, y: 0 }}
 							viewport={{ once: true }}
-							transition={{ duration: 0.5 }}
+							transition={{ duration: 0.8 }}
 							className='bg-card/50 backdrop-blur-sm p-10 rounded-2xl border-2 border-foreground/10 group hover:bg-card/70 transition-all duration-500'
 						>
 							<h3 className='text-2xl font-medium mb-4'>Bli Partner</h3>

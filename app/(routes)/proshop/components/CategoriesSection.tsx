@@ -24,7 +24,7 @@ export default function CategoriesSection() {
 					initial={{ opacity: 0, y: 20 }}
 					whileInView={{ opacity: 1, y: 0 }}
 					viewport={{ once: true }}
-					transition={{ duration: 0.6 }}
+					transition={{ duration: 0.8 }}
 					className='max-w-5xl mx-auto'
 				>
 					<h2 className='text-3xl font-bold text-center mb-12'>
@@ -44,13 +44,13 @@ export default function CategoriesSection() {
 							</>
 						) : (
 							// Actual content
-							categories.map((category, index) => (
+							categories.map((category) => (
 								<motion.div
-									key={index}
+									key={category.title}
 									initial={{ opacity: 0, y: 20 }}
 									whileInView={{ opacity: 1, y: 0 }}
 									viewport={{ once: true }}
-									transition={{ duration: 0.5, delay: index * 0.1 }}
+									transition={{ duration: 0.8 }}
 									className='bg-card p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300'
 								>
 									<h3 className='text-xl font-semibold mb-2'>

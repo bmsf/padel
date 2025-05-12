@@ -204,7 +204,7 @@ export default function EventPackages() {
 					initial={{ opacity: 0, y: 20 }}
 					whileInView={{ opacity: 1, y: 0 }}
 					viewport={{ once: true }}
-					transition={{ duration: 0.6 }}
+					transition={{ duration: 0.8 }}
 					className='mb-16 max-w-3xl mx-auto'
 				>
 					<h2 className='text-3xl font-bold mb-6'>
@@ -228,7 +228,7 @@ export default function EventPackages() {
 					initial={{ opacity: 0, y: 20 }}
 					whileInView={{ opacity: 1, y: 0 }}
 					viewport={{ once: true }}
-					transition={{ duration: 0.6 }}
+					transition={{ duration: 0.8 }}
 					id='packages'
 					className='mb-12'
 				>
@@ -255,13 +255,13 @@ export default function EventPackages() {
 
 					{/* Package Cards */}
 					<div className='grid grid-cols-1 md:grid-cols-2 gap-8 mb-16'>
-						{filteredPackages.map((pkg, index) => (
+						{filteredPackages.map((pkg) => (
 							<motion.div
 								key={pkg.id}
 								initial={{ opacity: 0, y: 20 }}
 								whileInView={{ opacity: 1, y: 0 }}
 								viewport={{ once: true }}
-								transition={{ duration: 0.5, delay: index * 0.1 }}
+								transition={{ duration: 0.8 }}
 							>
 								<Card className='h-full flex flex-col overflow-hidden border-none shadow-sm hover:shadow-md transition-shadow'>
 									<div className='h-48 relative'>
@@ -303,7 +303,7 @@ export default function EventPackages() {
 									<CardFooter className='mt-auto pt-0'>
 										<Dialog>
 											<DialogTrigger asChild>
-												<Button variant='outline'>Se detaljer</Button>
+												<Button>Se detaljer</Button>
 											</DialogTrigger>
 											<DialogContent className='max-w-3xl max-h-[90vh] overflow-y-auto'>
 												<DialogHeader>
@@ -396,17 +396,17 @@ export default function EventPackages() {
 					initial={{ opacity: 0, y: 20 }}
 					whileInView={{ opacity: 1, y: 0 }}
 					viewport={{ once: true }}
-					transition={{ duration: 0.6 }}
+					transition={{ duration: 0.8 }}
 					className='mb-20'
 				>
 					<h2 className='text-2xl font-bold mb-8'>Slik fungerer det</h2>
 
 					<div className='grid grid-cols-1 md:grid-cols-3 gap-12'>
 						<motion.div
-							initial={{ opacity: 0, x: -20 }}
-							whileInView={{ opacity: 1, x: 0 }}
+							initial={{ opacity: 0, y: 20 }}
+							whileInView={{ opacity: 1, y: 0 }}
 							viewport={{ once: true }}
-							transition={{ duration: 0.5, delay: 0.1 }}
+							transition={{ duration: 0.8 }}
 						>
 							<div className='inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary text-xl font-bold mb-4'>
 								1
@@ -422,7 +422,7 @@ export default function EventPackages() {
 							initial={{ opacity: 0, y: 20 }}
 							whileInView={{ opacity: 1, y: 0 }}
 							viewport={{ once: true }}
-							transition={{ duration: 0.5, delay: 0.2 }}
+							transition={{ duration: 0.8 }}
 						>
 							<div className='inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary text-xl font-bold mb-4'>
 								2
@@ -435,10 +435,10 @@ export default function EventPackages() {
 						</motion.div>
 
 						<motion.div
-							initial={{ opacity: 0, x: 20 }}
-							whileInView={{ opacity: 1, x: 0 }}
+							initial={{ opacity: 0, y: 20 }}
+							whileInView={{ opacity: 1, y: 0 }}
 							viewport={{ once: true }}
-							transition={{ duration: 0.5, delay: 0.3 }}
+							transition={{ duration: 0.8 }}
 						>
 							<div className='inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary text-xl font-bold mb-4'>
 								3
@@ -457,18 +457,18 @@ export default function EventPackages() {
 					initial={{ opacity: 0, y: 20 }}
 					whileInView={{ opacity: 1, y: 0 }}
 					viewport={{ once: true }}
-					transition={{ duration: 0.6 }}
+					transition={{ duration: 0.8 }}
 					className='mb-20'
 				>
 					<h2 className='text-2xl font-bold mb-8'>Hva våre kunder sier</h2>
 					<div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
-						{testimonials.map((testimonial, index) => (
+						{testimonials.map((testimonial) => (
 							<motion.div
 								key={testimonial.id}
 								initial={{ opacity: 0, y: 20 }}
 								whileInView={{ opacity: 1, y: 0 }}
 								viewport={{ once: true }}
-								transition={{ duration: 0.5, delay: index * 0.1 }}
+								transition={{ duration: 0.8 }}
 								className='bg-card p-6 rounded-lg'
 							>
 								<div className='flex items-center mb-4'>
@@ -497,18 +497,18 @@ export default function EventPackages() {
 					initial={{ opacity: 0, y: 20 }}
 					whileInView={{ opacity: 1, y: 0 }}
 					viewport={{ once: true }}
-					transition={{ duration: 0.6 }}
+					transition={{ duration: 0.8 }}
 					className='mb-20'
 				>
 					<h2 className='text-2xl font-bold mb-8'>Ofte stilte spørsmål</h2>
 					<div className='space-y-4'>
-						{faqs.map((faq, index) => (
+						{faqs.map((faq) => (
 							<motion.div
-								key={index}
+								key={faq.question}
 								initial={{ opacity: 0, y: 20 }}
 								whileInView={{ opacity: 1, y: 0 }}
 								viewport={{ once: true }}
-								transition={{ duration: 0.5, delay: index * 0.1 }}
+								transition={{ duration: 0.8 }}
 								className='bg-card p-6 rounded-lg'
 							>
 								<h3 className='font-semibold mb-2'>{faq.question}</h3>
@@ -523,7 +523,7 @@ export default function EventPackages() {
 					initial={{ opacity: 0, y: 20 }}
 					whileInView={{ opacity: 1, y: 0 }}
 					viewport={{ once: true }}
-					transition={{ duration: 0.6 }}
+					transition={{ duration: 0.8 }}
 					className='border-t border-border pt-12 pb-8 text-center'
 				>
 					<h2 className='text-2xl font-bold mb-4'>

@@ -3,8 +3,9 @@
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import BackgroundElements from './BackgroundElements';
+import { Skeleton } from '@/components/ui/skeleton';
 
 interface HeroProps {
 	videoUrl?: string;
@@ -12,6 +13,7 @@ interface HeroProps {
 
 export default function Hero({ videoUrl = '/videos/video.mp4' }: HeroProps) {
 	const videoRef = useRef<HTMLVideoElement>(null);
+	const [isVideoLoading, setIsVideoLoading] = useState(true);
 
 	useEffect(() => {
 		// Sikre at videoen laster og spiller av
@@ -22,6 +24,10 @@ export default function Hero({ videoUrl = '/videos/video.mp4' }: HeroProps) {
 			});
 		}
 	}, [videoUrl]);
+
+	const handleVideoLoaded = () => {
+		setIsVideoLoading(false);
+	};
 
 	return (
 		<>
@@ -49,7 +55,7 @@ export default function Hero({ videoUrl = '/videos/video.mp4' }: HeroProps) {
 						<div className='flex flex-col sm:flex-row gap-4 mb-12'>
 							<Button
 								size='lg'
-								className='px-8 min-w-[180px] font-bold bg-foreground text-background text-lg'
+								className='px-8 min-w-[180px] font-bold text-background text-lg'
 								asChild
 							>
 								<Link
@@ -76,6 +82,11 @@ export default function Hero({ videoUrl = '/videos/video.mp4' }: HeroProps) {
 			>
 				<div className='container mx-auto px-6'>
 					<div className='aspect-[16/9] w-full relative rounded-t-3xl overflow-hidden'>
+						{isVideoLoading && (
+							<div className='absolute inset-0 z-10'>
+								<Skeleton className='w-full h-full' />
+							</div>
+						)}
 						<video
 							ref={videoRef}
 							src={videoUrl}
@@ -85,6 +96,7 @@ export default function Hero({ videoUrl = '/videos/video.mp4' }: HeroProps) {
 							muted
 							playsInline
 							controls={false}
+							onLoadedData={handleVideoLoaded}
 						/>
 						<div className='absolute inset-0 bg-black bg-opacity-10'></div>
 					</div>
