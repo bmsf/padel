@@ -48,7 +48,7 @@ export default function BrandsSection({ brands }: BrandsSectionProps) {
 								{[...Array(6)].map((_, index) => (
 									<div
 										key={index}
-										className='aspect-[4/3] bg-white/5 rounded-2xl p-4 sm:p-6 flex items-center justify-center'
+										className='relative aspect-square bg-white/5 rounded-2xl p-4 sm:p-6 flex items-center justify-center'
 									>
 										<Skeleton className='w-3/4 h-3/4' />
 									</div>
@@ -63,15 +63,17 @@ export default function BrandsSection({ brands }: BrandsSectionProps) {
 									whileInView={{ opacity: 1, y: 0 }}
 									viewport={{ once: true }}
 									transition={{ duration: 0.8 }}
-									className='aspect-[4/3] bg-white/5 rounded-2xl p-4 sm:p-6 flex items-center justify-center group transition-all duration-300 ease-out border border-foreground/10 hover:shadow-md hover:border-foreground/20'
+									className='relative aspect-square bg-white/5 rounded-2xl p-4 sm:p-6 flex items-center justify-center group transition-all duration-300 ease-out border border-foreground/10 hover:shadow-md hover:border-foreground/20'
 								>
-									<Image
-										src={brand.logo}
-										alt={brand.name}
-										width={brand.width}
-										height={brand.height}
-										className='object-contain transition-transform duration-300 group-hover:scale-105 max-w-full'
-									/>
+									<div className='relative w-full h-full flex items-center justify-center'>
+										<Image
+											src={brand.logo}
+											alt={brand.name}
+											fill
+											className='object-contain p-2 transition-transform duration-300 group-hover:scale-105'
+											sizes='(max-width: 768px) 40vw, 25vw'
+										/>
+									</div>
 								</motion.div>
 							))
 						)}

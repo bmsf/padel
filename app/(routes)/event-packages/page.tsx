@@ -408,7 +408,7 @@ export default function EventPackages() {
 							viewport={{ once: true }}
 							transition={{ duration: 0.8 }}
 						>
-							<div className='inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary text-xl font-bold mb-4'>
+							<div className='items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary text-xl font-bold mb-4'>
 								1
 							</div>
 							<h3 className='text-xl font-medium mb-3'>Kontakt oss</h3>
@@ -424,7 +424,7 @@ export default function EventPackages() {
 							viewport={{ once: true }}
 							transition={{ duration: 0.8 }}
 						>
-							<div className='inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary text-xl font-bold mb-4'>
+							<div className='items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary text-xl font-bold mb-4'>
 								2
 							</div>
 							<h3 className='text-xl font-medium mb-3'>Tilpass pakken</h3>
@@ -440,7 +440,7 @@ export default function EventPackages() {
 							viewport={{ once: true }}
 							transition={{ duration: 0.8 }}
 						>
-							<div className='inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary text-xl font-bold mb-4'>
+							<div className='items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary text-xl font-bold mb-4'>
 								3
 							</div>
 							<h3 className='text-xl font-medium mb-3'>Nyt arrangementet</h3>
@@ -536,11 +536,6 @@ export default function EventPackages() {
 					<div className='flex flex-col sm:flex-row gap-4 justify-center'>
 						<Link href='/contact'>
 							<Button size='lg'>Kontakt oss</Button>
-						</Link>
-						<Link href='/facilities'>
-							<Button variant='outline' size='lg'>
-								Se våre fasiliteter
-							</Button>
 						</Link>
 					</div>
 				</motion.div>
