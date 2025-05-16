@@ -1,6 +1,11 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
+import {
+	containerVariants,
+	itemVariants,
+	defaultViewport,
+} from '@/app/lib/animations';
 
 const services = [
 	{
@@ -20,37 +25,44 @@ const services = [
 ];
 
 export default function ServicesSection() {
+	const shouldReduceMotion = useReducedMotion();
+
 	return (
 		<section className='py-12'>
 			<div className='container mx-auto px-4'>
-				<motion.div
-					initial={{ opacity: 0, y: 20 }}
-					whileInView={{ opacity: 1, y: 0 }}
-					viewport={{ once: true }}
-					transition={{ duration: 0.8 }}
-					className='max-w-4xl mx-auto'
-				>
-					<h2 className='text-3xl font-semibold mb-12 text-center'>
+				<div className='max-w-4xl mx-auto'>
+					<motion.h2
+						variants={itemVariants(shouldReduceMotion)}
+						initial='hidden'
+						whileInView='visible'
+						viewport={defaultViewport}
+						className='text-3xl font-semibold mb-12 text-center'
+					>
 						Våre tjenester
-					</h2>
-					<div className='space-y-8'>
+					</motion.h2>
+					<motion.div
+						className='space-y-8'
+						variants={containerVariants(shouldReduceMotion)}
+						initial='hidden'
+						whileInView='visible'
+						viewport={defaultViewport}
+					>
 						{services.map((service) => (
 							<motion.div
 								key={service.title}
-								initial={{ opacity: 0, y: 20 }}
-								whileInView={{ opacity: 1, y: 0 }}
-								viewport={{ once: true }}
-								transition={{ duration: 0.8 }}
-								className='bg-card/50 backdrop-blur-sm p-10 rounded-2xl border-2 border-foreground/10 group hover:bg-card/70 transition-all duration-500'
+								variants={itemVariants(shouldReduceMotion)}
+								className='bg-card/30 p-10 rounded-2xl border-2 border-foreground/10 
+									transform-gpu hover:bg-card/50 transition-colors duration-300
+									motion-safe:translate-z-0'
 							>
 								<h3 className='text-2xl font-medium mb-4'>{service.title}</h3>
-								<p className='text-lg text-card-foreground/80 group-hover:text-card-foreground'>
+								<p className='text-lg text-card-foreground/80'>
 									{service.description}
 								</p>
 							</motion.div>
 						))}
-					</div>
-				</motion.div>
+					</motion.div>
+				</div>
 			</div>
 		</section>
 	);

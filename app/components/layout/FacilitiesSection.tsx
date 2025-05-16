@@ -1,9 +1,12 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { Calendar, Users, MapPin, Trophy } from 'lucide-react';
-import { Skeleton } from '@/components/ui/skeleton';
-import AnimatedSection from '@/app/components/ui/AnimatedSection';
+import { Trophy, Calendar, MapPin, Users } from 'lucide-react';
+import { motion, useReducedMotion } from 'framer-motion';
+import {
+	containerVariants,
+	itemVariants,
+	defaultViewport,
+} from '@/app/lib/animations';
 
 interface FacilityCard {
 	title: string;
@@ -39,56 +42,44 @@ const facilityCards: FacilityCard[] = [
 ];
 
 const FacilitiesSection: React.FC = () => {
-	const [isLoading, setIsLoading] = useState(true);
-
-	useEffect(() => {
-		// Simulerer en kort loading tid for å demonstrere skeleton
-		const timer = setTimeout(() => {
-			setIsLoading(false);
-		}, 1000);
-
-		return () => clearTimeout(timer);
-	}, []);
+	const shouldReduceMotion = useReducedMotion();
 
 	return (
-		<section className='w-full relative my-8'>
-			<AnimatedSection>
-				<div className='flex flex-col items-center justify-center text-center mb-16'>
-					<h2 className='text-4xl font-bold mb-6'>
-						Padelcenter med førsteklasses fasiliteter
-					</h2>
-				</div>
+		<div className='w-full relative my-8'>
+			<motion.div
+				variants={itemVariants(shouldReduceMotion)}
+				initial='hidden'
+				whileInView='visible'
+				viewport={defaultViewport}
+				className='flex flex-col items-center justify-center text-center mb-16'
+			>
+				<h2 className='text-4xl font-bold mb-6'>
+					Padelcenter med førsteklasses fasiliteter
+				</h2>
+			</motion.div>
 
-				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
-					{isLoading ? (
-						<>
-							{[...Array(4)].map((_, index) => (
-								<div key={index} className='bg-card p-8 rounded-xl shadow-md'>
-									<div className='flex flex-col items-center text-center'>
-										<Skeleton className='w-8 h-8 rounded-full mb-4' />
-										<Skeleton className='h-6 w-3/4 mb-2' />
-										<Skeleton className='h-4 w-full' />
-									</div>
-								</div>
-							))}
-						</>
-					) : (
-						facilityCards.map((card) => (
-							<AnimatedSection
-								key={card.title}
-								className='bg-card p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300'
-							>
-								<div className='flex flex-col items-center text-center'>
-									<div className='text-primary mb-4'>{card.icon}</div>
-									<h3 className='text-xl font-semibold mb-2'>{card.title}</h3>
-									<p className='text-muted-foreground'>{card.description}</p>
-								</div>
-							</AnimatedSection>
-						))
-					)}
-				</div>
-			</AnimatedSection>
-		</section>
+			<motion.div
+				className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'
+				variants={containerVariants(shouldReduceMotion)}
+				initial='hidden'
+				whileInView='visible'
+				viewport={defaultViewport}
+			>
+				{facilityCards.map((card) => (
+					<motion.div
+						key={card.title}
+						variants={itemVariants(shouldReduceMotion)}
+						className='bg-card p-8 rounded-xl shadow-md hover:shadow-lg transition-colors duration-300 transform-gpu motion-safe:translate-z-0'
+					>
+						<div className='flex flex-col items-center text-center'>
+							<div className='text-primary mb-4'>{card.icon}</div>
+							<h3 className='text-xl font-semibold mb-2'>{card.title}</h3>
+							<p className='text-muted-foreground'>{card.description}</p>
+						</div>
+					</motion.div>
+				))}
+			</motion.div>
+		</div>
 	);
 };
 

@@ -402,53 +402,25 @@ export default function EventPackages() {
 					<h2 className='text-2xl font-bold mb-8'>Slik fungerer det</h2>
 
 					<div className='grid grid-cols-1 md:grid-cols-3 gap-12'>
-						<motion.div
-							initial={{ opacity: 0, y: 20 }}
-							whileInView={{ opacity: 1, y: 0 }}
-							viewport={{ once: true }}
-							transition={{ duration: 0.8 }}
-						>
-							<div className='items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary text-xl font-bold mb-4'>
-								1
-							</div>
-							<h3 className='text-xl font-medium mb-3'>Kontakt oss</h3>
-							<p className='text-muted-foreground'>
-								Fortell oss om ditt arrangement, antall deltakere og ønsket
-								dato. Vi hjelper deg med å finne den beste løsningen.
-							</p>
-						</motion.div>
-
-						<motion.div
-							initial={{ opacity: 0, y: 20 }}
-							whileInView={{ opacity: 1, y: 0 }}
-							viewport={{ once: true }}
-							transition={{ duration: 0.8 }}
-						>
-							<div className='items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary text-xl font-bold mb-4'>
-								2
-							</div>
-							<h3 className='text-xl font-medium mb-3'>Tilpass pakken</h3>
-							<p className='text-muted-foreground'>
-								Vi tilpasser opplevelsen etter dine behov og ønsker, enten det
-								er mat, instruktører eller spesielle aktiviteter.
-							</p>
-						</motion.div>
-
-						<motion.div
-							initial={{ opacity: 0, y: 20 }}
-							whileInView={{ opacity: 1, y: 0 }}
-							viewport={{ once: true }}
-							transition={{ duration: 0.8 }}
-						>
-							<div className='items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary text-xl font-bold mb-4'>
-								3
-							</div>
-							<h3 className='text-xl font-medium mb-3'>Nyt arrangementet</h3>
-							<p className='text-muted-foreground'>
-								Vi tar oss av alt det praktiske, slik at du og dine gjester kan
-								fokusere på å ha det gøy og nyte opplevelsen.
-							</p>
-						</motion.div>
+						{[1, 2, 3].map((step, index) => (
+							<motion.div
+								key={step}
+								initial={{ opacity: 0, y: 20 }}
+								whileInView={{ opacity: 1, y: 0 }}
+								viewport={{ once: true }}
+								transition={{ duration: 0.8, delay: index * 0.1 }}
+								className='items-center justify-center'
+							>
+								<div className='w-12 h-12 rounded-full bg-primary/10 text-primary text-xl font-bold mb-4 flex items-center justify-center'>
+									{step}
+								</div>
+								<h3 className='text-xl font-medium mb-3'>Kontakt oss</h3>
+								<p className='text-muted-foreground'>
+									Fortell oss om ditt arrangement, antall deltakere og ønsket
+									dato. Vi hjelper deg med å finne den beste løsningen.
+								</p>
+							</motion.div>
+						))}
 					</div>
 				</motion.div>
 

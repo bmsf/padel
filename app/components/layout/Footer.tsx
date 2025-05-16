@@ -1,24 +1,47 @@
 'use client';
 
+import { motion } from 'framer-motion';
+
 export default function Footer() {
 	return (
 		<footer className='py-12 bg-background/95 text-foreground'>
 			<div className='container mx-auto px-4'>
-				<div className='grid grid-cols-1 md:grid-cols-3 gap-8 mb-8'>
-					<div>
+				<motion.div
+					initial={{ opacity: 0, y: 20 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					viewport={{ once: true }}
+					transition={{ duration: 0.5 }}
+					className='grid grid-cols-1 md:grid-cols-3 gap-8 mb-8'
+				>
+					<motion.div
+						initial={{ opacity: 0, y: 20 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true }}
+						transition={{ duration: 0.5, delay: 0.1 }}
+					>
 						<p className='mb-4'>
 							Din destinasjon for padelglede og kvalitetstid
 						</p>
 						<p className='text-sm text-muted-foreground'>Grini Næringspark 6</p>
 						<p className='text-sm text-muted-foreground'>1361 Østerås</p>
-					</div>
-					<div>
+					</motion.div>
+					<motion.div
+						initial={{ opacity: 0, y: 20 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true }}
+						transition={{ duration: 0.5, delay: 0.2 }}
+					>
 						<h3 className='text-lg font-semibold mb-4'>Åpningstider</h3>
 						<p className='text-sm text-muted-foreground mb-2'>
 							Alle dager: 00:00 - 24:00
 						</p>
-					</div>
-					<div>
+					</motion.div>
+					<motion.div
+						initial={{ opacity: 0, y: 20 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true }}
+						transition={{ duration: 0.5, delay: 0.3 }}
+					>
 						<h3 className='text-lg font-semibold mb-4'>Kontakt</h3>
 						<p className='text-sm text-muted-foreground mb-2'>
 							Telefon: +47 48189107
@@ -44,10 +67,22 @@ export default function Footer() {
 								Instagram
 							</a>
 						</div>
-					</div>
-				</div>
-				<hr className='border my-8' />
-				<div className='flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0'>
+					</motion.div>
+				</motion.div>
+				<motion.hr
+					initial={{ opacity: 0 }}
+					whileInView={{ opacity: 1 }}
+					viewport={{ once: true }}
+					transition={{ duration: 0.5, delay: 0.4 }}
+					className='border my-8'
+				/>
+				<motion.div
+					initial={{ opacity: 0, y: 20 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					viewport={{ once: true }}
+					transition={{ duration: 0.5, delay: 0.5 }}
+					className='flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0'
+				>
 					<p className='text-sm text-muted-foreground'>
 						&copy; {new Date().getFullYear()} BMSF. All rights reserved.
 					</p>
@@ -71,7 +106,7 @@ export default function Footer() {
 							Cookies
 						</a>
 					</div>
-				</div>
+				</motion.div>
 			</div>
 		</footer>
 	);

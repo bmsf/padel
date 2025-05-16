@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { Skeleton } from '@/components/ui/skeleton';
+import { motion } from 'framer-motion';
 
 // Definerer typen for Instagram media-elementer
 type InstagramMedia = {
@@ -24,9 +25,6 @@ const InstagramFeed = () => {
 		const fetchInstagramPosts = async () => {
 			try {
 				setLoading(true);
-
-				// Her må du erstatte med din egen API-endepunkt som henter data fra Instagram API
-				// Dette kan være en serverless function, en API-rute i Next.js, eller en backend-tjeneste
 				const response = await fetch('/api/instagram-feed');
 
 				if (!response.ok) {
@@ -49,7 +47,15 @@ const InstagramFeed = () => {
 	return (
 		<section className='w-full py-12 bg-white'>
 			<div className='container mx-auto px-4'>
-				<h2 className='text-3xl font-semibold mb-8'>Følg oss på Instagram</h2>
+				<motion.h2
+					initial={{ opacity: 0, y: 20 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					viewport={{ once: true }}
+					transition={{ duration: 0.5 }}
+					className='text-3xl font-semibold mb-8'
+				>
+					Følg oss på Instagram
+				</motion.h2>
 
 				{loading && (
 					<div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
@@ -62,7 +68,12 @@ const InstagramFeed = () => {
 				)}
 
 				{error && (
-					<div className='text-center text-red-500 p-4'>
+					<motion.div
+						initial={{ opacity: 0, y: 20 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.5 }}
+						className='text-center text-red-500 p-4'
+					>
 						<p>{error}</p>
 						<a
 							href='https://www.instagram.com/padel_co/'
@@ -72,14 +83,18 @@ const InstagramFeed = () => {
 						>
 							Besøk Instagram-profilen vår
 						</a>
-					</div>
+					</motion.div>
 				)}
 
 				{!loading && !error && (
 					<div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
-						{posts.map((post) => (
-							<a
+						{posts.map((post, index) => (
+							<motion.a
 								key={post.id}
+								initial={{ opacity: 0, y: 20 }}
+								whileInView={{ opacity: 1, y: 0 }}
+								viewport={{ once: true }}
+								transition={{ duration: 0.3, delay: 0.1 * index }}
 								href={post.permalink}
 								target='_blank'
 								rel='noopener noreferrer'
@@ -115,12 +130,18 @@ const InstagramFeed = () => {
 										/>
 									</div>
 								)}
-							</a>
+							</motion.a>
 						))}
 					</div>
 				)}
 
-				<div className='text-center mt-8'>
+				<motion.div
+					initial={{ opacity: 0, y: 20 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					viewport={{ once: true }}
+					transition={{ duration: 0.5, delay: 0.2 }}
+					className='text-center mt-8'
+				>
 					<a
 						href='https://www.instagram.com/padel_co/'
 						target='_blank'
@@ -129,7 +150,7 @@ const InstagramFeed = () => {
 					>
 						Se mer på Instagram
 					</a>
-				</div>
+				</motion.div>
 			</div>
 		</section>
 	);

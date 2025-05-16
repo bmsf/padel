@@ -2,8 +2,6 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { Skeleton } from '@/components/ui/skeleton';
-import { useState, useEffect } from 'react';
 
 interface BrandProps {
 	name: string;
@@ -17,68 +15,42 @@ interface BrandsSectionProps {
 }
 
 export default function BrandsSection({ brands }: BrandsSectionProps) {
-	const [isLoading, setIsLoading] = useState(true);
-
-	useEffect(() => {
-		// Simulerer en kort loading tid for å demonstrere skeleton
-		const timer = setTimeout(() => {
-			setIsLoading(false);
-		}, 1000);
-
-		return () => clearTimeout(timer);
-	}, []);
-
 	return (
 		<section className='py-12 w-full overflow-hidden'>
 			<div className='container mx-auto px-4'>
-				<motion.div
-					initial={{ opacity: 0, y: 20 }}
-					whileInView={{ opacity: 1, y: 0 }}
-					viewport={{ once: true }}
-					transition={{ duration: 0.8 }}
-					className='mx-auto'
-				>
-					<h2 className='text-3xl font-semibold mb-12 text-center'>
+				<div className='mx-auto'>
+					<motion.h2
+						initial={{ opacity: 0, y: 20 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true }}
+						transition={{ duration: 0.8 }}
+						className='text-3xl font-semibold mb-12 text-center'
+					>
 						Våre merker
-					</h2>
+					</motion.h2>
 					<div className='grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-8 md:gap-12'>
-						{isLoading ? (
-							// Skeleton loading state
-							<>
-								{[...Array(6)].map((_, index) => (
-									<div
-										key={index}
-										className='relative aspect-square bg-white/5 rounded-2xl p-4 sm:p-6 flex items-center justify-center'
-									>
-										<Skeleton className='w-3/4 h-3/4' />
-									</div>
-								))}
-							</>
-						) : (
-							// Actual content
-							brands.map((brand) => (
-								<motion.div
-									key={brand.name}
-									initial={{ opacity: 0, y: 20 }}
-									whileInView={{ opacity: 1, y: 0 }}
-									viewport={{ once: true }}
-									transition={{ duration: 0.8 }}
-									className='relative aspect-square bg-white/5 rounded-2xl p-4 sm:p-6 flex items-center justify-center group transition-all duration-300 ease-out border border-foreground/10 hover:shadow-md hover:border-foreground/20'
-								>
-									<div className='relative w-full h-full flex items-center justify-center'>
-										<Image
-											src={brand.logo}
-											alt={brand.name}
-											fill
-											className='object-contain p-2 transition-transform duration-300 group-hover:scale-105'
-											sizes='(max-width: 768px) 40vw, 25vw'
-										/>
-									</div>
-								</motion.div>
-							))
-						)}
+						{brands.map((brand, index) => (
+							<motion.div
+								key={brand.name}
+								initial={{ opacity: 0, y: 20 }}
+								whileInView={{ opacity: 1, y: 0 }}
+								viewport={{ once: true }}
+								transition={{ duration: 0.8, delay: index * 0.1 }}
+								className='relative aspect-square bg-white/5 rounded-2xl p-4 sm:p-6 flex items-center justify-center group transition-all duration-300 ease-out border border-foreground/10 hover:shadow-md hover:border-foreground/20'
+							>
+								<div className='relative w-full h-full flex items-center justify-center'>
+									<Image
+										src={brand.logo}
+										alt={brand.name}
+										fill
+										className='object-contain p-2 transition-transform duration-300 group-hover:scale-105'
+										sizes='(max-width: 768px) 40vw, 25vw'
+									/>
+								</div>
+							</motion.div>
+						))}
 					</div>
-				</motion.div>
+				</div>
 			</div>
 		</section>
 	);
