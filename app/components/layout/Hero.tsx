@@ -1,10 +1,9 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
-import BackgroundElements from './BackgroundElements';
 import { Skeleton } from '@/components/ui/skeleton';
 
 interface HeroProps {
@@ -13,10 +12,16 @@ interface HeroProps {
 
 export default function Hero({ videoUrl = '/videos/video.mp4' }: HeroProps) {
 	const videoRef = useRef<HTMLVideoElement>(null);
+	const containerRef = useRef<HTMLDivElement>(null);
 	const [isVideoLoading, setIsVideoLoading] = useState(true);
+	const { scrollY } = useScroll();
+
+	// Parallax effekter
+	const titleY = useTransform(scrollY, [0, 500], [0, 150]);
+	const videoScale = useTransform(scrollY, [0, 500], [1, 1.1]);
+	const opacity = useTransform(scrollY, [0, 300], [1, 0]);
 
 	useEffect(() => {
-		// Sikre at videoen laster og spiller av
 		if (videoRef.current) {
 			videoRef.current.load();
 			videoRef.current.play().catch((error) => {
@@ -30,32 +35,74 @@ export default function Hero({ videoUrl = '/videos/video.mp4' }: HeroProps) {
 	};
 
 	return (
-		<>
-			<BackgroundElements />
-			{/* Hero Section */}
-			<div className='relative w-full pt-32 md:pt-40'>
-				<div className='container mx-auto px-6'>
+		<div className='container mx-auto px-4 pt-24 md:pt-32'>
+			<div
+				className='relative w-full h-[85vh] overflow-hidden rounded-xl'
+				ref={containerRef}
+			>
+				{/* Video Container med Parallax */}
+				<motion.div
+					className='absolute inset-0 w-full h-full'
+					style={{ scale: videoScale }}
+				>
+					{isVideoLoading && (
+						<div className='absolute inset-0 z-10'>
+							<Skeleton className='w-full h-full rounded-xl' />
+						</div>
+					)}
+					<video
+						ref={videoRef}
+						src={videoUrl}
+						className='absolute inset-0 object-cover w-full h-full rounded-xl'
+						autoPlay
+						loop
+						muted
+						playsInline
+						controls={false}
+						onLoadedData={handleVideoLoaded}
+					/>
+					<div className='absolute inset-0 bg-black/40 rounded-xl' />
+				</motion.div>
+
+				{/* Innhold */}
+				<motion.div
+					className='relative h-full flex flex-col items-center justify-center text-center px-4'
+					style={{ y: titleY, opacity }}
+				>
 					<motion.div
-						className='max-w-3xl'
-						initial={{ opacity: 0, y: 20 }}
+						initial={{ opacity: 0, y: 30 }}
 						animate={{ opacity: 1, y: 0 }}
-						transition={{ duration: 1, ease: 'easeOut' }}
+						transition={{ duration: 0.8, ease: 'easeOut' }}
+						className='max-w-4xl mx-auto'
 					>
-						<h1 className='text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-tight mb-8'>
+						<motion.h1
+							className='text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6'
+							initial={{ opacity: 0, y: 20 }}
+							animate={{ opacity: 1, y: 0 }}
+							transition={{ duration: 0.8, delay: 0.2 }}
+						>
 							Padel Co Grini
-						</h1>
+						</motion.h1>
 
-						<p className='text-foreground/90 text-lg md:text-xl mb-12 font-light'>
+						<motion.p
+							className='text-xl md:text-2xl text-white/90 mb-8 max-w-2xl mx-auto'
+							initial={{ opacity: 0, y: 20 }}
+							animate={{ opacity: 1, y: 0 }}
+							transition={{ duration: 0.8, delay: 0.4 }}
+						>
 							Et av Norges mest komplette padelanlegg – med seks innendørsbaner,
-							tre utendørsbaner, treningsrom, lounge og splitter ny pro shop. Vi
-							kombinerer kvalitet, stemning og tilgjengelighet i et senter som
-							ønsker alle velkommen – uansett nivå.
-						</p>
+							tre utendørsbaner, treningsrom, lounge og splitter ny pro shop.
+						</motion.p>
 
-						<div className='flex flex-col sm:flex-row gap-4 mb-12'>
+						<motion.div
+							className='flex flex-col sm:flex-row gap-6 justify-center items-center'
+							initial={{ opacity: 0, y: 20 }}
+							animate={{ opacity: 1, y: 0 }}
+							transition={{ duration: 0.8, delay: 0.6 }}
+						>
 							<Button
 								size='lg'
-								className='px-8 min-w-[180px] font-bold text-background text-lg'
+								className='px-8 min-w-[200px] h-14 text-lg font-medium bg-white text-black hover:bg-white/90 transition-all duration-300 transform hover:scale-105'
 								asChild
 							>
 								<Link
@@ -65,43 +112,18 @@ export default function Hero({ videoUrl = '/videos/video.mp4' }: HeroProps) {
 									Book Bane
 								</Link>
 							</Button>
-							{/* <div className='max-w-[280px]'>
-								<Countdown />
-							</div> */}
-						</div>
+							<Button
+								size='lg'
+								variant='outline'
+								className='px-8 min-w-[200px] h-14 text-lg font-medium text-white border-white hover:bg-white/10 transition-all duration-300 transform hover:scale-105'
+								asChild
+							>
+								<Link href='/om-oss'>Les Mer</Link>
+							</Button>
+						</motion.div>
 					</motion.div>
-				</div>
+				</motion.div>
 			</div>
-
-			{/* Video Container */}
-			<motion.div
-				className='w-full relative'
-				initial={{ opacity: 0 }}
-				animate={{ opacity: 1 }}
-				transition={{ duration: 1, delay: 0.5, ease: 'easeOut' }}
-			>
-				<div className='container mx-auto px-6'>
-					<div className='aspect-[16/9] w-full relative rounded-t-3xl overflow-hidden'>
-						{isVideoLoading && (
-							<div className='absolute inset-0 z-10'>
-								<Skeleton className='w-full h-full' />
-							</div>
-						)}
-						<video
-							ref={videoRef}
-							src={videoUrl}
-							className='absolute inset-0 object-cover w-full h-full'
-							autoPlay
-							loop
-							muted
-							playsInline
-							controls={false}
-							onLoadedData={handleVideoLoaded}
-						/>
-						<div className='absolute inset-0 bg-black bg-opacity-10'></div>
-					</div>
-				</div>
-			</motion.div>
-		</>
+		</div>
 	);
 }
