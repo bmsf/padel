@@ -17,7 +17,7 @@ export default function Error({
 	}, [error]);
 
 	return (
-		<div className='container mx-auto px-4 min-h-[calc(100vh-4rem)] flex items-center justify-center'>
+		<div className='container mx-auto px-4 min-h-screen pt-32 md:pt-40 flex items-center justify-center'>
 			<div className='text-center space-y-6 p-8 bg-card border rounded-lg shadow-lg max-w-2xl w-full'>
 				<div className='flex justify-center'>
 					<AlertCircle className='h-16 w-16 text-destructive' />

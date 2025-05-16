@@ -52,11 +52,11 @@ export default function Header() {
 
 	return (
 		<nav
-			className='fixed top-0 left-0 w-full z-50 bg-background transition-colors duration-300'
+			className='fixed top-0 left-0 w-full z-50 bg-background border-b border-foreground transition-colors duration-300'
 			role='navigation'
 			aria-label='Hovednavigasjon'
 		>
-			<div className='container mx-auto flex justify-between items-center py-2 md:px-0'>
+			<div className='container mx-auto flex justify-between items-center md:px-0'>
 				<div className='flex items-center gap-4'>
 					<Link
 						href='/'

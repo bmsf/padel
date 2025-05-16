@@ -8,6 +8,20 @@ const config: Config = {
 		'./app/**/*.{js,ts,jsx,tsx,mdx}',
 	],
 	theme: {
+		container: {
+			center: true,
+			padding: {
+				DEFAULT: '1rem',
+				md: '2rem',
+			},
+			screens: {
+				sm: '640px',
+				md: '900px',
+				lg: '1024px',
+				xl: '1280px',
+				'2xl': '1400px',
+			},
+		},
 		extend: {
 			fontFamily: {
 				header: ['var(--font-IBM)', 'sans-serif'], // Overskrifter
