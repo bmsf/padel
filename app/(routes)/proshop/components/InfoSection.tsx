@@ -27,7 +27,7 @@ export default function InfoSection() {
 							</p>
 							<p className='flex items-center gap-3'>
 								<strong className='text-card-foreground'>Kontakt:</strong>
-								proshop@padelcenter.no
+								post@padelco.no
 							</p>
 						</div>
 					</div>

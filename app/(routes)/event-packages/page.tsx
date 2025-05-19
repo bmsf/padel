@@ -188,7 +188,7 @@ export default function EventPackages() {
 					className='max-w-3xl mx-auto text-center space-y-6'
 				>
 					<h1 className='text-4xl md:text-6xl font-bold tracking-tight'>
-						Event Pakker
+						Eventpakker
 					</h1>
 					<p className='text-lg md:text-2xl text-muted-foreground leading-relaxed'>
 						Uforglemmelige opplevelser for bedrifter, bursdager, turneringer og
@@ -232,7 +232,7 @@ export default function EventPackages() {
 					id='packages'
 					className='mb-12'
 				>
-					<h2 className='text-2xl font-bold mb-8'>Våre Event Pakker</h2>
+					<h2 className='text-2xl font-bold mb-8'>Våre Eventpakker</h2>
 
 					<Tabs
 						defaultValue='alle'
@@ -402,25 +402,63 @@ export default function EventPackages() {
 					<h2 className='text-2xl font-bold mb-8'>Slik fungerer det</h2>
 
 					<div className='grid grid-cols-1 md:grid-cols-3 gap-12'>
-						{[1, 2, 3].map((step, index) => (
-							<motion.div
-								key={step}
-								initial={{ opacity: 0, y: 20 }}
-								whileInView={{ opacity: 1, y: 0 }}
-								viewport={{ once: true }}
-								transition={{ duration: 0.8, delay: index * 0.1 }}
-								className='items-center justify-center'
-							>
-								<div className='w-12 h-12 rounded-full bg-primary/10 text-primary text-xl font-bold mb-4 flex items-center justify-center'>
-									{step}
-								</div>
-								<h3 className='text-xl font-medium mb-3'>Kontakt oss</h3>
-								<p className='text-muted-foreground'>
-									Fortell oss om ditt arrangement, antall deltakere og ønsket
-									dato. Vi hjelper deg med å finne den beste løsningen.
-								</p>
-							</motion.div>
-						))}
+						<motion.div
+							initial={{ opacity: 0, y: 20 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							viewport={{ once: true }}
+							transition={{ duration: 0.8, delay: 0 }}
+							className='items-center justify-center'
+						>
+							<div className='w-12 h-12 rounded-full bg-primary/10 text-primary text-xl font-bold mb-4 flex items-center'>
+								1
+							</div>
+							<h3 className='text-xl font-medium mb-3'>Kontakt oss</h3>
+							<p className='text-muted-foreground'>
+								Send oss en henvendelse via kontaktskjemaet eller ring oss
+								direkte. Fortell oss om ditt arrangement, antall deltakere og
+								ønsket dato.
+							</p>
+						</motion.div>
+
+						<motion.div
+							initial={{ opacity: 0, y: 20 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							viewport={{ once: true }}
+							transition={{ duration: 0.8, delay: 0.1 }}
+							className='items-center justify-center'
+						>
+							<div className='w-12 h-12 rounded-full bg-primary/10 text-primary text-xl font-bold mb-4 flex items-center'>
+								2
+							</div>
+							<h3 className='text-xl font-medium mb-3'>
+								Tilpasset planlegging
+							</h3>
+							<p className='text-muted-foreground'>
+								Vi lager en skreddersydd plan for ditt arrangement, inkludert
+								valg av pakke, tidsplan, catering og eventuelle spesielle
+								ønsker.
+							</p>
+						</motion.div>
+
+						<motion.div
+							initial={{ opacity: 0, y: 20 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							viewport={{ once: true }}
+							transition={{ duration: 0.8, delay: 0.2 }}
+							className=''
+						>
+							<div className='w-12 h-12 rounded-full bg-primary/10 text-xl font-bold mb-4 flex'>
+								3
+							</div>
+							<h3 className='text-xl font-medium mb-3'>
+								Bekreftelse og oppfølging
+							</h3>
+							<p className='text-muted-foreground'>
+								Etter bekreftelse får du en detaljert plan for arrangementet. Vi
+								holder kontakten frem til dagen og sikrer at alt er klart for en
+								suksessfull dag.
+							</p>
+						</motion.div>
 					</div>
 				</motion.div>
 

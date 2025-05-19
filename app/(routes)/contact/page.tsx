@@ -2,13 +2,52 @@
 
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Clock, Facebook, Instagram } from 'lucide-react';
-import { FormEvent } from 'react';
+import { FormEvent, useState } from 'react';
+import { toast } from 'sonner';
 
 export default function Contact() {
-	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+	const [isSubmitting, setIsSubmitting] = useState(false);
+
+	const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		// Her ville vi normalt sende dataene til en server
-		alert('Takk for din henvendelse! Vi vil kontakte deg så snart som mulig.');
+		setIsSubmitting(true);
+
+		const formData = new FormData(e.currentTarget);
+		const data = {
+			name: formData.get('name'),
+			email: formData.get('email'),
+			subject: formData.get('subject'),
+			message: formData.get('message'),
+		};
+
+		try {
+			const response = await fetch('/api/contact', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(data),
+			});
+
+			const result = await response.json();
+
+			if (!response.ok) {
+				throw new Error(result.error || 'Noe gikk galt');
+			}
+
+			toast.success(
+				'Takk for din henvendelse! Vi vil kontakte deg så snart som mulig.'
+			);
+			e.currentTarget.reset();
+		} catch (error) {
+			toast.error(
+				error instanceof Error
+					? error.message
+					: 'Kunne ikke sende meldingen. Vennligst prøv igjen senere.'
+			);
+		} finally {
+			setIsSubmitting(false);
+		}
 	};
 
 	return (
@@ -133,7 +172,23 @@ export default function Contact() {
 								Send oss en melding
 							</h2>
 
-							<form onSubmit={handleSubmit} className='space-y-6'>
+							<div className='bg-yellow-500/10 border border-yellow-500/20 rounded-lg p-6 mb-8'>
+								<p className='text-yellow-500/90'>
+									Kontaktskjemaet er midlertidig utilgjengelig mens vi setter
+									opp e-postfunksjonaliteten. Vennligst kontakt oss direkte på{' '}
+									<a
+										href='mailto:post@padelco.no'
+										className='underline hover:text-yellow-400 transition-colors'
+									>
+										post@padelco.no
+									</a>
+								</p>
+							</div>
+
+							<form
+								onSubmit={handleSubmit}
+								className='space-y-6 opacity-50 pointer-events-none'
+							>
 								<motion.div
 									initial={{ opacity: 0, y: 10 }}
 									whileInView={{ opacity: 1, y: 0 }}
@@ -149,6 +204,7 @@ export default function Contact() {
 									<input
 										type='text'
 										id='name'
+										name='name'
 										required
 										className='w-full px-4 py-3 rounded-lg bg-card border-2 border-foreground/10 focus:border-foreground/20 focus:outline-none transition-colors duration-300'
 									/>
@@ -169,6 +225,7 @@ export default function Contact() {
 									<input
 										type='email'
 										id='email'
+										name='email'
 										required
 										className='w-full px-4 py-3 rounded-lg bg-card border-2 border-foreground/10 focus:border-foreground/20 focus:outline-none transition-colors duration-300'
 									/>
@@ -189,6 +246,7 @@ export default function Contact() {
 									<input
 										type='text'
 										id='subject'
+										name='subject'
 										required
 										className='w-full px-4 py-3 rounded-lg bg-card border-2 border-foreground/10 focus:border-foreground/20 focus:outline-none transition-colors duration-300'
 									/>
@@ -208,6 +266,7 @@ export default function Contact() {
 									</label>
 									<textarea
 										id='message'
+										name='message'
 										rows={4}
 										required
 										className='w-full px-4 py-3 rounded-lg bg-card border-2 border-foreground/10 focus:border-foreground/20 focus:outline-none transition-colors duration-300'
@@ -220,9 +279,10 @@ export default function Contact() {
 									viewport={{ once: true }}
 									transition={{ duration: 0.3, delay: 0.5 }}
 									type='submit'
-									className='w-full py-4 px-6 bg-foreground text-background rounded-lg hover:bg-foreground/90 transition-colors duration-300 font-medium'
+									disabled={isSubmitting}
+									className='w-full py-4 px-6 bg-foreground text-background rounded-lg hover:bg-foreground/90 transition-colors duration-300 font-medium disabled:opacity-50 disabled:cursor-not-allowed'
 								>
-									Send melding
+									{isSubmitting ? 'Sender...' : 'Send melding'}
 								</motion.button>
 							</form>
 						</motion.div>

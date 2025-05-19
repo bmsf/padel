@@ -18,7 +18,7 @@ export const siteConfig = {
 	},
 	contact: {
 		phone: '+47 XXX XX XXX',
-		email: 'kontakt@padelco.no',
+		email: 'post@padelco.no',
 	},
 };
 
