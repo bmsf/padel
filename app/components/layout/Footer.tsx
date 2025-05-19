@@ -84,7 +84,16 @@ export default function Footer() {
 					className='flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0'
 				>
 					<p className='text-sm text-muted-foreground'>
-						&copy; {new Date().getFullYear()} BMSF. All rights reserved.
+						&copy; {new Date().getFullYear()}{' '}
+						<a
+							href='https://portfolio-bmsf.vercel.app/'
+							className='hover:text-foreground transition-colors'
+							target='_blank'
+							rel='noopener noreferrer'
+						>
+							BMSF
+						</a>
+						. All rights reserved.
 					</p>
 					<div className='flex space-x-6 text-sm'>
 						<a

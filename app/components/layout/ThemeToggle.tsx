@@ -1,5 +1,5 @@
 import { Moon, Sun } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { motion } from 'framer-motion';
 
 interface ThemeToggleProps {
 	theme?: string;
@@ -7,18 +7,36 @@ interface ThemeToggleProps {
 }
 
 export function ThemeToggle({ theme, onToggle }: ThemeToggleProps) {
+	const isDark = theme === 'dark';
+
 	return (
-		<Button
-			variant='ghost'
-			size='icon'
+		<motion.button
 			onClick={onToggle}
-			className='rounded-full text-foreground hover:bg-transparent hover:text-current'
-			aria-label={
-				theme === 'dark' ? 'Bytt til lyst tema' : 'Bytt til mørkt tema'
-			}
+			className={`relative bg-card/70 w-[70px] h-[36px] rounded-full p-1 duration-300 focus:outline-none
+				 border-2 border-foreground/10 hover:bg-card/70`}
+			aria-label={isDark ? 'Bytt til lyst tema' : 'Bytt til mørkt tema'}
+			initial={false}
 		>
-			<Sun className='h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0' />
-			<Moon className='absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100' />
-		</Button>
+			{/* Bakgrunnsikoner - viser det motsatte av nåværende tema */}
+			<span className='absolute left-2 top-1/2 -translate-y-1/2 text-foreground opacity-0 dark:opacity-100 transition-opacity duration-300'>
+				<Sun className='h-4 w-4' />
+			</span>
+			<span className='absolute right-2 top-1/2 -translate-y-1/2 text-foreground opacity-100 dark:opacity-0 transition-opacity duration-300'>
+				<Moon className='h-4 w-4' />
+			</span>
+
+			{/* Animert sirkel */}
+			<motion.div
+				className='w-[26px] h-[26px] rounded-full shadow-md bg-foreground'
+				animate={{
+					x: isDark ? 34 : 0,
+				}}
+				transition={{
+					type: 'spring',
+					stiffness: 500,
+					damping: 30,
+				}}
+			/>
+		</motion.button>
 	);
 }
