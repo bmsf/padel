@@ -85,13 +85,13 @@ export default function Hero({ videoUrl = '/videos/video.mp4' }: HeroProps) {
 						</motion.h1>
 
 						<motion.p
-							className='text-xl md:text-2xl text-white/90 mb-8 max-w-2xl mx-auto'
+							className='text-xl md:text-2xl text-white mb-8 max-w-2xl mx-auto'
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.8, delay: 0.4 }}
 						>
 							Et av Norges mest komplette padelanlegg – med seks innendørsbaner,
-							tre utendørsbaner, treningsrom, lounge og splitter ny pro shop.
+							tre utendørsbaner, treningsrom, lounge og splitter ny pro shop
 						</motion.p>
 
 						<motion.div

@@ -409,7 +409,7 @@ export default function EventPackages() {
 							transition={{ duration: 0.8, delay: 0 }}
 							className='items-center justify-center'
 						>
-							<div className='w-12 h-12 rounded-full bg-primary/10 text-primary text-xl font-bold mb-4 flex items-center'>
+							<div className='w-12 h-12 rounded-full bg-primary/10 text-xl font-bold mb-4 flex items-center'>
 								1
 							</div>
 							<h3 className='text-xl font-medium mb-3'>Kontakt oss</h3>
@@ -427,7 +427,7 @@ export default function EventPackages() {
 							transition={{ duration: 0.8, delay: 0.1 }}
 							className='items-center justify-center'
 						>
-							<div className='w-12 h-12 rounded-full bg-primary/10 text-primary text-xl font-bold mb-4 flex items-center'>
+							<div className='w-12 h-12 rounded-full text-xl font-bold mb-4 flex'>
 								2
 							</div>
 							<h3 className='text-xl font-medium mb-3'>
@@ -447,7 +447,7 @@ export default function EventPackages() {
 							transition={{ duration: 0.8, delay: 0.2 }}
 							className=''
 						>
-							<div className='w-12 h-12 rounded-full bg-primary/10 text-xl font-bold mb-4 flex'>
+							<div className='w-12 h-12 rounded-full text-xl font-bold mb-4 flex'>
 								3
 							</div>
 							<h3 className='text-xl font-medium mb-3'>

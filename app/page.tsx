@@ -1,6 +1,7 @@
 import Hero from './components/layout/Hero';
 import FacilitiesSection from './components/layout/FacilitiesSection';
-import InstagramFeed from './components/layout/InstagramFeed';
+import NewsBento from './components/layout/NewsBento';
+import MapSection from './components/layout/MapSection';
 import { generateMetadata } from './lib/metadata-utils';
 import { siteConfig } from './config/metadata';
 import Script from 'next/script';
@@ -90,7 +91,8 @@ export default function Home() {
 					<Hero />
 					<div className='container mx-auto px-4 py-16'>
 						<FacilitiesSection />
-						<InstagramFeed />
+						<NewsBento />
+						<MapSection />
 					</div>
 				</main>
 			</div>
