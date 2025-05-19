@@ -76,7 +76,7 @@ export default function Hero({ videoUrl = '/videos/video.mp4' }: HeroProps) {
 						className='max-w-4xl mx-auto'
 					>
 						<motion.h1
-							className='text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6'
+							className='text-5xl md:text-7xl lg:text-8xl  text-white mb-6'
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.8, delay: 0.2 }}
@@ -115,10 +115,10 @@ export default function Hero({ videoUrl = '/videos/video.mp4' }: HeroProps) {
 							<Button
 								size='lg'
 								variant='outline'
-								className='px-8 min-w-[200px] h-14 text-lg font-medium text-white border-white hover:bg-white/10 transition-all duration-300 transform hover:scale-105'
+								className='px-8 min-w-[200px] h-14 text-lg font-medium text-white hover:text-white border-white hover:bg-transparent hover:border-white/90 transition-all duration-300 transform hover:scale-105 bg-transparent'
 								asChild
 							>
-								<Link href='/om-oss'>Les Mer</Link>
+								<Link href='/about'>Om Oss</Link>
 							</Button>
 						</motion.div>
 					</motion.div>

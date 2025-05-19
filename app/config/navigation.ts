@@ -2,11 +2,11 @@ import { NavConfig } from '@/types/navigation';
 
 export const navigationConfig: NavConfig = {
 	links: [
-		{ href: '/proshop', label: 'Pro shop' },
-		{ href: '/event-packages', label: 'Eventpakker' },
-		{ href: '/partners', label: 'Samarbeidspartnere' },
-		{ href: '/about', label: 'Om oss' },
-		{ href: '/contact', label: 'Kontakt oss' },
+		{ href: '/proshop', label: 'PRO SHOP' },
+		{ href: '/event-packages', label: 'EVENTPAKKER' },
+		{ href: '/partners', label: 'SAMARBEIDSPARTNERE' },
+		{ href: '/about', label: 'OM OSS' },
+		{ href: '/contact', label: 'KONTAKT OSS' },
 	],
 	logo: {
 		lightSrc: '/Padel_Co_logo_refined_white.png',
