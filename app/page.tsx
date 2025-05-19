@@ -2,6 +2,7 @@ import Hero from './components/layout/Hero';
 import FacilitiesSection from './components/layout/FacilitiesSection';
 import NewsBento from './components/layout/NewsBento';
 import MapSection from './components/layout/MapSection';
+import PartnersAnimation from './components/ui/PartnersAnimation';
 import { generateMetadata } from './lib/metadata-utils';
 import { siteConfig } from './config/metadata';
 import Script from 'next/script';
@@ -92,6 +93,7 @@ export default function Home() {
 					<div className='container mx-auto px-4 py-16'>
 						<FacilitiesSection />
 						<NewsBento />
+						<PartnersAnimation />
 						<MapSection />
 					</div>
 				</main>

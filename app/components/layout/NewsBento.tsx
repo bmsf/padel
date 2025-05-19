@@ -10,7 +10,6 @@ import {
 	ArrowRight,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import Link from 'next/link';
 import Image from 'next/image';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useEffect, useState } from 'react';
@@ -20,6 +19,14 @@ import {
 	defaultViewport,
 } from '@/app/lib/animations';
 import { useReducedMotion } from 'framer-motion';
+import {
+	Dialog,
+	DialogContent,
+	DialogDescription,
+	DialogHeader,
+	DialogTitle,
+	DialogTrigger,
+} from '@/components/ui/dialog';
 
 // Beholder eksisterende typer fra NewsAndEvents
 interface NewsItem {
@@ -151,61 +158,120 @@ const NewsBento = () => {
 					{/* Hovednyhet (6x2) */}
 					<motion.article
 						variants={itemVariants(shouldReduceMotion)}
-						className='col-span-12 md:col-span-6 row-span-2 bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group'
+						className='col-span-12 md:col-span-6 row-span-2 bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer'
 						whileHover={{ y: -5 }}
 					>
-						<div className='relative h-full'>
-							{mainNews.imageUrl && (
-								<div className='absolute inset-0'>
+						<Dialog>
+							<DialogTrigger asChild>
+								<div className='relative h-full'>
+									{mainNews.imageUrl && (
+										<div className='absolute inset-0'>
+											<Image
+												src={mainNews.imageUrl}
+												alt={mainNews.title}
+												fill
+												className='object-cover transition-transform duration-500 group-hover:scale-105'
+											/>
+											<div className='absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent' />
+										</div>
+									)}
+									<div className='relative h-full flex flex-col justify-end p-8 text-white'>
+										<div className='flex items-center gap-2 text-white/90 mb-3'>
+											{getIcon(mainNews.type)}
+											<span className='text-sm font-medium capitalize'>
+												{mainNews.type === 'news' && 'Nyhet'}
+												{mainNews.type === 'event' && 'Arrangement'}
+												{mainNews.type === 'tournament' && 'Turnering'}
+												{mainNews.type === 'campaign' && 'Kampanje'}
+											</span>
+										</div>
+										<h3 className='text-3xl font-bold mb-3'>
+											{mainNews.title}
+										</h3>
+										<p className='text-white/80 mb-4 text-lg'>
+											{mainNews.description}
+										</p>
+										<div className='flex justify-between items-center'>
+											<time className='text-sm text-white/70'>
+												{new Date(mainNews.date).toLocaleDateString('nb-NO', {
+													year: 'numeric',
+													month: 'long',
+													day: 'numeric',
+												})}
+											</time>
+											<Button
+												variant='ghost'
+												className='text-white hover:text-white/90 hover:bg-white/10'
+											>
+												Les mer
+												<ArrowRight className='w-4 h-4 ml-2' />
+											</Button>
+										</div>
+									</div>
+								</div>
+							</DialogTrigger>
+							<DialogContent className='max-w-3xl max-h-[90vh] overflow-y-auto'>
+								<DialogHeader>
+									<DialogTitle className='text-2xl'>
+										{mainNews.title}
+									</DialogTitle>
+									<DialogDescription className='text-base'>
+										{mainNews.description}
+									</DialogDescription>
+								</DialogHeader>
+
+								<div className='relative h-60 my-6'>
 									<Image
-										src={mainNews.imageUrl}
+										src={mainNews.imageUrl || ''}
 										alt={mainNews.title}
 										fill
-										className='object-cover transition-transform duration-500 group-hover:scale-105'
+										className='object-cover rounded-md'
 									/>
-									<div className='absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent' />
 								</div>
-							)}
-							<div className='relative h-full flex flex-col justify-end p-8 text-white'>
-								<div className='flex items-center gap-2 text-white/90 mb-3'>
-									{getIcon(mainNews.type)}
-									<span className='text-sm font-medium capitalize'>
-										{mainNews.type === 'news' && 'Nyhet'}
-										{mainNews.type === 'event' && 'Arrangement'}
-										{mainNews.type === 'tournament' && 'Turnering'}
-										{mainNews.type === 'campaign' && 'Kampanje'}
-									</span>
-								</div>
-								<h3 className='text-3xl font-bold mb-3'>{mainNews.title}</h3>
-								<p className='text-white/80 mb-4 text-lg'>
-									{mainNews.description}
-								</p>
-								<div className='flex justify-between items-center'>
-									<time className='text-sm text-white/70'>
+
+								<div className='space-y-6'>
+									<div className='flex items-center gap-2 text-muted-foreground'>
+										{getIcon(mainNews.type)}
+										<span className='text-sm font-medium capitalize'>
+											{mainNews.type === 'news' && 'Nyhet'}
+											{mainNews.type === 'event' && 'Arrangement'}
+											{mainNews.type === 'tournament' && 'Turnering'}
+											{mainNews.type === 'campaign' && 'Kampanje'}
+										</span>
+									</div>
+
+									<time className='block text-sm text-muted-foreground'>
 										{new Date(mainNews.date).toLocaleDateString('nb-NO', {
 											year: 'numeric',
 											month: 'long',
 											day: 'numeric',
 										})}
 									</time>
-									{mainNews.link && (
-										<Button
-											variant='ghost'
-											className='text-white hover:text-white/90 hover:bg-white/10'
-											asChild
-										>
-											<Link
-												href={mainNews.link}
-												className='flex items-center gap-2'
-											>
-												Les mer
-												<ArrowRight className='w-4 h-4' />
-											</Link>
-										</Button>
-									)}
+
+									<div className='prose prose-sm dark:prose-invert max-w-none'>
+										<p>{mainNews.description}</p>
+										<p>
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+											Sed do eiusmod tempor incididunt ut labore et dolore magna
+											aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+											ullamco laboris nisi ut aliquip ex ea commodo consequat.
+										</p>
+										<h3>Detaljer</h3>
+										<p>
+											Duis aute irure dolor in reprehenderit in voluptate velit
+											esse cillum dolore eu fugiat nulla pariatur. Excepteur
+											sint occaecat cupidatat non proident, sunt in culpa qui
+											officia deserunt mollit anim id est laborum.
+										</p>
+										<ul>
+											<li>Punkt 1</li>
+											<li>Punkt 2</li>
+											<li>Punkt 3</li>
+										</ul>
+									</div>
 								</div>
-							</div>
-						</div>
+							</DialogContent>
+						</Dialog>
 					</motion.article>
 
 					{/* Instagram Feed (6x1) */}
@@ -289,63 +355,119 @@ const NewsBento = () => {
 							key={item.id}
 							variants={itemVariants(shouldReduceMotion)}
 							whileHover={{ y: -5 }}
-							className='col-span-12 md:col-span-3 bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group'
+							className='col-span-12 md:col-span-3 bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer'
 						>
-							<div className='relative h-full'>
-								{item.imageUrl && (
-									<div className='absolute inset-0'>
+							<Dialog>
+								<DialogTrigger asChild>
+									<div className='relative h-full'>
+										{item.imageUrl && (
+											<div className='absolute inset-0'>
+												<Image
+													src={item.imageUrl}
+													alt={item.title}
+													fill
+													className='object-cover transition-transform duration-500 group-hover:scale-105'
+												/>
+												<div className='absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent' />
+											</div>
+										)}
+										<div className='relative h-full flex flex-col justify-end p-6 text-white'>
+											<div className='flex items-center gap-2 text-white/90 mb-2'>
+												{getIcon(item.type)}
+												<span className='text-sm font-medium capitalize'>
+													{item.type === 'news' && 'Nyhet'}
+													{item.type === 'event' && 'Arrangement'}
+													{item.type === 'tournament' && 'Turnering'}
+													{item.type === 'campaign' && 'Kampanje'}
+												</span>
+											</div>
+											<h3 className='text-xl font-bold mb-2 line-clamp-2'>
+												{item.title}
+											</h3>
+											<p className='text-white/80 text-sm mb-3 line-clamp-2'>
+												{item.description}
+											</p>
+											<div className='flex justify-between items-center'>
+												<time className='text-xs text-white/70'>
+													{new Date(item.date).toLocaleDateString('nb-NO', {
+														year: 'numeric',
+														month: 'long',
+														day: 'numeric',
+													})}
+												</time>
+												<Button
+													variant='ghost'
+													size='sm'
+													className='text-white hover:text-white/90 hover:bg-white/10'
+												>
+													Les mer
+													<ArrowRight className='w-3 h-3 ml-1' />
+												</Button>
+											</div>
+										</div>
+									</div>
+								</DialogTrigger>
+								<DialogContent className='max-w-3xl max-h-[90vh] overflow-y-auto'>
+									<DialogHeader>
+										<DialogTitle className='text-2xl'>{item.title}</DialogTitle>
+										<DialogDescription className='text-base'>
+											{item.description}
+										</DialogDescription>
+									</DialogHeader>
+
+									<div className='relative h-60 my-6'>
 										<Image
-											src={item.imageUrl}
+											src={item.imageUrl || ''}
 											alt={item.title}
 											fill
-											className='object-cover transition-transform duration-500 group-hover:scale-105'
+											className='object-cover rounded-md'
 										/>
-										<div className='absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent' />
 									</div>
-								)}
-								<div className='relative h-full flex flex-col justify-end p-6 text-white'>
-									<div className='flex items-center gap-2 text-white/90 mb-2'>
-										{getIcon(item.type)}
-										<span className='text-sm font-medium capitalize'>
-											{item.type === 'news' && 'Nyhet'}
-											{item.type === 'event' && 'Arrangement'}
-											{item.type === 'tournament' && 'Turnering'}
-											{item.type === 'campaign' && 'Kampanje'}
-										</span>
-									</div>
-									<h3 className='text-xl font-bold mb-2 line-clamp-2'>
-										{item.title}
-									</h3>
-									<p className='text-white/80 text-sm mb-3 line-clamp-2'>
-										{item.description}
-									</p>
-									<div className='flex justify-between items-center'>
-										<time className='text-xs text-white/70'>
+
+									<div className='space-y-6'>
+										<div className='flex items-center gap-2 text-muted-foreground'>
+											{getIcon(item.type)}
+											<span className='text-sm font-medium capitalize'>
+												{item.type === 'news' && 'Nyhet'}
+												{item.type === 'event' && 'Arrangement'}
+												{item.type === 'tournament' && 'Turnering'}
+												{item.type === 'campaign' && 'Kampanje'}
+											</span>
+										</div>
+
+										<time className='block text-sm text-muted-foreground'>
 											{new Date(item.date).toLocaleDateString('nb-NO', {
 												year: 'numeric',
 												month: 'long',
 												day: 'numeric',
 											})}
 										</time>
-										{item.link && (
-											<Button
-												variant='ghost'
-												size='sm'
-												className='text-white hover:text-white/90 hover:bg-white/10'
-												asChild
-											>
-												<Link
-													href={item.link}
-													className='flex items-center gap-1'
-												>
-													Les mer
-													<ArrowRight className='w-3 h-3' />
-												</Link>
-											</Button>
-										)}
+
+										<div className='prose prose-sm dark:prose-invert max-w-none'>
+											<p>{item.description}</p>
+											<p>
+												Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+												Sed do eiusmod tempor incididunt ut labore et dolore
+												magna aliqua. Ut enim ad minim veniam, quis nostrud
+												exercitation ullamco laboris nisi ut aliquip ex ea
+												commodo consequat.
+											</p>
+											<h3>Detaljer</h3>
+											<p>
+												Duis aute irure dolor in reprehenderit in voluptate
+												velit esse cillum dolore eu fugiat nulla pariatur.
+												Excepteur sint occaecat cupidatat non proident, sunt in
+												culpa qui officia deserunt mollit anim id est laborum.
+											</p>
+											<ul>
+												<li>Punkt 1</li>
+												<li>Punkt 2</li>
+												<li>Punkt 3</li>
+											</ul>
+										</div>
 									</div>
-								</div>
-							</div>
+								</DialogContent>
+							</Dialog>
 						</motion.article>
 					))}
 				</motion.div>

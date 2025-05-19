@@ -52,7 +52,13 @@ const companyLogos = [
 
 export default function PartnersAnimation() {
 	return (
-		<div className='pb-2'>
+		<motion.div
+			initial={{ opacity: 0, y: 24 }}
+			whileInView={{ opacity: 1, y: 0 }}
+			viewport={{ once: true, amount: 0.3 }}
+			transition={{ duration: 0.8, ease: 'easeOut' }}
+			className='pb-2'
+		>
 			<div className='text-sm text-center mb-2 font-light text-muted-foreground'>
 				Våre Samarbeidspartnere
 			</div>
@@ -94,6 +100,6 @@ export default function PartnersAnimation() {
 					))}
 				</motion.div>
 			</div>
-		</div>
+		</motion.div>
 	);
 }

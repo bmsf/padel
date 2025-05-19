@@ -6,6 +6,7 @@ import Footer from './components/layout/Footer';
 import LoadingScreen from './components/ui/LoadingScreen';
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { usePathname } from 'next/navigation';
 
 interface RootLayoutClientProps {
 	children: React.ReactNode;
@@ -14,6 +15,10 @@ interface RootLayoutClientProps {
 export default function RootLayoutClient({ children }: RootLayoutClientProps) {
 	const [isLoading, setIsLoading] = useState(true);
 	const [contentVisible, setContentVisible] = useState(false);
+	const pathname = usePathname();
+
+	// Sjekk om vi er på error eller not-found sidene
+	const isErrorPage = pathname === '/error' || pathname === '/not-found';
 
 	const handleLoadingComplete = () => {
 		setIsLoading(false);
@@ -31,6 +36,24 @@ export default function RootLayoutClient({ children }: RootLayoutClientProps) {
 			},
 		},
 	};
+
+	// Hvis vi er på error eller not-found siden, vis innholdet direkte
+	if (isErrorPage) {
+		return (
+			<ThemeProvider
+				attribute='class'
+				defaultTheme='system'
+				enableSystem
+				disableTransitionOnChange
+			>
+				<div className='flex flex-col min-h-screen'>
+					<Header />
+					<main className='flex-grow'>{children}</main>
+					<Footer />
+				</div>
+			</ThemeProvider>
+		);
+	}
 
 	return (
 		<ThemeProvider
