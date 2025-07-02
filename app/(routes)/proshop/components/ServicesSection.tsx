@@ -12,7 +12,7 @@ const services = [
 	{
 		title: 'Personlig veiledning',
 		description:
-			'Våre eksperter hjelper deg med å finne riktig utstyr basert på ditt nivå og spillestil.',
+			'Er du usikker på hva som passer deg? Vårt team hjelper deg gjerne med tips og veiledning, basert på nivå og spillestil.',
 		icon: <Users className='w-8 h-8' />,
 		features: ['Gratis konsultasjon', 'Spillestilanalyse', 'Anbefalinger'],
 	},
@@ -56,10 +56,21 @@ export default function ServicesSection() {
 						initial='hidden'
 						whileInView='visible'
 						viewport={defaultViewport}
-						className='text-3xl font-semibold mb-12 text-center'
+						className='text-3xl font-semibold mb-4 text-center'
 					>
 						Våre tjenester
 					</motion.h2>
+					<motion.p
+						variants={itemVariants(shouldReduceMotion)}
+						initial='hidden'
+						whileInView='visible'
+						viewport={defaultViewport}
+						className='text-lg text-center mb-12 max-w-3xl mx-auto'
+					>
+						Vi tilbyr alt du trenger for å spille bedre og med mer komfort. Fra
+						personlig veiledning til profesjonell stringing - vi er her for å
+						hjelpe deg med å finne det perfekte utstyret.
+					</motion.p>
 					<motion.div
 						className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'
 						variants={containerVariants(shouldReduceMotion)}

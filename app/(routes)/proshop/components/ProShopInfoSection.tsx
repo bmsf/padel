@@ -16,7 +16,7 @@ const proShopInfo = [
 		id: 2,
 		title: 'Premium utstyr',
 		description:
-			'Vi fører kun kvalitetsprodukter fra ledende merker som Babolat, Head, Wilson og mange flere.',
+			'Vi fører kun kvalitetsprodukter fra ledende merker som Babolat og Head.',
 		imageUrl: '/Proshop.jpg',
 	},
 	{
@@ -41,20 +41,6 @@ export default function ProShopInfoSection() {
 					viewport={{ once: true, margin: '-10%' }}
 					className='max-w-7xl mx-auto'
 				>
-					<motion.h2
-						variants={itemVariants(shouldReduceMotion)}
-						className='text-3xl font-bold text-center mb-4'
-					>
-						Hva er Padel Co Pro Shop?
-					</motion.h2>
-					<motion.p
-						variants={itemVariants(shouldReduceMotion)}
-						className='text-lg text-muted-foreground text-center mb-12 max-w-3xl mx-auto'
-					>
-						Vår pro shop er mer enn bare en butikk - det er ditt første stopp
-						for alt du trenger for å forbedre padel-spillet ditt.
-					</motion.p>
-
 					<div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
 						{proShopInfo.map((info, index) => (
 							<motion.div

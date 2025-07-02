@@ -57,7 +57,7 @@ export default function Error({
 				</div>
 				<p className='text-sm text-muted-foreground mt-4'>
 					Hvis problemet vedvarer, vennligst{' '}
-					<Link href='/contact' className='text-foreground hover:underline'>
+					<Link href='/kontakt-oss' className='text-foreground hover:underline'>
 						kontakt oss
 					</Link>
 					.

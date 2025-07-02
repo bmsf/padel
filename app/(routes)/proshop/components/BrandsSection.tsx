@@ -18,17 +18,29 @@ export default function BrandsSection({ brands }: BrandsSectionProps) {
 	return (
 		<section className='py-12 w-full overflow-hidden'>
 			<div className='container mx-auto px-4'>
-				<div className='mx-auto'>
+				<div className='mx-auto max-w-4xl'>
 					<motion.h2
 						initial={{ opacity: 0, y: 20 }}
 						whileInView={{ opacity: 1, y: 0 }}
 						viewport={{ once: true }}
 						transition={{ duration: 0.8 }}
-						className='text-3xl font-semibold mb-12 text-center'
+						className='text-3xl font-semibold mb-4 text-center'
 					>
 						Våre merker
 					</motion.h2>
-					<div className='grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-8 md:gap-12'>
+					<motion.p
+						initial={{ opacity: 0, y: 20 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true }}
+						transition={{ duration: 0.8, delay: 0.1 }}
+						className='text-lg text-center mb-12 max-w-3xl mx-auto'
+					>
+						Vi fører kun kvalitetsprodukter fra ledende merker som HEAD og
+						Babolat – to av verdens ledende merker innen padel. Enten du trenger
+						en ny racket, grep, baller eller tilbehør, har vi det du trenger for
+						å spille bedre og med mer komfort.
+					</motion.p>
+					<div className='grid grid-cols-2 gap-4 sm:gap-8 md:gap-12'>
 						{brands.map((brand, index) => (
 							<motion.div
 								key={brand.name}

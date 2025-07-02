@@ -58,7 +58,7 @@ export default function RootLayoutClient({ children }: RootLayoutClientProps) {
 	return (
 		<ThemeProvider
 			attribute='class'
-			defaultTheme='system'
+			defaultTheme='dark'
 			enableSystem
 			disableTransitionOnChange
 		>

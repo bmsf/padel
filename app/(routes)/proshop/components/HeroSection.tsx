@@ -9,23 +9,29 @@ export default function HeroSection() {
 				initial={{ opacity: 0, y: 20 }}
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.8 }}
-				className='max-w-3xl mx-auto text-center space-y-6'
+				className='max-w-4xl mx-auto text-center space-y-8'
 			>
 				<h1 className='text-4xl md:text-6xl font-bold tracking-tight'>
-					Velkommen til vår Pro Shop
+					Pro Shop
 				</h1>
 				<p className='text-lg md:text-2xl text-muted-foreground leading-relaxed'>
-					Oppgradert. Gjennomført. Klar for kamp.
+					Klar til kamp – vi har det du trenger.
 				</p>
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.8 }}
+					transition={{ duration: 0.8, delay: 0.2 }}
+					className='text-lg md:text-xl leading-relaxed space-y-4 pt-8'
 				>
-					<p className='text-lg'>
-						Vi tilbyr nøye utvalgt padelutstyr for både nybegynnere og erfarne
-						spillere. Finn racketen som passer deg, prøv før du kjøper – og få
-						råd fra vårt team.
+					<p>
+						I vår Pro Shop finner du nøye utvalgt padelutstyr fra HEAD og
+						Babolat – to av verdens ledende merker innen padel. Enten du trenger
+						en ny racket, grep, baller eller tilbehør, har vi det du trenger for
+						å spille bedre og med mer komfort.
+					</p>
+					<p>
+						Er du usikker på hva som passer deg? Vårt team hjelper deg gjerne
+						med tips og veiledning, basert på nivå og spillestil.
 					</p>
 				</motion.div>
 			</motion.div>

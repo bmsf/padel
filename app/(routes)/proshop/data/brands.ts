@@ -18,10 +18,4 @@ export const brands: BrandProps[] = [
 		width: 200,
 		height: 50,
 	},
-	{
-		name: 'Nibbi Clothing',
-		logo: '/387762223_842634821198675_1729876083746675101_n.jpg',
-		width: 200,
-		height: 50,
-	},
 ];

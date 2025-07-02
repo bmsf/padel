@@ -4,11 +4,12 @@ import { siteConfig } from './config/metadata';
 export default function sitemap(): MetadataRoute.Sitemap {
 	const routes = [
 		'',
-		'/booking',
-		'/priser',
+		'/proshop',
+		'/om-padel',
+		'/eventpakker',
+		'/samarbeidspartnere',
 		'/om-oss',
-		'/kontakt',
-		'/fasiliteter',
+		'/kontakt-oss',
 	].map((route) => ({
 		url: `${siteConfig.url}${route}`,
 		lastModified: new Date().toISOString().split('T')[0],

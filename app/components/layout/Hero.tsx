@@ -95,7 +95,7 @@ export default function Hero({ imageUrl = '/hero.jpg' }: HeroProps) {
 								className='px-8 min-w-[200px] h-14 text-lg font-medium text-white hover:text-white border-white hover:bg-transparent hover:border-white/90 transition-all duration-300 transform hover:scale-105 bg-transparent'
 								asChild
 							>
-								<Link href='/about'>Om Oss</Link>
+								<Link href='/om-oss'>Om Oss</Link>
 							</Button>
 						</motion.div>
 					</motion.div>

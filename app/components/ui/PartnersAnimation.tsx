@@ -72,7 +72,7 @@ export default function PartnersAnimation() {
 			transition={{ duration: 0.8, ease: 'easeOut' }}
 			className='pb-2'
 		>
-			<div className='text-sm text-center mb-2 font-light text-muted-foreground'>
+			<div className='text-sm text-center mb-2 font-light'>
 				Våre Samarbeidspartnere
 			</div>
 			<div

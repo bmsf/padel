@@ -69,12 +69,12 @@ const FacilitiesSection: React.FC = () => {
 					<motion.div
 						key={card.title}
 						variants={itemVariants(shouldReduceMotion)}
-						className='bg-card p-8 rounded-xl shadow-md hover:shadow-lg transition-colors duration-300 transform-gpu motion-safe:translate-z-0'
+						className='bg-card p-8 rounded-xl border-2 border-foreground/10 shadow-md hover:shadow-lg transition-colors duration-300 transform-gpu motion-safe:translate-z-0'
 					>
 						<div className='flex flex-col items-center text-center'>
-							<div className='text-primary mb-4'>{card.icon}</div>
+							<div className=' mb-4'>{card.icon}</div>
 							<h3 className='text-xl font-semibold mb-2'>{card.title}</h3>
-							<p className='text-muted-foreground'>{card.description}</p>
+							<p className=''>{card.description}</p>
 						</div>
 					</motion.div>
 				))}

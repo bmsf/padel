@@ -22,8 +22,8 @@ export default function Footer() {
 						<p className='mb-4'>
 							Din destinasjon for padelglede og kvalitetstid
 						</p>
-						<p className='text-sm text-muted-foreground'>Grini Næringspark 6</p>
-						<p className='text-sm text-muted-foreground'>1361 Østerås</p>
+						<p className='text-sm '>Grini Næringspark 6</p>
+						<p className='text-sm'>1361 Østerås</p>
 					</motion.div>
 					<motion.div
 						initial={{ opacity: 0, y: 20 }}
@@ -32,7 +32,7 @@ export default function Footer() {
 						transition={{ duration: 0.5, delay: 0.2 }}
 					>
 						<h3 className='text-lg font-semibold mb-4'>Åpningstider</h3>
-						<p className='text-sm text-muted-foreground mb-2'>
+						<p className='text-sm  mb-2'>
 							Alle dager: 00:00 - 24:00
 						</p>
 					</motion.div>
@@ -43,16 +43,16 @@ export default function Footer() {
 						transition={{ duration: 0.5, delay: 0.3 }}
 					>
 						<h3 className='text-lg font-semibold mb-4'>Kontakt</h3>
-						<p className='text-sm text-muted-foreground mb-2'>
+						<p className='text-sm  mb-2'>
 							Telefon: +47 48189107
 						</p>
-						<p className='text-sm text-muted-foreground mb-2'>
+						<p className='text-sm mb-2'>
 							E-post: post@padelco.no
 						</p>
 						<div className='flex space-x-4 mt-4'>
 							<a
 								href='https://www.facebook.com/padelco.no'
-								className='text-muted-foreground hover:text-foreground transition-colors'
+								className=' hover:text-foreground transition-colors'
 								target='_blank'
 								rel='noopener noreferrer'
 							>
@@ -60,7 +60,7 @@ export default function Footer() {
 							</a>
 							<a
 								href='https://www.instagram.com/padel_co/'
-								className='text-muted-foreground hover:text-foreground transition-colors'
+								className=' hover:text-foreground transition-colors'
 								target='_blank'
 								rel='noopener noreferrer'
 							>
