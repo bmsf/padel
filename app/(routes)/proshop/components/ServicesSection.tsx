@@ -6,7 +6,7 @@ import {
 	itemVariants,
 	defaultViewport,
 } from '@/app/lib/animations';
-import { Wrench, Users, Activity, Clock, Star, Heart } from 'lucide-react';
+import { Wrench, Users, Activity, Clock, Heart } from 'lucide-react';
 
 const services = [
 	{
@@ -35,12 +35,7 @@ const services = [
 		icon: <Clock className='w-8 h-8' />,
 		features: ['Mandag-Fredag: 10-20', 'Lørdag: 10-18', 'Søndag: 12-18'],
 	},
-	{
-		title: 'VIP-medlemskap',
-		description: 'Få eksklusive fordeler og tilbud som VIP-medlem.',
-		icon: <Star className='w-8 h-8' />,
-		features: ['Prioritetsstringing', 'Eksklusive tilbud', 'Personlig service'],
-	},
+
 	{
 		title: 'Garanti & Service',
 		description: 'Vi står bak alle våre produkter med full garanti og service.',
@@ -87,12 +82,9 @@ export default function ServicesSection() {
 								</p>
 								<ul className='space-y-2'>
 									{service.features.map((feature, index) => (
-										<li
-											key={index}
-											className='flex items-center text-sm text-muted-foreground'
-										>
+										<li key={index} className='flex items-center text-sm'>
 											<svg
-												className='w-4 h-4 mr-2 text-primary'
+												className='w-4 h-4 mr-2'
 												fill='none'
 												stroke='currentColor'
 												viewBox='0 0 24 24'

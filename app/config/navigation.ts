@@ -10,7 +10,7 @@ export const navigationConfig: NavConfig = {
 	],
 	logo: {
 		lightSrc: '/Padel_Co_logo_refined_white.png',
-		darkSrc: '/Padel_Co_logo_refined_green.png',
+		darkSrc: '/Padel_Co_logo_refined_green 14.44.26.png',
 		alt: 'Padel Co Logo',
 		width: 130,
 		height: 5,

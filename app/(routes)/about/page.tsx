@@ -1,24 +1,16 @@
 'use client';
 
-import { motion, useReducedMotion } from 'framer-motion';
-import {
-	containerVariants,
-	itemVariants,
-	fadeInVariants,
-	defaultViewport,
-} from '@/app/lib/animations';
+import { motion } from 'framer-motion';
 
 export default function About() {
-	const shouldReduceMotion = useReducedMotion();
-
 	return (
 		<div className='min-h-screen bg-background overflow-x-hidden'>
 			{/* Hero Section */}
 			<div className='container mx-auto px-4 py-12 md:py-16'>
 				<motion.div
-					variants={fadeInVariants(shouldReduceMotion)}
-					initial='hidden'
-					animate='visible'
+					initial={{ opacity: 0, y: 20 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.8 }}
 					className='max-w-3xl mx-auto text-center space-y-6'
 				>
 					<h1 className='text-4xl md:text-6xl font-bold tracking-tight'>
@@ -34,10 +26,10 @@ export default function About() {
 			<section className='py-12'>
 				<div className='container mx-auto px-4'>
 					<motion.div
-						variants={itemVariants(shouldReduceMotion)}
-						initial='hidden'
-						whileInView='visible'
-						viewport={defaultViewport}
+						initial={{ opacity: 0, y: 20 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true }}
+						transition={{ duration: 0.8 }}
 						className='max-w-4xl mx-auto'
 					>
 						<div className='bg-card/30 p-12 rounded-2xl border-2 border-foreground/10 transform-gpu motion-safe:translate-z-0'>
@@ -62,14 +54,17 @@ export default function About() {
 			<section className='py-20 bg-card/30'>
 				<div className='container mx-auto px-4'>
 					<motion.div
-						variants={containerVariants(shouldReduceMotion)}
-						initial='hidden'
-						whileInView='visible'
-						viewport={defaultViewport}
+						initial={{ opacity: 0, y: 20 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true }}
+						transition={{ duration: 0.8 }}
 						className='max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8'
 					>
 						<motion.div
-							variants={itemVariants(shouldReduceMotion)}
+							initial={{ opacity: 0, y: 20 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							viewport={{ once: true }}
+							transition={{ duration: 0.8, delay: 0.1 }}
 							className='bg-card/30 p-10 rounded-2xl border-2 border-foreground/10 
 								transform-gpu motion-safe:translate-z-0 hover:bg-card/50 
 								transition-colors duration-300'
@@ -83,7 +78,10 @@ export default function About() {
 						</motion.div>
 
 						<motion.div
-							variants={itemVariants(shouldReduceMotion)}
+							initial={{ opacity: 0, y: 20 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							viewport={{ once: true }}
+							transition={{ duration: 0.8, delay: 0.2 }}
 							className='bg-card/30 p-10 rounded-2xl border-2 border-foreground/10 
 								transform-gpu motion-safe:translate-z-0 hover:bg-card/50 
 								transition-colors duration-300'

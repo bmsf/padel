@@ -1,9 +1,10 @@
-import { Metadata } from 'next';
+import { generateMetadata } from '@/app/lib/metadata-utils';
 
-export const metadata: Metadata = {
-	title: 'Partnere | Padel Co',
-	description: 'Våre partnere og sponsorer som gjør Padel Co mulig',
-};
+export const metadata = generateMetadata({
+	title: 'Samarbeidspartnere',
+	description:
+		'Møt våre verdifulle samarbeidspartnere som bidrar til å gjøre Padel Co Grini til et ledende padelsenter',
+});
 
 export default function PartnersLayout({
 	children,

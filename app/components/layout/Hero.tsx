@@ -3,36 +3,21 @@
 import { Button } from '@/components/ui/button';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
-import { Skeleton } from '@/components/ui/skeleton';
+import { useRef } from 'react';
+import Image from 'next/image';
 
 interface HeroProps {
-	videoUrl?: string;
+	imageUrl?: string;
 }
 
-export default function Hero({ videoUrl = '/videos/video.mp4' }: HeroProps) {
-	const videoRef = useRef<HTMLVideoElement>(null);
+export default function Hero({ imageUrl = '/hero.jpg' }: HeroProps) {
 	const containerRef = useRef<HTMLDivElement>(null);
-	const [isVideoLoading, setIsVideoLoading] = useState(true);
 	const { scrollY } = useScroll();
 
 	// Parallax effekter
 	const titleY = useTransform(scrollY, [0, 500], [0, 150]);
-	const videoScale = useTransform(scrollY, [0, 500], [1, 1.1]);
+	const imageScale = useTransform(scrollY, [0, 500], [1, 1.1]);
 	const opacity = useTransform(scrollY, [0, 300], [1, 0]);
-
-	useEffect(() => {
-		if (videoRef.current) {
-			videoRef.current.load();
-			videoRef.current.play().catch((error) => {
-				console.error('Video avspillingsfeil:', error);
-			});
-		}
-	}, [videoUrl]);
-
-	const handleVideoLoaded = () => {
-		setIsVideoLoading(false);
-	};
 
 	return (
 		<div className='container mx-auto px-4 pt-24 md:pt-32'>
@@ -40,28 +25,20 @@ export default function Hero({ videoUrl = '/videos/video.mp4' }: HeroProps) {
 				className='relative w-full h-[85vh] overflow-hidden rounded-xl'
 				ref={containerRef}
 			>
-				{/* Video Container med Parallax */}
+				{/* Bilde Container med Parallax */}
 				<motion.div
 					className='absolute inset-0 w-full h-full'
-					style={{ scale: videoScale }}
+					style={{ scale: imageScale }}
 				>
-					{isVideoLoading && (
-						<div className='absolute inset-0 z-10'>
-							<Skeleton className='w-full h-full rounded-xl' />
-						</div>
-					)}
-					<video
-						ref={videoRef}
-						src={videoUrl}
-						className='absolute inset-0 object-cover w-full h-full rounded-xl'
-						autoPlay
-						loop
-						muted
-						playsInline
-						controls={false}
-						onLoadedData={handleVideoLoaded}
+					<Image
+						src={imageUrl}
+						alt='Padel Co Grini - Hero bilde'
+						fill
+						className='object-cover rounded-xl'
+						priority
+						quality={90}
 					/>
-					<div className='absolute inset-0 bg-black/40 rounded-xl' />
+					<div className='absolute inset-0 bg-black/60 rounded-xl' />
 				</motion.div>
 
 				{/* Innhold */}

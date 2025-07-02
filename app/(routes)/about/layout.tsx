@@ -1,10 +1,10 @@
-import { Metadata } from 'next';
+import { generateMetadata } from '@/app/lib/metadata-utils';
 
-export const metadata: Metadata = {
-	title: 'Om oss | Padel Co',
+export const metadata = generateMetadata({
+	title: 'Om oss',
 	description:
 		'Lær mer om Padel Co - en nystartet satsning på en sport i sterk vekst',
-};
+});
 
 export default function AboutLayout({
 	children,

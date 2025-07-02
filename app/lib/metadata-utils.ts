@@ -15,10 +15,12 @@ export function generateMetadata({
 	noIndex = false,
 }: GenerateMetadataProps): Metadata {
 	return {
-		title,
+		title: {
+			absolute: `${siteConfig.name} | ${title}`,
+		},
 		description,
 		openGraph: {
-			title,
+			title: `${siteConfig.name} | ${title}`,
 			description,
 			images: [
 				{
@@ -31,7 +33,7 @@ export function generateMetadata({
 		},
 		twitter: {
 			card: 'summary_large_image',
-			title,
+			title: `${siteConfig.name} | ${title}`,
 			description,
 			images: [image],
 		},

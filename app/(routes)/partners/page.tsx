@@ -1,25 +1,17 @@
 'use client';
 
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import PartnersAnimation from '@/app/components/ui/PartnersAnimation';
-import {
-	containerVariants,
-	itemVariants,
-	fadeInVariants,
-	defaultViewport,
-} from '@/app/lib/animations';
 
 export default function Partners() {
-	const shouldReduceMotion = useReducedMotion();
-
 	return (
 		<div className='min-h-screen bg-background overflow-x-hidden'>
 			{/* Hero Section */}
 			<div className='container mx-auto px-4 py-12 md:py-16'>
 				<motion.div
-					variants={fadeInVariants(shouldReduceMotion)}
-					initial='hidden'
-					animate='visible'
+					initial={{ opacity: 0, y: 20 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.8 }}
 					className='max-w-3xl mx-auto text-center space-y-6'
 				>
 					<h1 className='text-4xl md:text-6xl font-bold tracking-tight'>
@@ -37,10 +29,10 @@ export default function Partners() {
 			<section className='py-12 bg-card/30'>
 				<div className='container mx-auto px-4'>
 					<motion.div
-						variants={fadeInVariants(shouldReduceMotion)}
-						initial='hidden'
-						whileInView='visible'
-						viewport={defaultViewport}
+						initial={{ opacity: 0, y: 20 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true }}
+						transition={{ duration: 0.8 }}
 						className='max-w-7xl mx-auto'
 					>
 						<PartnersAnimation />
@@ -52,10 +44,10 @@ export default function Partners() {
 			<section className='py-20'>
 				<div className='container mx-auto px-4'>
 					<motion.div
-						variants={itemVariants(shouldReduceMotion)}
-						initial='hidden'
-						whileInView='visible'
-						viewport={defaultViewport}
+						initial={{ opacity: 0, y: 20 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true }}
+						transition={{ duration: 0.8 }}
 						className='max-w-4xl mx-auto'
 					>
 						<div className='p-12 rounded-2xl border-2 border-foreground/10 bg-card/30 transform-gpu motion-safe:translate-z-0'>
@@ -79,14 +71,17 @@ export default function Partners() {
 			<section className='py-20 bg-card/30'>
 				<div className='container mx-auto px-4'>
 					<motion.div
-						variants={containerVariants(shouldReduceMotion)}
-						initial='hidden'
-						whileInView='visible'
-						viewport={defaultViewport}
+						initial={{ opacity: 0, y: 20 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true }}
+						transition={{ duration: 0.8 }}
 						className='max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8'
 					>
 						<motion.div
-							variants={itemVariants(shouldReduceMotion)}
+							initial={{ opacity: 0, y: 20 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							viewport={{ once: true }}
+							transition={{ duration: 0.8, delay: 0.1 }}
 							className='bg-card/30 p-10 rounded-2xl border-2 border-foreground/10 
 								transform-gpu motion-safe:translate-z-0 hover:bg-card/50 
 								transition-colors duration-300'
@@ -102,16 +97,25 @@ export default function Partners() {
 						</motion.div>
 
 						<motion.div
-							variants={itemVariants(shouldReduceMotion)}
+							initial={{ opacity: 0, y: 20 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							viewport={{ once: true }}
+							transition={{ duration: 0.8, delay: 0.2 }}
 							className='bg-card/30 p-10 rounded-2xl border-2 border-foreground/10 
 								transform-gpu motion-safe:translate-z-0 hover:bg-card/50 
 								transition-colors duration-300'
 						>
 							<h3 className='text-2xl font-medium mb-4'>Bli Partner</h3>
-							<p className='text-lg text-card-foreground/80'>
+							<p className='text-lg text-card-foreground/80 mb-4'>
 								Er du interessert i å bli en av våre samarbeidspartnere? Ta
 								kontakt med oss for en uforpliktende samtale om mulighetene for
 								partnerskap.
+							</p>
+							<p className='text-lg font-medium'>
+								Kontakt oss på:{' '}
+								<a href='mailto:post@padelco.no' className='hover:underline'>
+									post@padelco.no
+								</a>
 							</p>
 						</motion.div>
 					</motion.div>

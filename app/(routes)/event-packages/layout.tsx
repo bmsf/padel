@@ -1,10 +1,10 @@
-import { Metadata } from 'next';
+import { generateMetadata } from '@/app/lib/metadata-utils';
 
-export const metadata: Metadata = {
-	title: 'Arrangementer | Padel Co',
+export const metadata = generateMetadata({
+	title: 'Eventpakker',
 	description:
-		'Arranger bedriftsevents, bursdager og andre arrangementer hos oss',
-};
+		'Book din perfekte eventpakke hos Padel Co Grini - vi tilbyr skreddersydde pakker for bedrifter, grupper og private arrangementer',
+});
 
 export default function EventPackagesLayout({
 	children,

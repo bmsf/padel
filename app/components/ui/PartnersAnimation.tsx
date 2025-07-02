@@ -3,51 +3,64 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
-// Array of company logo objects
-const companyLogos = [
+// Array of actual partners from client with their logos
+const partners = [
 	{
 		id: 1,
-		src: 'https://www.tennis-point.se/on/demandware.static/-/Library-Sites-TennisPoint/default/dw818bdcc0/brands/babolat.png',
-		alt: 'Babolat',
-		width: 180,
-		height: 40,
+		name: 'Stabæk Fotball',
+		src: 'https://www.stabak.no/_/image/477e7492-47bd-41ea-a382-e7a2a5199c42:61d5c4da33acfb4855b5f0da3278ba51386829f2/wide-72-72/stb_logo_06_2023.svg',
+		width: 320,
+		height: 80,
 	},
 	{
 		id: 2,
-		src: 'https://cdn.freebiesupply.com/logos/large/2x/adidas-logo.png',
-		alt: 'Adidas',
-		width: 180,
-		height: 40,
+		name: 'Follestad',
+		src: 'https://norwegianoutlet.no/wp-content/uploads/2020/12/Follestad-B-1.png',
+		width: 320,
+		height: 80,
 	},
 	{
 		id: 3,
-		src: 'https://brandslogos.com/wp-content/uploads/images/large/wilson-logo-black-and-white.png',
-		alt: 'Wilson',
-		width: 180,
-		height: 40,
+		name: 'Jacob Cohen',
+		src: 'https://cdn.cookielaw.org/logos/1d4cf8ba-2ced-4022-acfd-9cf3ab53b0cd/0194ad5e-6d08-7c51-9202-f267521d759c/70f84d9d-373e-4bf8-9041-eb7d862bf4ef/LOGO-def_PNG.png',
+		width: 320,
+		height: 80,
 	},
 	{
 		id: 4,
-		src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Logo_NIKE.svg/1200px-Logo_NIKE.svg.png',
-		alt: 'Nike',
-		width: 180,
-		height: 40,
+		name: 'Ambassaden Trening',
+		src: 'https://ambassaden-trening.no/wp-content/uploads/2023/10/AT_logo-2-white.png',
+		width: 320,
+		height: 80,
 	},
 	{
 		id: 5,
-		src: 'https://cdn.freebiesupply.com/logos/large/2x/rolex-logo-black-and-white.png',
-		alt: 'Rolex',
-		width: 180,
-		height: 40,
+		name: 'Baker Hansen',
+		src: 'https://cdn-files.eu.placewise.com/f/CLCFPRoKc3RvcmVfbG9nbyIFNDAzMTg4mpTPOccnOHHhYOA1P37ZZJndLRo',
+		width: 320,
+		height: 80,
 	},
 	{
 		id: 6,
-		src: 'https://www.carlogos.org/car-logos/audi-logo-2016-download.png',
-		alt: 'Audi',
-		width: 180,
-		height: 40,
+		name: 'Nibbi Clothing',
+		src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYv6VY6uH5PCHb_zS-GgZQV8WDMiFKA9ovsA&s',
+		width: 320,
+		height: 80,
 	},
-	// Add more company logos as needed
+	{
+		id: 7,
+		name: 'Head',
+		src: 'https://cdn.freelogovectors.net/wp-content/uploads/2020/03/head-logo.png',
+		width: 320,
+		height: 80,
+	},
+	{
+		id: 8,
+		name: 'Babolat',
+		src: 'https://www.tennis-point.se/on/demandware.static/-/Library-Sites-TennisPoint/default/dw818bdcc0/brands/babolat.png',
+		width: 320,
+		height: 80,
+	},
 ];
 
 export default function PartnersAnimation() {
@@ -79,20 +92,20 @@ export default function PartnersAnimation() {
 					animate={{ translateX: '-50%' }}
 					className='flex items-center gap-16 pr-16'
 				>
-					{/* Duplicate the logos array to ensure seamless looping */}
+					{/* Duplicate the partners array to ensure seamless looping */}
 					{[...new Array(2)].fill(0).map((_, dupeIndex) => (
 						<React.Fragment key={`set-${dupeIndex}`}>
-							{companyLogos.map((logo) => (
+							{partners.map((partner) => (
 								<div
-									key={`${dupeIndex}-${logo.id}`}
-									className='flex items-center justify-center min-w-40 h-12'
+									key={`${dupeIndex}-${partner.id}`}
+									className='flex items-center justify-center min-w-40 h-20'
 								>
 									<Image
-										src={logo.src}
-										alt={logo.alt}
-										width={logo.width}
-										height={logo.height}
-										className='object-contain max-h-full grayscale opacity-70 hover:opacity-100 transition-all duration-300'
+										src={partner.src}
+										alt={partner.name}
+										width={partner.width}
+										height={partner.height}
+										className='object-contain max-h-full'
 									/>
 								</div>
 							))}
