@@ -4,6 +4,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import LoadingScreen from './components/ui/LoadingScreen';
+import CookieConsent from './components/layout/CookieConsent';
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
@@ -50,6 +51,7 @@ export default function RootLayoutClient({ children }: RootLayoutClientProps) {
 					<Header />
 					<main className='flex-grow'>{children}</main>
 					<Footer />
+					<CookieConsent />
 				</div>
 			</ThemeProvider>
 		);
@@ -75,6 +77,7 @@ export default function RootLayoutClient({ children }: RootLayoutClientProps) {
 						<Header />
 						<main className='flex-grow'>{children}</main>
 						<Footer />
+						<CookieConsent />
 					</motion.div>
 				)}
 			</AnimatePresence>

@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import CookieSettings from './CookieSettings';
 
 export default function Footer() {
 	return (
@@ -89,25 +90,22 @@ export default function Footer() {
 						</a>
 						. All rights reserved.
 					</p>
-					<div className='flex space-x-6 text-sm'>
-						<a
-							href='#'
-							className='text-muted-foreground hover:text-foreground transition-colors'
-						>
-							Personvern
-						</a>
-						<a
-							href='#'
-							className='text-muted-foreground hover:text-foreground transition-colors'
-						>
-							Vilkår
-						</a>
-						<a
-							href='#'
-							className='text-muted-foreground hover:text-foreground transition-colors'
-						>
-							Cookies
-						</a>
+					<div className='flex flex-col sm:flex-row items-center gap-4'>
+						<div className='flex space-x-6 text-sm'>
+							<a
+								href='#'
+								className='text-muted-foreground hover:text-foreground transition-colors'
+							>
+								Personvern
+							</a>
+							<a
+								href='#'
+								className='text-muted-foreground hover:text-foreground transition-colors'
+							>
+								Vilkår
+							</a>
+						</div>
+						<CookieSettings />
 					</div>
 				</motion.div>
 			</div>
