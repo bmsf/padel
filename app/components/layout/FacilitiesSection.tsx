@@ -1,6 +1,7 @@
 'use client';
 
-import { Trophy, Calendar, MapPin, Users } from 'lucide-react';
+import { Trophy, Users } from 'lucide-react';
+import { TennisBall, Racquet } from '@phosphor-icons/react';
 import { motion, useReducedMotion } from 'framer-motion';
 import {
 	containerVariants,
@@ -22,22 +23,22 @@ const facilityCards: FacilityCard[] = [
 		icon: <Trophy className='w-8 h-8' />,
 	},
 	{
-		title: 'Booking & Kurs',
-		description:
-			'Enkelt bookingsystem og kurs for alle nivåer med våre erfarne instruktører.',
-		icon: <Calendar className='w-8 h-8' />,
-	},
-	{
-		title: 'Sentral Beliggenhet',
-		description:
-			'Lett tilgjengelig på Grini med god parkering og kollektivtransport.',
-		icon: <MapPin className='w-8 h-8' />,
-	},
-	{
 		title: 'Arrangementer',
 		description:
 			'Bedriftsarrangementer, turneringer og private events for grupper.',
 		icon: <Users className='w-8 h-8' />,
+	},
+	{
+		title: 'Leieracketer',
+		description:
+			'Glemt racket? Vi har kvalitetsracketer til leie for alle som trenger det.',
+		icon: <Racquet className='w-8 h-8' />,
+	},
+	{
+		title: 'Baller til Salgs',
+		description:
+			'Kjøp padelballer direkte i lokalet - alltid tilgjengelig for ditt spill.',
+		icon: <TennisBall className='w-8 h-8' />,
 	},
 ];
 

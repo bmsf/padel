@@ -32,9 +32,7 @@ export default function Footer() {
 						transition={{ duration: 0.5, delay: 0.2 }}
 					>
 						<h3 className='text-lg font-semibold mb-4'>Åpningstider</h3>
-						<p className='text-sm  mb-2'>
-							Alle dager: 00:00 - 24:00
-						</p>
+						<p className='text-sm  mb-2'>Alle dager: 06:00 - 00:00</p>
 					</motion.div>
 					<motion.div
 						initial={{ opacity: 0, y: 20 }}
@@ -43,12 +41,8 @@ export default function Footer() {
 						transition={{ duration: 0.5, delay: 0.3 }}
 					>
 						<h3 className='text-lg font-semibold mb-4'>Kontakt</h3>
-						<p className='text-sm  mb-2'>
-							Telefon: +47 48189107
-						</p>
-						<p className='text-sm mb-2'>
-							E-post: post@padelco.no
-						</p>
+						<p className='text-sm  mb-2'>Telefon: +47 48189107</p>
+						<p className='text-sm mb-2'>E-post: post@padelco.no</p>
 						<div className='flex space-x-4 mt-4'>
 							<a
 								href='https://www.facebook.com/padelco.no'

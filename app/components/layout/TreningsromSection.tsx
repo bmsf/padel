@@ -26,7 +26,7 @@ const TreningsromSection: React.FC = () => {
 						className='text-center mb-12'
 					>
 						<div className='flex justify-center mb-4'>
-							<Dumbbell className='w-12 h-12 text-primary' />
+							<Dumbbell className='w-12 h-12' />
 						</div>
 						<h2 className='text-4xl font-bold mb-4'>Treningsrom i 3. etasje</h2>
 						<p className='text-xl'>

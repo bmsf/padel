@@ -155,7 +155,7 @@ export default function Contact() {
 									<div className='ml-4'>
 										<h3 className='text-lg font-medium'>Åpningstider</h3>
 										<div className='mt-1 space-y-1 text-muted-foreground group-hover:text-foreground transition-colors duration-300'>
-											<p>Alle dager: 00:00 - 24:00</p>
+											<p>Alle dager: 06:00 - 00:00</p>
 										</div>
 									</div>
 								</motion.div>
