@@ -1,8 +1,6 @@
 'use client';
 
 import { motion, useReducedMotion } from 'framer-motion';
-import { Play } from 'lucide-react';
-import { useState } from 'react';
 import {
 	containerVariants,
 	itemVariants,
@@ -11,7 +9,6 @@ import {
 
 const PadelInfoHero: React.FC = () => {
 	const shouldReduceMotion = useReducedMotion();
-	const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
 	return (
 		<section className='relative w-full min-h-[80vh] flex items-center justify-center bg-gradient-to-br from-primary/10 via-background to-primary/5'>
@@ -43,31 +40,16 @@ const PadelInfoHero: React.FC = () => {
 						{/* Video Section */}
 						<div className='relative'>
 							<div className='bg-card rounded-2xl overflow-hidden shadow-2xl border border-foreground/10'>
-								{!isVideoPlaying ? (
-									<div className='relative aspect-video bg-black/20 flex items-center justify-center cursor-pointer group'>
-										<div
-											onClick={() => setIsVideoPlaying(true)}
-											className='absolute inset-0 flex items-center justify-center'
-										>
-											<div className='bg-primary/90 hover:bg-primary transition-colors duration-300 rounded-full p-6 group-hover:scale-110 transform'>
-												<Play className='w-12 h-12 text-white fill-white ml-1' />
-											</div>
-										</div>
-										<div className='absolute bottom-4 left-4 text-white text-sm'>
-											Klikk for å spille video
-										</div>
-									</div>
-								) : (
-									<video
-										className='w-full aspect-video'
-										controls
-										autoPlay
-										onEnded={() => setIsVideoPlaying(false)}
-									>
-										<source src='/videos/video.mp4' type='video/mp4' />
-										Your browser does not support the video tag.
-									</video>
-								)}
+								<div className='relative aspect-video bg-black rounded-xl overflow-hidden'>
+									<iframe
+										className='w-full h-full'
+										src='https://www.youtube.com/embed/NX-68fxhL_4'
+										title='Padel Regler Forklaring'
+										frameBorder='0'
+										allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+										allowFullScreen
+									></iframe>
+								</div>
 							</div>
 						</div>
 

@@ -32,34 +32,6 @@ const PadelRulesSection: React.FC = () => {
 						<p className='text-xl'>Regler, format og banestørrelse</p>
 					</motion.div>
 
-					{/* YouTube Video Section */}
-					<motion.div
-						variants={itemVariants(shouldReduceMotion)}
-						className='mb-16'
-					>
-						<div className='bg-card p-8 rounded-2xl border border-foreground/10 shadow-lg'>
-							<div className='text-center mb-6'>
-								<h3 className='text-2xl font-bold mb-2'>
-									Se Padel-reglene Forklart
-								</h3>
-								<p className='text-lg text-card-foreground/80'>
-									Lær de grunnleggende reglene for padel gjennom denne
-									informative videoen
-								</p>
-							</div>
-							<div className='relative aspect-video bg-black rounded-xl overflow-hidden'>
-								<iframe
-									className='w-full h-full'
-									src='https://www.youtube.com/embed/NX-68fxhL_4'
-									title='Padel Regler Forklaring'
-									frameBorder='0'
-									allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-									allowFullScreen
-								></iframe>
-							</div>
-						</div>
-					</motion.div>
-
 					<motion.div
 						variants={itemVariants(shouldReduceMotion)}
 						className='grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12'

@@ -24,6 +24,15 @@ export default function RootLayout({
 		<html lang='nb' suppressHydrationWarning>
 			<head>
 				<Script
+					id='cookiebot'
+					src='https://consent.cookiebot.com/uc.js'
+					data-cbid='7a095d30-1325-497a-85bd-433d14485695'
+					data-blockingmode='auto'
+					type='text/javascript'
+					strategy='beforeInteractive'
+				/>
+
+				<Script
 					id='json-ld-website'
 					type='application/ld+json'
 					dangerouslySetInnerHTML={{
