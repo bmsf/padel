@@ -2,54 +2,54 @@
 
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Clock, Facebook, Instagram } from 'lucide-react';
-import { FormEvent, useState } from 'react';
-import { toast } from 'sonner';
+// import { FormEvent, useState } from 'react';
+// import { toast } from 'sonner';
 import MapSection from '../../components/layout/MapSection';
 
 export default function Contact() {
-	const [isSubmitting, setIsSubmitting] = useState(false);
+	// const [isSubmitting, setIsSubmitting] = useState(false);
 
-	const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
-		setIsSubmitting(true);
+	// const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+	// 	e.preventDefault();
+	// 	setIsSubmitting(true);
 
-		const formData = new FormData(e.currentTarget);
-		const data = {
-			name: formData.get('name'),
-			email: formData.get('email'),
-			subject: formData.get('subject'),
-			message: formData.get('message'),
-		};
+	// 	const formData = new FormData(e.currentTarget);
+	// 	const data = {
+	// 		name: formData.get('name'),
+	// 		email: formData.get('email'),
+	// 		subject: formData.get('subject'),
+	// 		message: formData.get('message'),
+	// 	};
 
-		try {
-			const response = await fetch('/api/contact', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify(data),
-			});
+	// 	try {
+	// 		const response = await fetch('/api/contact', {
+	// 			method: 'POST',
+	// 			headers: {
+	// 				'Content-Type': 'application/json',
+	// 			},
+	// 			body: JSON.stringify(data),
+	// 		});
 
-			const result = await response.json();
+	// 		const result = await response.json();
 
-			if (!response.ok) {
-				throw new Error(result.error || 'Noe gikk galt');
-			}
+	// 		if (!response.ok) {
+	// 			throw new Error(result.error || 'Noe gikk galt');
+	// 		}
 
-			toast.success(
-				'Takk for din henvendelse! Vi vil kontakte deg så snart som mulig.'
-			);
-			e.currentTarget.reset();
-		} catch (error) {
-			toast.error(
-				error instanceof Error
-					? error.message
-					: 'Kunne ikke sende meldingen. Vennligst prøv igjen senere.'
-			);
-		} finally {
-			setIsSubmitting(false);
-		}
-	};
+	// 		toast.success(
+	// 			'Takk for din henvendelse! Vi vil kontakte deg så snart som mulig.'
+	// 		);
+	// 		e.currentTarget.reset();
+	// 	} catch (error) {
+	// 		toast.error(
+	// 			error instanceof Error
+	// 				? error.message
+	// 				: 'Kunne ikke sende meldingen. Vennligst prøv igjen senere.'
+	// 		);
+	// 	} finally {
+	// 		setIsSubmitting(false);
+	// 	}
+	// };
 
 	return (
 		<div className='min-h-screen bg-background overflow-x-hidden'>
@@ -162,7 +162,7 @@ export default function Contact() {
 							</div>
 						</div>
 
-						{/* Kontaktskjema */}
+						{/* Direkte kontakt via e-post */}
 						<motion.div
 							initial={{ opacity: 0, y: 20 }}
 							animate={{ opacity: 1, y: 0 }}
@@ -170,122 +170,35 @@ export default function Contact() {
 							className='bg-card/50 backdrop-blur-sm p-12 rounded-2xl border-2 border-foreground/10'
 						>
 							<h2 className='text-2xl font-semibold mb-8'>
-								Send oss en melding
+								Ta kontakt med oss
 							</h2>
 
-							<div className='bg-yellow-500/10 border border-yellow-500/20 rounded-lg p-6 mb-8'>
-								<p className='text-yellow-500/90'>
-									Kontaktskjemaet er midlertidig utilgjengelig mens vi setter
-									opp e-postfunksjonaliteten. Vennligst kontakt oss direkte på{' '}
+							<div className='space-y-6'>
+								<motion.div
+									initial={{ opacity: 0, y: 10 }}
+									whileInView={{ opacity: 1, y: 0 }}
+									viewport={{ once: true }}
+									transition={{ duration: 0.5, delay: 0.1 }}
+									className='text-center'
+								>
+									<Mail className='h-16 w-16 text-foreground/70 mx-auto mb-4' />
+									<h3 className='text-xl font-medium mb-4'>
+										Send oss en e-post
+									</h3>
+									<p className='text-muted-foreground mb-6 leading-relaxed'>
+										Har du spørsmål om våre tjenester, ønsker å booke en bane,
+										eller trenger du hjelp med noe annet? Send oss gjerne en
+										e-post, så svarer vi så raskt som mulig!
+									</p>
 									<a
 										href='mailto:post@padelco.no'
-										className='underline hover:text-yellow-400 transition-colors'
+										className='inline-flex items-center gap-2 bg-foreground text-background px-8 py-4 rounded-lg font-medium'
 									>
-										post@padelco.no
+										<Mail className='h-5 w-5' />
+										Send e-post til post@padelco.no
 									</a>
-								</p>
+								</motion.div>
 							</div>
-
-							<form
-								onSubmit={handleSubmit}
-								className='space-y-6 opacity-50 pointer-events-none'
-							>
-								<motion.div
-									initial={{ opacity: 0, y: 10 }}
-									whileInView={{ opacity: 1, y: 0 }}
-									viewport={{ once: true }}
-									transition={{ duration: 0.3, delay: 0.1 }}
-								>
-									<label
-										htmlFor='name'
-										className='block text-sm font-medium text-foreground mb-2'
-									>
-										Navn <span className='text-red-500'>*</span>
-									</label>
-									<input
-										type='text'
-										id='name'
-										name='name'
-										required
-										className='w-full px-4 py-3 rounded-lg bg-card border-2 border-foreground/10 focus:border-foreground/20 focus:outline-none transition-colors duration-300'
-									/>
-								</motion.div>
-
-								<motion.div
-									initial={{ opacity: 0, y: 10 }}
-									whileInView={{ opacity: 1, y: 0 }}
-									viewport={{ once: true }}
-									transition={{ duration: 0.3, delay: 0.2 }}
-								>
-									<label
-										htmlFor='email'
-										className='block text-sm font-medium text-foreground mb-2'
-									>
-										E-post <span className='text-red-500'>*</span>
-									</label>
-									<input
-										type='email'
-										id='email'
-										name='email'
-										required
-										className='w-full px-4 py-3 rounded-lg bg-card border-2 border-foreground/10 focus:border-foreground/20 focus:outline-none transition-colors duration-300'
-									/>
-								</motion.div>
-
-								<motion.div
-									initial={{ opacity: 0, y: 10 }}
-									whileInView={{ opacity: 1, y: 0 }}
-									viewport={{ once: true }}
-									transition={{ duration: 0.3, delay: 0.3 }}
-								>
-									<label
-										htmlFor='subject'
-										className='block text-sm font-medium text-foreground mb-2'
-									>
-										Emne <span className='text-red-500'>*</span>
-									</label>
-									<input
-										type='text'
-										id='subject'
-										name='subject'
-										required
-										className='w-full px-4 py-3 rounded-lg bg-card border-2 border-foreground/10 focus:border-foreground/20 focus:outline-none transition-colors duration-300'
-									/>
-								</motion.div>
-
-								<motion.div
-									initial={{ opacity: 0, y: 10 }}
-									whileInView={{ opacity: 1, y: 0 }}
-									viewport={{ once: true }}
-									transition={{ duration: 0.3, delay: 0.4 }}
-								>
-									<label
-										htmlFor='message'
-										className='block text-sm font-medium text-foreground mb-2'
-									>
-										Melding <span className='text-red-500'>*</span>
-									</label>
-									<textarea
-										id='message'
-										name='message'
-										rows={4}
-										required
-										className='w-full px-4 py-3 rounded-lg bg-card border-2 border-foreground/10 focus:border-foreground/20 focus:outline-none transition-colors duration-300'
-									></textarea>
-								</motion.div>
-
-								<motion.button
-									initial={{ opacity: 0, y: 10 }}
-									whileInView={{ opacity: 1, y: 0 }}
-									viewport={{ once: true }}
-									transition={{ duration: 0.3, delay: 0.5 }}
-									type='submit'
-									disabled={isSubmitting}
-									className='w-full py-4 px-6 bg-foreground text-background rounded-lg hover:bg-foreground/90 transition-colors duration-300 font-medium disabled:opacity-50 disabled:cursor-not-allowed'
-								>
-									{isSubmitting ? 'Sender...' : 'Send melding'}
-								</motion.button>
-							</form>
 						</motion.div>
 					</motion.div>
 				</div>
@@ -314,7 +227,9 @@ export default function Contact() {
 									whileInView={{ opacity: 1, y: 0 }}
 									viewport={{ once: true }}
 									transition={{ duration: 0.3, delay: 0.1 }}
-									href='#'
+									href='https://www.facebook.com/padelco.no'
+									target='_blank'
+									rel='noopener noreferrer'
 									className='text-foreground/70 hover:text-foreground transition-colors duration-300 flex items-center gap-2 group'
 								>
 									<Facebook className='h-6 w-6' />
@@ -325,7 +240,9 @@ export default function Contact() {
 									whileInView={{ opacity: 1, y: 0 }}
 									viewport={{ once: true }}
 									transition={{ duration: 0.3, delay: 0.2 }}
-									href='#'
+									href='https://www.instagram.com/padel_co/'
+									target='_blank'
+									rel='noopener noreferrer'
 									className='text-foreground/70 hover:text-foreground transition-colors duration-300 flex items-center gap-2 group'
 								>
 									<Instagram className='h-6 w-6' />
@@ -336,6 +253,123 @@ export default function Contact() {
 					</motion.div>
 				</div>
 			</section>
+
+			{/* Kontaktskjema kode bevart for fremtidig bruk */}
+			{/* 
+			Kontaktskjema kode som kan aktiveres senere:
+			
+			<motion.div
+				initial={{ opacity: 0, y: 20 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.4 }}
+				className='bg-card/50 backdrop-blur-sm p-12 rounded-2xl border-2 border-foreground/10'
+			>
+				<h2 className='text-2xl font-semibold mb-8'>
+					Send oss en melding
+				</h2>
+
+				<form
+					onSubmit={handleSubmit}
+					className='space-y-6'
+				>
+					<motion.div
+						initial={{ opacity: 0, y: 10 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true }}
+						transition={{ duration: 0.3, delay: 0.1 }}
+					>
+						<label
+							htmlFor='name'
+							className='block text-sm font-medium text-foreground mb-2'
+						>
+							Navn <span className='text-red-500'>*</span>
+						</label>
+						<input
+							type='text'
+							id='name'
+							name='name'
+							required
+							className='w-full px-4 py-3 rounded-lg bg-card border-2 border-foreground/10 focus:border-foreground/20 focus:outline-none transition-colors duration-300'
+						/>
+					</motion.div>
+
+					<motion.div
+						initial={{ opacity: 0, y: 10 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true }}
+						transition={{ duration: 0.3, delay: 0.2 }}
+					>
+						<label
+							htmlFor='email'
+							className='block text-sm font-medium text-foreground mb-2'
+						>
+							E-post <span className='text-red-500'>*</span>
+						</label>
+						<input
+							type='email'
+							id='email'
+							name='email'
+							required
+							className='w-full px-4 py-3 rounded-lg bg-card border-2 border-foreground/10 focus:border-foreground/20 focus:outline-none transition-colors duration-300'
+						/>
+					</motion.div>
+
+					<motion.div
+						initial={{ opacity: 0, y: 10 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true }}
+						transition={{ duration: 0.3, delay: 0.3 }}
+					>
+						<label
+							htmlFor='subject'
+							className='block text-sm font-medium text-foreground mb-2'
+						>
+							Emne <span className='text-red-500'>*</span>
+						</label>
+						<input
+							type='text'
+							id='subject'
+							name='subject'
+							required
+							className='w-full px-4 py-3 rounded-lg bg-card border-2 border-foreground/10 focus:border-foreground/20 focus:outline-none transition-colors duration-300'
+						/>
+					</motion.div>
+
+					<motion.div
+						initial={{ opacity: 0, y: 10 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true }}
+						transition={{ duration: 0.3, delay: 0.4 }}
+					>
+						<label
+							htmlFor='message'
+							className='block text-sm font-medium text-foreground mb-2'
+						>
+							Melding <span className='text-red-500'>*</span>
+						</label>
+						<textarea
+							id='message'
+							name='message'
+							rows={4}
+							required
+							className='w-full px-4 py-3 rounded-lg bg-card border-2 border-foreground/10 focus:border-foreground/20 focus:outline-none transition-colors duration-300'
+						></textarea>
+					</motion.div>
+
+					<motion.button
+						initial={{ opacity: 0, y: 10 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true }}
+						transition={{ duration: 0.3, delay: 0.5 }}
+						type='submit'
+						disabled={isSubmitting}
+						className='w-full py-4 px-6 bg-foreground text-background rounded-lg hover:bg-foreground/90 transition-colors duration-300 font-medium disabled:opacity-50 disabled:cursor-not-allowed'
+					>
+						{isSubmitting ? 'Sender...' : 'Send melding'}
+					</motion.button>
+				</form>
+			</motion.div>
+			*/}
 		</div>
 	);
 }

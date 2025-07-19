@@ -6,7 +6,7 @@ import {
 	itemVariants,
 	defaultViewport,
 } from '@/app/lib/animations';
-import { Wrench, Users, Activity, Clock, Heart } from 'lucide-react';
+import { Users, Activity, Heart } from 'lucide-react';
 
 const services = [
 	{
@@ -17,25 +17,11 @@ const services = [
 		features: ['Gratis konsultasjon', 'Spillestilanalyse', 'Anbefalinger'],
 	},
 	{
-		title: 'Stringing-service',
-		description:
-			'Profesjonell stringing av din racket med høykvalitets strenger.',
-		icon: <Wrench className='w-8 h-8' />,
-		features: ['Express service', 'Strengutvalg', 'Spesialbestillinger'],
-	},
-	{
 		title: 'Test av racketer',
 		description: 'Prøv før du kjøper - test ulike racketer på våre baner.',
 		icon: <Activity className='w-8 h-8' />,
 		features: ['Demo-program', 'Banetesting', 'Vurderingsskjema'],
 	},
-	{
-		title: 'Åpningstider',
-		description: 'Vi er åpne alle dager, med utvidet åpningstid i helgene.',
-		icon: <Clock className='w-8 h-8' />,
-		features: ['Mandag-Fredag: 10-20', 'Lørdag: 10-18', 'Søndag: 12-18'],
-	},
-
 	{
 		title: 'Garanti & Service',
 		description: 'Vi står bak alle våre produkter med full garanti og service.',
