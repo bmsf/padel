@@ -67,8 +67,8 @@ export default function Hero({ imageUrl = '/hero.jpg' }: HeroProps) {
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.8, delay: 0.4 }}
 						>
-							Et av Norges mest komplette padelanlegg – med seks innendørsbaner,
-							tre utendørsbaner, treningsrom, lounge og splitter ny pro shop
+							Et av Norges mest komplette padelanlegg – med ni innendørsbaner,
+							tre utendørsbaner, treningsstudio, lounge og splitter ny pro shop
 						</motion.p>
 
 						<motion.div

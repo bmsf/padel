@@ -37,7 +37,7 @@ export default function About() {
 							<div className='space-y-4 text-lg text-card-foreground/80'>
 								<p>
 									Padel Co er en nystartet satsning på en sport som er i sterk
-									vekst verden over. Med våre 6 baner på Grini er vi de eneste i
+									vekst verden over. Med våre 9 baner på Grini er vi de eneste i
 									Oslo området som tilbyr både inne og utebaner.
 								</p>
 								<p>
@@ -71,7 +71,7 @@ export default function About() {
 						>
 							<h3 className='text-2xl font-medium mb-4'>Våre Fasiliteter</h3>
 							<p className='text-lg text-card-foreground/80'>
-								Med 6 toppmoderne baner, både inne og ute, tilbyr vi det beste
+								Med 9 toppmoderne baner, både inne og ute, tilbyr vi det beste
 								innen padelanlegg. Våre fasiliteter inkluderer også garderober,
 								pro shop og sosiale områder.
 							</p>

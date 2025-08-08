@@ -1,6 +1,6 @@
 import Hero from './components/layout/Hero';
 import FacilitiesSection from './components/layout/FacilitiesSection';
-import TreningsromSection from './components/layout/TreningsromSection';
+import TreningsstudioSection from './components/layout/TreningsstudioSection';
 // import NewsBento from './components/layout/NewsBento';
 import MapSection from './components/layout/MapSection';
 import PartnersAnimation from './components/ui/PartnersAnimation';
@@ -95,7 +95,7 @@ export default function Home() {
 					<Hero />
 					<div className='container mx-auto px-4 py-16'>
 						<FacilitiesSection />
-						<TreningsromSection />
+						<TreningsstudioSection />
 						{/* <NewsBento /> */}
 						<PartnersAnimation />
 						<MapSection />

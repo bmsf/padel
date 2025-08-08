@@ -8,7 +8,7 @@ import {
 	defaultViewport,
 } from '@/app/lib/animations';
 
-const TreningsromSection: React.FC = () => {
+const TreningsstudioSection: React.FC = () => {
 	const shouldReduceMotion = useReducedMotion();
 
 	return (
@@ -28,10 +28,10 @@ const TreningsromSection: React.FC = () => {
 						<div className='flex justify-center mb-4'>
 							<Dumbbell className='w-12 h-12' />
 						</div>
-						<h2 className='text-4xl font-bold mb-4'>Treningsrom i 3. etasje</h2>
-						<p className='text-xl'>
-							Rolig atmosfære. Alt du trenger.
-						</p>
+						<h2 className='text-4xl font-bold mb-4'>
+							Treningsstudio i 3. etasje
+						</h2>
+						<p className='text-xl'>Rolig atmosfære. Alt du trenger.</p>
 					</motion.div>
 
 					<motion.div
@@ -39,8 +39,8 @@ const TreningsromSection: React.FC = () => {
 						className='bg-card p-8 rounded-2xl border-2 border-foreground/10 mb-8'
 					>
 						<p className='text-lg text-card-foreground/80 leading-relaxed mb-6'>
-							I tredje etasje hos Padel Co finner du vårt moderne treningsrom –
-							perfekt for deg som ønsker å trene i rolige omgivelser med full
+							I tredje etasje hos Padel Co finner du vårt moderne treningsstudio
+							– perfekt for deg som ønsker å trene i rolige omgivelser med full
 							tilgang til funksjonelt og variert utstyr. Her kan du kombinere
 							padel med effektiv styrke- eller kondisjonstrening, eller bruke
 							rommet som din faste treningsbase.
@@ -48,7 +48,7 @@ const TreningsromSection: React.FC = () => {
 						<p className='text-lg text-card-foreground/80 leading-relaxed mb-6'>
 							Enten du foretrekker frivekter, kondisjonsapparater,
 							mobilitetstrening eller en økt på yogamatten – du finner det du
-							trenger her. Treningsrommet gir deg en mer privat og behagelig
+							trenger her. Treningsstudioet gir deg en mer privat og behagelig
 							opplevelse, uten kø eller støy.
 						</p>
 					</motion.div>
@@ -87,4 +87,4 @@ const TreningsromSection: React.FC = () => {
 	);
 };
 
-export default TreningsromSection;
+export default TreningsstudioSection;

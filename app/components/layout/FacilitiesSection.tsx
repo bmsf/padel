@@ -17,7 +17,7 @@ interface FacilityCard {
 
 const facilityCards: FacilityCard[] = [
 	{
-		title: '6 Moderne Baner',
+		title: '9 Moderne Baner',
 		description:
 			'Toppmoderne innendørs og utendørs baner med profesjonell standard.',
 		icon: <Trophy className='w-8 h-8' />,
